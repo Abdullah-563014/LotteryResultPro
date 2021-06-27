@@ -1,0 +1,32 @@
+package com.skithub.resultdear.utils
+
+object Constants {
+
+
+    val TAG: String="Abdullah"
+
+
+    val onesignalApplicationId: String="556e5254-0798-4487-9cc6-e0946047c1d3"
+
+
+    val dayFormat: String="dd-MM-yyyy"
+    val timeFormat: String="hh:mm a"
+    val morningTime: String="11:55 AM"
+    val eveningTime: String="04:00 PM"
+    val nightTime: String="08:00 PM"
+    val bumperTime: String="08:00 PM"
+//    default values end here
+
+    val resultDateKey: String="ResultDateKey"
+    val resultTimeKey: String="ResultTimeKey"
+    val isVersusResultKey: String="IsVersusResultKey"
+//    all keys are declared above
+
+
+
+
+
+
+
+
+}

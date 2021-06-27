@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/downloadPdfFabButtonId"
+        android:title="Download Pdf"
+        android:icon="@drawable/ic_download" />
+    <item
+        android:id="@+id/downloadImageFabButtonId"
+        android:title="Download Image"
+        android:icon="@drawable/ic_download" />
+</menu>

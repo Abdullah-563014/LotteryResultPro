@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/i"
+        android:title=" ">
+        <menu></menu>
+    </item>
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/night_Mood"
+        android:icon="@drawable/ic_nights_mood_24"
+        android:title="Night Mode" />
+    <item
+        android:id="@+id/Setings"
+        android:icon="@drawable/ic__settings_24"
+        android:title="Setting" />
+    <item
+        android:id="@+id/Share"
+        android:icon="@drawable/ic_share_24"
+        android:title="Share" />
+            <item
+                android:id="@+id/appPrivacy"
+                android:icon="@drawable/ic_privacy_tip_24"
+                android:title="App Privacy" />
+
+
+    <item
+        android:id="@+id/item2"
+        android:title=" ">
+        <menu>
+            <item
+                android:id="@+id/contactUs"
+                android:icon="@drawable/mail"
+                android:title="Contact Us" />
+            <item
+                android:id="@+id/MoreApps"
+                android:icon="@drawable/moreapps"
+                android:title="More Apps" />
+        </menu>
+
+    </item>
+
+</menu>
