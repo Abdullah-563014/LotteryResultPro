@@ -10,27 +10,28 @@
     <application
         android:name=".ui.MyApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true"
-        android:hardwareAccelerated="true"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lutt"
+        android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
+        <activity android:name=".ui.GridLayout.lottery_number_list.LotteryNumberListActivity"></activity>
         <activity android:name=".ui.pdf_info.PdfInfoActivity" />
         <activity android:name=".ui.GridLayout.YesVsPreActivity" />
         <activity
             android:name=".ui.GridLayout.YesterdayResultActivity"
             android:parentActivityName=".ui.MainActivity" />
-        <activity android:name=".ui.GridLayout.Winning_NumbersActivity" />
+        <activity android:name=".ui.GridLayout.wining_numbers.Winning_NumbersActivity" />
         <activity
             android:name=".ui.GridLayout.TodayResultActivity"
             android:parentActivityName=".ui.MainActivity" />
         <activity android:name=".ui.GridLayout.To_Get_HelpActivity" />
-        <activity android:name=".ui.GridLayout.SPL_Or_BumperActivity" />
+        <activity android:name=".ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity" />
         <activity android:name=".ui.GridLayout.old_result.OldResultActivity" />
         <activity android:name=".ui.GridLayout.Claim_formActivity" />
         <activity android:name=".ui.Your_Lucky_NumbersActivity" />

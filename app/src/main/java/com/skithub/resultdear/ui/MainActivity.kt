@@ -13,6 +13,8 @@ import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
 import com.skithub.resultdear.ui.GridLayout.*
 import com.skithub.resultdear.ui.GridLayout.old_result.OldResultActivity
+import com.skithub.resultdear.ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity
+import com.skithub.resultdear.ui.GridLayout.wining_numbers.Winning_NumbersActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

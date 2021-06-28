@@ -219,7 +219,7 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
         binding.resultRootLayout.visibility=View.VISIBLE
         binding.resultTwoRootLayout.visibility=View.VISIBLE
         binding.waitingRootLayout.visibility=View.GONE
-        binding.resultTwoTitleTextView.text="Result $resultDate ${CommonMethod.getDayNameUsingDate(resultDate)}"
+        binding.resultTwoTitleTextView.text="Result $resultDateTwo ${CommonMethod.getDayNameUsingDate(resultDateTwo)}"
         Glide.with(this).load(imageUrl).fitCenter().into(binding.resultTwoImageView)
     }
 

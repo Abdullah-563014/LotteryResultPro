@@ -15,11 +15,16 @@ object Constants {
     val eveningTime: String="04:00 PM"
     val nightTime: String="08:00 PM"
     val bumperTime: String="08:00 PM"
+    val winTypeFirst="1st"
+    val winTypeSecond="2nd"
+    val winTypeThird="3rd"
+    val winTypeFourth="4th"
 //    default values end here
 
     val resultDateKey: String="ResultDateKey"
     val resultTimeKey: String="ResultTimeKey"
     val isVersusResultKey: String="IsVersusResultKey"
+    val winTypeKey: String="WinTypeKey"
 //    all keys are declared above
 
 

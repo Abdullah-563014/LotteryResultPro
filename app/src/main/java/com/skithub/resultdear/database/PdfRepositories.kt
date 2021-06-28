@@ -1,16 +1,28 @@
 package com.skithub.resultdear.database
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.skithub.resultdear.database.network.MyApi
+import com.skithub.resultdear.model.LotteryNumberResponse
 import com.skithub.resultdear.model.LotteryPdfResponse
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 
 class PdfRepositories {
 
+
+    suspend fun findLotteryInfoUsingLotteryNumber(lotteryNumber: String, myApi: MyApi): Response<LotteryNumberResponse> {
+        return myApi.findLotteryInfoUsingLotteryNumber(lotteryNumber)
+    }
+
+    suspend fun checkTodayResultUsingNumberDateTimeAndType(lotteryNumber: String,winDate: String, winTime: String, winType: String, myApi: MyApi): Response<LotteryNumberResponse> {
+        return myApi.checkTodayResultUsingNumberDateTimeAndType(lotteryNumber,winDate,winTime,winType)
+    }
+
+    suspend fun getLotteryNumberListByWinTimeAndWinType(pageNumber: String, itemCount: String, winTime: String, winType: String, myApi: MyApi): Response<LotteryNumberResponse> {
+        return myApi.getLotteryNumberListByWinTimeAndWinType(pageNumber,itemCount,winTime,winType)
+    }
+
+    suspend fun getLotteryNumberListByWinType(pageNumber: String, itemCount: String, winType: String, myApi: MyApi): Response<LotteryNumberResponse> {
+        return myApi.getLotteryNumberListByWinType(pageNumber,itemCount,winType)
+    }
 
     suspend fun getLotteryInfoByDateAndTime(date: String, time: String, dateTwo: String,myApi: MyApi): Response<LotteryPdfResponse> {
         return myApi.getLotteryInfoByDateAndTime(date,dateTwo,time)
@@ -19,6 +31,18 @@ class PdfRepositories {
     suspend fun getLotteryResultList(pageNumber: String, itemCount: String, myApi: MyApi): Response<LotteryPdfResponse> {
         return myApi.getLotteryResultList(pageNumber,itemCount)
     }
+
+    suspend fun getBumperLotteryInfoByDateAndTime(date: String, time: String, dateTwo: String,myApi: MyApi): Response<LotteryPdfResponse> {
+        return myApi.getBumperLotteryInfoByDateAndTime(date,dateTwo,time)
+    }
+
+    suspend fun getBumperLotteryResultList(pageNumber: String, itemCount: String, myApi: MyApi): Response<LotteryPdfResponse> {
+        return myApi.getBumperLotteryResultList(pageNumber,itemCount)
+    }
+
+
+
+
 
 
 
