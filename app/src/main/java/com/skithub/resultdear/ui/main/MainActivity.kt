@@ -22,6 +22,7 @@ import com.skithub.resultdear.ui.lucky_number.Your_Lucky_NumbersActivity
 import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
 import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckActivity
 import com.skithub.resultdear.utils.CommonMethod
+import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.MyExtensions.shortToast
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -91,7 +92,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(Intent(this,To_Get_HelpActivity::class.java))
                 }
                 R.id.MoreApps -> {
-                    CommonMethod.openConsoleLink(this,"Easy+Soft+BD")
+                    CommonMethod.openConsoleLink(this,Constants.consoleId)
                 }
             }
             if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -197,7 +198,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.moreAppsCardView -> {
-                    CommonMethod.openConsoleLink(this,"Easy+Soft+BD")
+                    CommonMethod.openConsoleLink(this,Constants.consoleId)
                 }
             }
         }
