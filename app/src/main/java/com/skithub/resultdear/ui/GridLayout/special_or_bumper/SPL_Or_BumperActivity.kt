@@ -38,10 +38,7 @@ class SPL_Or_BumperActivity : AppCompatActivity() {
         val factory: SpecialOrBumperViewModelFactory = SpecialOrBumperViewModelFactory((application as MyApplication).myApi)
         viewModel= ViewModelProvider(this,factory).get(SpecialOrBumperViewModel::class.java)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setTitle("স্পেশাল ও বাম্পার")
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
+
 
 
 

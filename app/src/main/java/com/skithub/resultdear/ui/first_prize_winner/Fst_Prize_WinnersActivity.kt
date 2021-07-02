@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui
+package com.skithub.resultdear.ui.first_prize_winner
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -15,10 +15,7 @@ class Fst_Prize_WinnersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFstPrizeWinnersBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setTitle("আপনার শুভ সংখ্যা গুলি")
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
+
 
 
 

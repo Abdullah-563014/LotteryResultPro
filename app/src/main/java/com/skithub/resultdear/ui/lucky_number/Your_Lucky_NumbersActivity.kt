@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui
+package com.skithub.resultdear.ui.lucky_number
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -16,9 +16,20 @@ class Your_Lucky_NumbersActivity : AppCompatActivity() {
             layoutInflater
         )
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setTitle("আপনার শুভ সংখ্যা গুলি")
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
 }

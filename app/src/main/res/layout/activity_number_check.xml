@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.today_lottery_number_check.TodayLotteryNumberCheckActivity">
+
+    <TextView
+        android:id="@+id/prizeTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="second prize (Rs. 9000/-)"
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:padding="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/lotteryNumberEditText"
+        app:layout_constraintTop_toBottomOf="@+id/prizeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rounded_transparent_bg"
+        android:hint="last 4 digit of lottery number"
+        android:inputType="number"
+        android:maxLength="5"
+        android:paddingStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_40sdp" />
+    <Button
+        android:id="@+id/lotteryNumberCheckButton"
+        app:layout_constraintTop_toBottomOf="@+id/lotteryNumberEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Check"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content" />
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/red" />
+</androidx.constraintlayout.widget.ConstraintLayout>

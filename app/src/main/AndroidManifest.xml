@@ -20,25 +20,27 @@
         android:theme="@style/Theme.Lutt"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".ui.GridLayout.lottery_number_list.LotteryNumberListActivity"></activity>
+        <activity android:name=".ui.privacy_policy.PrivacyPolicyActivity"></activity>
+        <activity android:name=".ui.today_lottery_number_check.TodayLotteryNumberCheckActivity" />
+        <activity android:name=".ui.GridLayout.lottery_number_list.LotteryNumberListActivity" />
         <activity android:name=".ui.pdf_info.PdfInfoActivity" />
         <activity android:name=".ui.GridLayout.YesVsPreActivity" />
         <activity
             android:name=".ui.GridLayout.YesterdayResultActivity"
-            android:parentActivityName=".ui.MainActivity" />
+            android:parentActivityName=".ui.main.MainActivity" />
         <activity android:name=".ui.GridLayout.wining_numbers.Winning_NumbersActivity" />
         <activity
             android:name=".ui.GridLayout.TodayResultActivity"
-            android:parentActivityName=".ui.MainActivity" />
+            android:parentActivityName=".ui.main.MainActivity" />
         <activity android:name=".ui.GridLayout.To_Get_HelpActivity" />
         <activity android:name=".ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity" />
         <activity android:name=".ui.GridLayout.old_result.OldResultActivity" />
         <activity android:name=".ui.GridLayout.Claim_formActivity" />
-        <activity android:name=".ui.Your_Lucky_NumbersActivity" />
-        <activity android:name=".ui.Fst_Prize_WinnersActivity" />
+        <activity android:name=".ui.lucky_number.Your_Lucky_NumbersActivity" />
+        <activity android:name=".ui.first_prize_winner.Fst_Prize_WinnersActivity" />
         <activity android:name=".ui.Today_Number_CheckActivity" />
         <activity android:name=".ui.stady" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

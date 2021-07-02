@@ -102,6 +102,15 @@ object CommonMethod {
         context.startActivity(shareIntent)
     }
 
+    fun openConsoleLink(context: Context,consoleId: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_VIEW
+            data=Uri.parse("https://play.google.com/store/apps/developer?id=$consoleId")
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        context.startActivity(shareIntent)
+    }
+
     fun haveInternet(connectivityManager: ConnectivityManager?): Boolean {
         return when {
             connectivityManager==null -> {

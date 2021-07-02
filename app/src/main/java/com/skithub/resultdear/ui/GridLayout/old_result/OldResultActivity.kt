@@ -42,10 +42,7 @@ class OldResultActivity : AppCompatActivity() {
         val factory: OldResultViewModelFactory = OldResultViewModelFactory((application as MyApplication).myApi)
         viewModel= ViewModelProvider(this,factory).get(OldResultViewModel::class.java)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.title = "পুরোনো ফলাফল"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
+
 
 
 
