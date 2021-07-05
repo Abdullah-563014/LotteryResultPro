@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.DownloadManager
 import android.content.DialogInterface
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +18,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
@@ -102,12 +104,27 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupFloatingActionButton() {
-        binding.speedDial.inflate(R.menu.floating_action_button_menu)
+        binding.speedDial.addActionItem(SpeedDialActionItem.Builder(R.id.download_type_pdf,R.drawable.ic_download)
+            .setFabBackgroundColor(ResourcesCompat.getColor(resources,R.color.red,theme))
+            .setFabImageTintColor(ResourcesCompat.getColor(resources,R.color.white,theme))
+            .setLabel(R.string.download_pdf)
+            .setLabelColor(ResourcesCompat.getColor(resources,R.color.red,theme))
+            .setLabelBackgroundColor(ResourcesCompat.getColor(resources,R.color.white,theme))
+            .setLabelClickable(true)
+            .create())
+        binding.speedDial.addActionItem(SpeedDialActionItem.Builder(R.id.download_type_image,R.drawable.ic_download)
+            .setFabBackgroundColor(ResourcesCompat.getColor(resources,R.color.red,theme))
+            .setFabImageTintColor(ResourcesCompat.getColor(resources,R.color.white,theme))
+            .setLabel(R.string.download_image)
+            .setLabelColor(ResourcesCompat.getColor(resources,R.color.red,theme))
+            .setLabelBackgroundColor(ResourcesCompat.getColor(resources,R.color.white,theme))
+            .setLabelClickable(true)
+            .create())
         binding.speedDial.setOnActionSelectedListener(object : SpeedDialView.OnActionSelectedListener{
             override fun onActionSelected(actionItem: SpeedDialActionItem?): Boolean {
                 actionItem?.let {
                     when (it.id) {
-                        R.id.downloadPdfFabButtonId -> {
+                        R.id.download_type_pdf -> {
                             downloadingFileName="pdf"
                             if (Build.VERSION.SDK_INT>=23 && (ActivityCompat.checkSelfPermission(this@PdfInfoActivity,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)) {
                                 showPermissionDialog()
@@ -121,7 +138,7 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
                             binding.speedDial.close()
                             return true
                         }
-                        R.id.downloadImageFabButtonId -> {
+                        R.id.download_type_image -> {
                             downloadingFileName="image"
                             if (Build.VERSION.SDK_INT>=23 && (ActivityCompat.checkSelfPermission(this@PdfInfoActivity,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)) {
                                 showPermissionDialog()

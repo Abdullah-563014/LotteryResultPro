@@ -42,8 +42,8 @@
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/resultTwoRootLayout"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -53,7 +53,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_18ssp"
                         android:gravity="center"
-                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ImageView
@@ -69,61 +69,15 @@
         <LinearLayout
             android:id="@+id/waitingRootLayout"
             android:orientation="vertical"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:padding="@dimen/_10sdp"
-                android:weightSum="3"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/pdfInfoTimeOneTextView"
-                    android:text="08:00 PM"
-                    android:textSize="@dimen/_15ssp"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"/>
-                <ImageView
-                    android:src="@mipmap/ic_launcher"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/pdfInfoTimeTwoTextView"
-                    android:text="08:00 PM"
-                    android:textSize="@dimen/_15ssp"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <TextView
-                android:text="Please Wait..."
-                android:textSize="@dimen/_22ssp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="result will be published on right time !!"
-                android:textSize="@dimen/_15ssp"
-                android:gravity="center"
-                android:textColor="@color/purple_700"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
             <TextView
                 android:text="অপেক্ষা করুন ..."
                 android:textSize="@dimen/_22ssp"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:layout_marginTop="@dimen/_30sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
@@ -132,7 +86,43 @@
                 android:gravity="center"
                 android:textColor="@color/purple_700"
                 android:textStyle="bold"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Please Wait..."
+                android:textSize="@dimen/_22ssp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="result will be published on right time !!"
+                android:textSize="@dimen/_15ssp"
+                android:gravity="center"
+                android:textColor="@color/purple_700"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="कृपया प्रतीक्षा करें..."
+                android:textSize="@dimen/_22ssp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="परिणाम सही समय पर प्रकाशित होगा !!"
+                android:textSize="@dimen/_15ssp"
+                android:gravity="center"
+                android:textColor="@color/purple_700"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

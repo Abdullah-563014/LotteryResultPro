@@ -8,6 +8,8 @@ object Constants {
 
     val onesignalApplicationId: String="556e5254-0798-4487-9cc6-e0946047c1d3"
     val consoleId: String="Sikder+International+iT+Hub"
+    val tutorialVideoId: String="9W2s7fNXR24"
+
 
 
     val dayFormat: String="dd-MM-yyyy"

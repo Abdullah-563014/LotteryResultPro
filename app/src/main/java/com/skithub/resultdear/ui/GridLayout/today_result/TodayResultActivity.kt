@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.GridLayout
+package com.skithub.resultdear.ui.GridLayout.today_result
 
 import android.content.Intent
 import android.os.Bundle
@@ -35,9 +35,9 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initAll() {
         binding.cardView.setOnClickListener(this)
+        binding.cardView1.setOnClickListener(this)
         binding.cardView2.setOnClickListener(this)
         binding.cardView3.setOnClickListener(this)
-        binding.cardView4.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -52,7 +52,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(pdfInfoIntent)
                 }
 
-                R.id.cardView2 -> {
+                R.id.cardView1 -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.eveningTime)
@@ -60,7 +60,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(pdfInfoIntent)
                 }
 
-                R.id.cardView3 -> {
+                R.id.cardView2 -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.nightTime)
@@ -68,7 +68,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(pdfInfoIntent)
                 }
 
-                R.id.cardView4 -> {
+                R.id.cardView3 -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.bumperTime)

@@ -1,9 +1,9 @@
 package com.skithub.resultdear.ui.main
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -11,19 +11,23 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import com.google.android.youtube.player.*
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
 import com.skithub.resultdear.ui.first_prize_winner.Fst_Prize_WinnersActivity
-import com.skithub.resultdear.ui.GridLayout.*
+import com.skithub.resultdear.ui.GridLayout.claim_form.Claim_formActivity
+import com.skithub.resultdear.ui.GridLayout.get_help.To_Get_HelpActivity
 import com.skithub.resultdear.ui.GridLayout.old_result.OldResultActivity
 import com.skithub.resultdear.ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity
+import com.skithub.resultdear.ui.GridLayout.today_result.TodayResultActivity
 import com.skithub.resultdear.ui.GridLayout.wining_numbers.Winning_NumbersActivity
+import com.skithub.resultdear.ui.GridLayout.yes_vs_pre.YesVsPreActivity
+import com.skithub.resultdear.ui.GridLayout.yesterday_result.YesterdayResultActivity
 import com.skithub.resultdear.ui.lucky_number.Your_Lucky_NumbersActivity
 import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
 import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
-import com.skithub.resultdear.utils.MyExtensions.shortToast
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -56,6 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+
     }
 
 
@@ -67,13 +72,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.oldResultCardView.setOnClickListener(this)
         binding.specialOrBumperResultCardView.setOnClickListener(this)
         binding.winingNumberCardView.setOnClickListener(this)
-        binding.todayNumberCheck.setOnClickListener(this)
-        binding.PrizeWinners.setOnClickListener (this)
-        binding.LuckeyNumbers.setOnClickListener(this)
-        binding.claimFormCardView.setOnClickListener(this)
-        binding.getHelpCardView.setOnClickListener(this)
-        binding.privacyPolicyCardView.setOnClickListener(this)
-        binding.moreAppsCardView.setOnClickListener(this)
+        binding.lotteryNumberCheck.setOnClickListener(this)
+        binding.tutorialImageView.setOnClickListener(this)
     }
 
     private fun setupNavigationBar() {
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(Intent(this,PrivacyPolicyActivity::class.java))
                 }
                 R.id.contactUs -> {
-                    startActivity(Intent(this,To_Get_HelpActivity::class.java))
+                    startActivity(Intent(this, To_Get_HelpActivity::class.java))
                 }
                 R.id.MoreApps -> {
                     CommonMethod.openConsoleLink(this,Constants.consoleId)
@@ -167,39 +167,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(gridIntent)
                 }
 
-                R.id.today_number_check -> {
+                R.id.lottery_number_check -> {
                     gridIntent= Intent(applicationContext, TodayLotteryNumberCheckActivity::class.java)
                     startActivity(gridIntent)
                 }
 
-                R.id.Prize_Winners -> {
-                    gridIntent= Intent(applicationContext, Fst_Prize_WinnersActivity::class.java)
-                    startActivity(gridIntent)
-                }
-
-                R.id.LuckeyNumbers -> {
-                    gridIntent= Intent(applicationContext, Your_Lucky_NumbersActivity::class.java)
-                    startActivity(gridIntent)
-                }
-
-                R.id.claimFormCardView -> {
-                    gridIntent= Intent(applicationContext,Claim_formActivity::class.java)
-                    startActivity(gridIntent)
-                }
-
-                R.id.getHelpCardView -> {
-                    gridIntent= Intent(applicationContext,To_Get_HelpActivity::class.java)
-                    startActivity(gridIntent)
-                }
-
-                R.id.privacyPolicyCardView -> {
-                    gridIntent= Intent(applicationContext,PrivacyPolicyActivity::class.java)
-                    startActivity(gridIntent)
-                }
-
-                R.id.moreAppsCardView -> {
-                    CommonMethod.openConsoleLink(this,Constants.consoleId)
-                }
+                R.id.tutorialImageView -> CommonMethod.openVideo(this,Constants.tutorialVideoId)
             }
         }
     }

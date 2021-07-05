@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.GridLayout
+package com.skithub.resultdear.ui.GridLayout.yes_vs_pre
 
 import android.content.Intent
 import android.os.Bundle

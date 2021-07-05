@@ -111,6 +111,16 @@ object CommonMethod {
         context.startActivity(shareIntent)
     }
 
+    fun openVideo(context: Context, videoId: String) {
+        val appIntent: Intent= Intent(Intent.ACTION_VIEW,Uri.parse("vnd.youtube:$videoId"))
+        try {
+            context.startActivity(appIntent)
+        } catch (e: Exception) {
+            val webIntent: Intent= Intent(Intent.ACTION_VIEW,Uri.parse("http://www.youtube.com/watch?v=$videoId"))
+            context.startActivity(Intent.createChooser(webIntent,"Choose one:"))
+        }
+    }
+
     fun haveInternet(connectivityManager: ConnectivityManager?): Boolean {
         return when {
             connectivityManager==null -> {

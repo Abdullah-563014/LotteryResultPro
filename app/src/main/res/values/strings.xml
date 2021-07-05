@@ -3,6 +3,22 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="download_pdf">Download Pdf</string>
+    <string name="download_image">Download Image</string>
+    <string name="support_email">clist.abd@gmail.com</string>
+    <string name="support_email_subject">User Query About Lottery Sambad Pro App</string>
+    <string name="support_email_message">Please write your message here...</string>
+    <string name="morning_time">সকাল ১১ টা \n Morning 11 AM \n सुबह 11 बजे</string>
+    <string name="evening_time">বিকেল ৪ টা \n Day 4 PM \n शाम 4 बजे</string>
+    <string name="night_time">রাত ৮ টা \n Night 8 PM \n रात 8 बजे</string>
+    <string name="bumper_night_time">বাম্পার রাত ৮ টা \n Bumper Night 8 PM \n रात 8 बजे बंपर</string>
+
+
+
+
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

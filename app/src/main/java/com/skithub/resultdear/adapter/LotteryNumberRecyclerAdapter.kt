@@ -12,10 +12,6 @@ import com.skithub.resultdear.utils.Constants
 
 class LotteryNumberRecyclerAdapter(val context: Context, val list: MutableList<LotteryNumberModel>): RecyclerView.Adapter<LotteryNumberRecyclerAdapter.LotteryNumberRecyclerViewHolder>() {
 
-    private val firstPrizeResultType:Int=0
-    private val otherPrizeResultType:Int=1
-
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,26 +29,14 @@ class LotteryNumberRecyclerAdapter(val context: Context, val list: MutableList<L
         return list.size
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (list[position].winType!!.equals(Constants.winTypeFirst)) {
-            firstPrizeResultType
-        } else {
-            otherPrizeResultType
-        }
-    }
-
 
     inner class LotteryNumberRecyclerViewHolder(val binding: LotteryNumberRecyclerViewModelLayoutBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: LotteryNumberModel) {
-            if (item.winType!!.equals(Constants.winTypeFirst)) {
-                binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotterySerialNumber}"
-                binding.lotteryMessageTextView.text="${item.message}"
-                binding.lotteryMessageTextView.visibility=View.VISIBLE
-            } else {
-                binding.lotteryNumberTextView.text="${item.lotterySerialNumber}"
-                binding.lotteryMessageTextView.visibility=View.GONE
-            }
+            binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
+            binding.winDateTextView.text="Win Date:- ${item.winDate}"
+            binding.winTypeTextView.text="Prize Type:- ${item.winType}"
+            binding.stateTextView.text="State Name:- ${item.stateName}"
         }
     }
 

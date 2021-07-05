@@ -9,27 +9,33 @@
     tools:context=".ui.main.MainActivity"
     tools:openDrawer="start">
     <ScrollView
-        android:id="@+id/scrol"
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:id="@+id/today_number_check"
+
+            <ImageView
+                android:id="@+id/tutorialImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/results"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp" />
+
+            <RelativeLayout
+                android:id="@+id/lottery_number_check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_11sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:background="@drawable/ani_bg"
-                android:orientation="horizontal"
-                android:padding="@dimen/_3sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/tutorialImageView">
 
                 <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lotteryNumberCheckSearchAnimationOne"
+                    android:layout_alignParentStart="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
@@ -38,479 +44,158 @@
                     app:lottie_rawRes="@raw/search" />
 
                 <TextView
+                    android:layout_toEndOf="@+id/lotteryNumberCheckSearchAnimationOne"
+                    android:layout_toStartOf="@+id/lotteryNumberCheckSearchAnimationTwo"
+                    android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_11sdp"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:layout_marginBottom="@dimen/_3sdp"
-                    android:text="Today Number Check\nআজকের ফলাফল চেক"
+                    android:gravity="center"
+                    android:text="লটারী ফলাফল চেক\nLottery Result Check\nलॉटरी रिजल्ट चेक"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13ssp" />
 
                 <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lotteryNumberCheckSearchAnimationTwo"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
                     app:lottie_rawRes="@raw/search" />
-            </LinearLayout>
+            </RelativeLayout>
 
-
-            <GridLayout
-                android:id="@+id/gradLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_7sdp"
-                android:alignmentMode="alignMargins"
+            <LinearLayout
+                android:id="@+id/gridItemRootLayout"
+                app:layout_constraintTop_toBottomOf="@+id/lottery_number_check"
                 android:background="@color/teal_700"
-                android:columnCount="2"
-                android:columnOrderPreserved="false"
-                android:minHeight="@dimen/_330sdp"
-                android:padding="@dimen/_1sdp"
-                android:rowCount="3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/today_number_check">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/todayResultCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="আজকের ফলাফল\n Today Result"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/yesterDayResultCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_7sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text=" গতকালের ফলাফল\n Yesterday Result"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/yesterDayVsPreResultCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="গতকাল vs আগের দিন\n Yesterday vs Previous"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/oldResultCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="পুরোনো ফলাফল\n Old Results"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/specialOrBumperResultCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="স্পেশাল ও বাম্পার\n SPL or Bumper"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/winingNumberCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="বিজয়ী সংখ্যাগুলি\nWinning Numbers"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
-
-            <LinearLayout
-                android:id="@+id/Prize_Winners"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_1sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:background="@drawable/ani_bg"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gradLayout">
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_80sdp"
-                    android:layout_marginStart="@dimen/_11sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/goldwinner" />
-
-                <TextView
-                    android:layout_width="@dimen/_140sdp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="@dimen/_3sdp"
-                    android:background="@drawable/fst_prize_bg"
-                    android:text="     1st Prize Winners\n\nপ্রথম পুরস্কার বিজেতাগন"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_13ssp"
-                    android:textStyle="bold" />
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_80sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/goldwinner" />
-            </LinearLayout>
-
-            <GridLayout
-                android:id="@+id/gradLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alignmentMode="alignMargins"
-                android:columnCount="2"
-                android:columnOrderPreserved="false"
-                android:minHeight="@dimen/_150sdp"
-                android:padding="@dimen/_7sdp"
-                android:rowCount="3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Prize_Winners">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/claimFormCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_7sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_margin="@dimen/_11sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="আরোহণ ফর্ম\n Claim Form"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/getHelpCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_7sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_margin="@dimen/_11sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="সাহায্য পেতে\nTo get help"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
-            <GridLayout
-                android:id="@+id/gradLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alignmentMode="alignMargins"
-                android:columnCount="2"
-                android:columnOrderPreserved="false"
-                android:minHeight="@dimen/_150sdp"
-                android:padding="@dimen/_7sdp"
-                android:rowCount="3"
-                app:layout_constraintTop_toBottomOf="@id/gradLayout2">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/privacyPolicyCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_7sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_margin="@dimen/_11sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="Privacy policy"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/moreAppsCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="@dimen/_7sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_5sdp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_margin="@dimen/_11sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/architects_daughter"
-                            android:text="More apps"
-                            android:textAlignment="center"
-                            android:textColor="@color/teal_700"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
-
-            <LinearLayout
-                android:id="@+id/LuckeyNumbers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_11sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:background="@drawable/ani_bg"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gradLayout3">
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/search" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_11sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_marginBottom="@dimen/_3sdp"
-                    android:fontFamily="@font/architects_daughter"
-                    android:text="আপনার শুভ সংখ্যা গুলি\nYour Lucky Numbers"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_13ssp"
-                    android:textStyle="bold" />
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/search" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    style="@style/HomeCardParentLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/todayResultCardView"
+                        style="@style/HomeCardViewStyle"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            style="@style/HomeCardChildLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/HomeCardChildTextViewStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="আজকের রেজাল্ট\nToday Result\nआज का परिणाम" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/yesterDayResultCardView"
+                        style="@style/HomeCardViewStyle"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            style="@style/HomeCardChildLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/HomeCardChildTextViewStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="গতকালের রেজাল্ট\nYesterday Result\nकल का परिणाम" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/HomeCardParentLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/yesterDayVsPreResultCardView"
+                        style="@style/HomeCardViewStyle"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            style="@style/HomeCardChildLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/HomeCardChildTextViewStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="গতকাল এবং আগের দিন\nYesterday &amp; Previous\nकल और परसों" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/oldResultCardView"
+                        style="@style/HomeCardViewStyle"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            style="@style/HomeCardChildLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/HomeCardChildTextViewStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="পুরোনো রেজাল্ট\nOld Result\nपुराने परिणाम" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/HomeCardParentLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/specialOrBumperResultCardView"
+                        style="@style/HomeCardViewStyle"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            style="@style/HomeCardChildLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/HomeCardChildTextViewStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="স্পেশাল ও বাম্পার\nSPL or Bumper\nविशेष और बम्पर" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/winingNumberCardView"
+                        style="@style/HomeCardViewStyle"
+                        android:visibility="gone"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            style="@style/HomeCardChildLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/HomeCardChildTextViewStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="বিজয়ী সংখ্যাগুলি\nWinning Numbers\nविजेता संख्या" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

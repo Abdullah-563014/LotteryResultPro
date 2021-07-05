@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.GridLayout
+package com.skithub.resultdear.ui.GridLayout.yesterday_result
 
 import android.content.Intent
 import android.os.Bundle
@@ -38,7 +38,7 @@ class YesterdayResultActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun updateUi() {
-        binding.fastTextView.text="Yesterday Result ${CommonMethod.increaseDecreaseDaysUsingValue(-1)} ${CommonMethod.getDayNameUsingDate(CommonMethod.increaseDecreaseDaysUsingValue(-1))}"
+        binding.yesterdayTimeTextView.text="Yesterday Result ${CommonMethod.increaseDecreaseDaysUsingValue(-1)} ${CommonMethod.getDayNameUsingDate(CommonMethod.increaseDecreaseDaysUsingValue(-1))}"
     }
 
     override fun onClick(v: View?) {

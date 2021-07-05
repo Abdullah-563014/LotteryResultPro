@@ -33,7 +33,6 @@ class Winning_NumbersActivity : AppCompatActivity(), View.OnClickListener {
         binding.cardView.setOnClickListener(this)
         binding.cardView2.setOnClickListener(this)
         binding.cardView3.setOnClickListener(this)
-        binding.cardView4.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -45,20 +44,16 @@ class Winning_NumbersActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(winingNumberIntent)
                 }
 
-                R.id.cardView1 -> {
+                R.id.cardView2 -> {
                     winingNumberIntent.putExtra(Constants.winTypeKey,Constants.winTypeSecond)
                     startActivity(winingNumberIntent)
                 }
 
-                R.id.cardView2 -> {
+                R.id.cardView3 -> {
                     winingNumberIntent.putExtra(Constants.winTypeKey,Constants.winTypeThird)
                     startActivity(winingNumberIntent)
                 }
 
-                R.id.cardView3 -> {
-                    winingNumberIntent.putExtra(Constants.winTypeKey,Constants.winTypeFourth)
-                    startActivity(winingNumberIntent)
-                }
             }
         }
     }
