@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="lottery_result_check">लॉटरी रिजल्ट चेक</string>
+    <string name="today_result">आज का परिणाम</string>
+    <string name="yesterday_result">कल का परिणाम</string>
+    <string name="yesterday_and_pre">कल और परसों</string>
+    <string name="old_result">पुराने परिणाम</string>
+    <string name="special_or_bumper">विशेष और बम्पर</string>
+    <string name="winning_number">विजेता संख्या</string>
+    <string name="download_pdf">डाउनलोड पीडीऍफ़</string>
+    <string name="download_image">छवि डाउनलोड करें</string>
+    <string name="support_email_subject">लॉटरी सांबद प्रो ऐप के बारे में उपयोगकर्ता प्रश्न</string>
+    <string name="support_email_message">कृपया अपना संदेश यहां लिखें...</string>
+    <string name="morning_time">सुबह 11 बजे</string>
+    <string name="evening_time">शाम 4 बजे</string>
+    <string name="night_time">रात 8 बजे</string>
+    <string name="bumper_night_time">रात 8 बजे बंपर</string>
+    <string name="choose_your_language">अपनी भाषा चुनिए</string>
+    <string name="change_language">भाषा बदलें</string>
+    <string name="share">शेयर</string>
+    <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="contact_us">संपर्क करें</string>
+    <string name="more_apps">और ऐप</string>
+    <string name="last_four_degit_of_lottery_number">लॉटरी संख्या का अंतिम 4 अंक</string>
+
+
+
+
+</resources>

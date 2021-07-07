@@ -1,9 +1,11 @@
 package com.skithub.resultdear.ui.main
 
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -11,23 +13,22 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import com.google.android.youtube.player.*
+import com.bumptech.glide.Glide
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
-import com.skithub.resultdear.ui.first_prize_winner.Fst_Prize_WinnersActivity
-import com.skithub.resultdear.ui.GridLayout.claim_form.Claim_formActivity
 import com.skithub.resultdear.ui.GridLayout.get_help.To_Get_HelpActivity
 import com.skithub.resultdear.ui.GridLayout.old_result.OldResultActivity
 import com.skithub.resultdear.ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity
 import com.skithub.resultdear.ui.GridLayout.today_result.TodayResultActivity
-import com.skithub.resultdear.ui.GridLayout.wining_numbers.Winning_NumbersActivity
 import com.skithub.resultdear.ui.GridLayout.yes_vs_pre.YesVsPreActivity
 import com.skithub.resultdear.ui.GridLayout.yesterday_result.YesterdayResultActivity
-import com.skithub.resultdear.ui.lucky_number.Your_Lucky_NumbersActivity
 import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
 import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
+import com.skithub.resultdear.utils.Coroutines
+import com.skithub.resultdear.utils.SharedPreUtils
+import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -49,6 +50,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
         initAll()
+
+        if (savedInstanceState==null) {
+            checkBeginning()
+        }
 
         setupNavigationBar()
 
@@ -74,6 +79,58 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.winingNumberCardView.setOnClickListener(this)
         binding.lotteryNumberCheck.setOnClickListener(this)
         binding.tutorialImageView.setOnClickListener(this)
+        Glide.with(this).load(R.drawable.tutorial_thumb).fitCenter().into(binding.tutorialImageView)
+    }
+
+    private fun showChangeLanguageDialog() {
+        val lanList: Array<String> = arrayOf("বাংলা","English","हिंदी")
+        val builder=AlertDialog.Builder(this)
+            .setCancelable(false)
+            .setTitle(resources.getString(R.string.choose_your_language))
+            .setSingleChoiceItems(lanList,-1) { dialog, which ->
+                if (which == 0) {
+                    changeLocale("bn")
+                } else if (which == 1) {
+                    changeLocale("en_US")
+                } else if (which == 2) {
+                    changeLocale("hi")
+                }
+                dialog?.dismiss()
+            }
+        val alertDialog=builder.create()
+        if (!isFinishing) {
+            alertDialog.show()
+        }
+    }
+
+    private fun changeLocale(lanCode: String) {
+        val local: Locale= Locale(lanCode)
+        Locale.setDefault(local)
+        resources.configuration.setLocale(local)
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
+            applicationContext.createConfigurationContext(resources.configuration)
+        } else {
+            resources.updateConfiguration(resources.configuration,resources.displayMetrics)
+        }
+        Coroutines.io {
+            SharedPreUtils.setStringToStorage(applicationContext,Constants.appLanguageKey,lanCode)
+            SharedPreUtils.setBooleanToStorage(applicationContext,Constants.appLanguageStatusKey,true)
+        }
+        recreate()
+    }
+
+    private fun checkBeginning() {
+        Coroutines.io {
+            val lanCode: String=SharedPreUtils.getStringFromStorage(applicationContext,Constants.appLanguageKey,Constants.appDefaultLanCode)!!
+            val lanStatus: Boolean=SharedPreUtils.getBooleanFromStorage(applicationContext,Constants.appLanguageStatusKey,false)
+            Coroutines.main {
+                if (lanStatus) {
+                    changeLocale(lanCode)
+                } else {
+                    showChangeLanguageDialog()
+                }
+            }
+        }
     }
 
     private fun setupNavigationBar() {
@@ -82,7 +139,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         tog?.syncState()
         binding.navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.Share -> {
+                R.id.changeLanguage -> {
+                    showChangeLanguageDialog()
+                }
+                R.id.share -> {
                     CommonMethod.shareAppLink(this)
                 }
                 R.id.appPrivacy -> {
@@ -91,7 +151,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.contactUs -> {
                     startActivity(Intent(this, To_Get_HelpActivity::class.java))
                 }
-                R.id.MoreApps -> {
+                R.id.moreApps -> {
                     CommonMethod.openConsoleLink(this,Constants.consoleId)
                 }
             }
@@ -162,11 +222,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(gridIntent)
                 }
 
-                R.id.winingNumberCardView -> {
-                    gridIntent= Intent(applicationContext, Winning_NumbersActivity::class.java)
-                    startActivity(gridIntent)
-                }
-
                 R.id.lottery_number_check -> {
                     gridIntent= Intent(applicationContext, TodayLotteryNumberCheckActivity::class.java)
                     startActivity(gridIntent)
@@ -196,6 +251,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (!CommonMethod.haveInternet(connectivityManager)) {
             noInternetDialog()
         }
+        binding.particleView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.particleView.pause()
     }
 
     companion object {

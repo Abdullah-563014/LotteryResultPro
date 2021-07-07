@@ -34,17 +34,17 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun initAll() {
-        binding.cardView.setOnClickListener(this)
-        binding.cardView1.setOnClickListener(this)
-        binding.cardView2.setOnClickListener(this)
-        binding.cardView3.setOnClickListener(this)
+        binding.morningButton.setOnClickListener(this)
+        binding.eveningButton.setOnClickListener(this)
+        binding.nightButton.setOnClickListener(this)
+        binding.bumperNightButton.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         v?.let {
             var pdfInfoIntent: Intent
             when (it.id) {
-                R.id.cardView -> {
+                R.id.morningButton -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.morningTime)
@@ -52,7 +52,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(pdfInfoIntent)
                 }
 
-                R.id.cardView1 -> {
+                R.id.eveningButton -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.eveningTime)
@@ -60,7 +60,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(pdfInfoIntent)
                 }
 
-                R.id.cardView2 -> {
+                R.id.nightButton -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.nightTime)
@@ -68,7 +68,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(pdfInfoIntent)
                 }
 
-                R.id.cardView3 -> {
+                R.id.bumperNightButton -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.bumperTime)
@@ -77,6 +77,16 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.particleView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.particleView.pause()
     }
 
 

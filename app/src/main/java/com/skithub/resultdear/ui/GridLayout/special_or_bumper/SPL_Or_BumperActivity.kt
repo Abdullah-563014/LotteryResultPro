@@ -106,6 +106,16 @@ class SPL_Or_BumperActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.particleView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.particleView.pause()
+    }
+
 
 
 

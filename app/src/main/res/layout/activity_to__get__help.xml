@@ -8,6 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.GridLayout.get_help.To_Get_HelpActivity">
+
     <TextView
         android:text="For query, complain or suggestion please contact with us:-"
         android:textSize="@dimen/_15ssp"

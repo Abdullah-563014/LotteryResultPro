@@ -2,9 +2,7 @@ package com.skithub.resultdear.ui.pdf_info
 
 import android.Manifest
 import android.app.DownloadManager
-import android.content.DialogInterface
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -37,10 +35,6 @@ import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.Coroutines
 import com.skithub.resultdear.utils.MyExtensions.shortToast
-import com.squareup.picasso.Picasso
-import java.io.BufferedInputStream
-import java.net.HttpURLConnection
-import java.net.URL
 
 
 class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
@@ -253,7 +247,7 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showZoomImageAlertDialog(imageUrl: String) {
         if (zoomImageAlertDialog != null && !isFinishing) {
-            Picasso.get().load(imageUrl).into(circularZoomImageView)
+            Glide.with(this).load(imageUrl).into(circularZoomImageView)
             zoomImageAlertDialog?.show()
             val displayWidth: Int = CommonMethod.getScreenWidth(this)
             val displayHeight: Int = CommonMethod.getScreenHeight(this)

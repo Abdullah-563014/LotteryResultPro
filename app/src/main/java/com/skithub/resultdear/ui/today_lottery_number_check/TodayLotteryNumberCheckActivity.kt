@@ -92,5 +92,15 @@ class TodayLotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListene
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.particleView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.particleView.pause()
+    }
+
 
 }

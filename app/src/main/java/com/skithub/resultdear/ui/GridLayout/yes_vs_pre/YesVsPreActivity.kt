@@ -32,16 +32,16 @@ class YesVsPreActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun initAll() {
-        binding.cardView.setOnClickListener(this)
-        binding.cardView2.setOnClickListener(this)
-        binding.cardView3.setOnClickListener(this)
+        binding.morningButton.setOnClickListener(this)
+        binding.eveningButton.setOnClickListener(this)
+        binding.nightButton.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         v?.let {
             var pdfInfoIntent: Intent
             when (it.id) {
-                R.id.cardView -> {
+                R.id.morningButton -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.morningTime)
@@ -49,7 +49,7 @@ class YesVsPreActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(pdfInfoIntent)
                 }
 
-                R.id.cardView2 -> {
+                R.id.eveningButton -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.eveningTime)
@@ -57,7 +57,7 @@ class YesVsPreActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(pdfInfoIntent)
                 }
 
-                R.id.cardView3 -> {
+                R.id.nightButton -> {
                     pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.nightTime)
@@ -66,6 +66,16 @@ class YesVsPreActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.particleView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.particleView.pause()
     }
 
 

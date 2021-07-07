@@ -6,13 +6,17 @@
         <menu></menu>
     </item>
     <item
-        android:id="@+id/Share"
+        android:id="@+id/changeLanguage"
+        android:icon="@drawable/ic_language"
+        android:title="@string/change_language" />
+    <item
+        android:id="@+id/share"
         android:icon="@drawable/ic_share_24"
-        android:title="Share" />
+        android:title="@string/share" />
     <item
         android:id="@+id/appPrivacy"
         android:icon="@drawable/ic_privacy_tip_24"
-        android:title="App Privacy" />
+        android:title="@string/privacy_policy" />
     <item
         android:id="@+id/item2"
         android:title=" ">
@@ -20,11 +24,11 @@
             <item
                 android:id="@+id/contactUs"
                 android:icon="@drawable/mail"
-                android:title="Contact Us" />
+                android:title="@string/contact_us" />
             <item
-                android:id="@+id/MoreApps"
+                android:id="@+id/moreApps"
                 android:icon="@drawable/moreapps"
-                android:title="More Apps" />
+                android:title="@string/more_apps" />
         </menu>
     </item>
 </menu>

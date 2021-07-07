@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.GridLayout.old_result.OldResultActivity">
-
+    <me.ibrahimsn.particle.ParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:particleCount="60"
+        app:particleMinRadius="5"
+        app:particleMaxRadius="15"
+        app:particlesBackgroundColor="@color/purple_700"
+        app:particleColor="@color/neon_color_start"
+        app:particleLineColor="@color/neon_color_start"
+        app:particleLinesEnabled="true" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         app:layout_constraintTop_toTopOf="parent"
