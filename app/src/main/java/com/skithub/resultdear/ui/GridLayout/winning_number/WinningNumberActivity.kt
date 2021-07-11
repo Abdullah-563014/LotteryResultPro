@@ -1,33 +1,32 @@
-package com.skithub.resultdear.ui.GridLayout.old_result
+package com.skithub.resultdear.ui.GridLayout.winning_number
 
 import android.content.Context
-import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skithub.resultdear.R
+import com.skithub.resultdear.adapter.LotteryNumberRecyclerAdapter
 import com.skithub.resultdear.adapter.OldResultRecyclerAdapter
-import com.skithub.resultdear.databinding.ActivityOldResultBinding
-import com.skithub.resultdear.model.LotteryPdfModel
+import com.skithub.resultdear.databinding.ActivityWinningNumberBinding
+import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.ui.MyApplication
-import com.skithub.resultdear.ui.pdf_info.PdfInfoViewModel
-import com.skithub.resultdear.ui.pdf_info.PdfInfoViewModelFactory
+import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckViewModel
+import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckViewModelFactory
 import com.skithub.resultdear.utils.CommonMethod
+import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.Coroutines
+import com.skithub.resultdear.utils.MyExtensions.shortToast
 
-class OldResultActivity : AppCompatActivity() {
+class WinningNumberActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityOldResultBinding
-    private lateinit var viewModel: OldResultViewModel
-    private lateinit var adapter: OldResultRecyclerAdapter
+    private lateinit var binding: ActivityWinningNumberBinding
+    private lateinit var viewModel: WinningNumberActivityViewModel
+    private var list: MutableList<LotteryNumberModel> = arrayListOf()
+    private lateinit var adapter: LotteryNumberRecyclerAdapter
     private lateinit var layoutManager: LinearLayoutManager
-    private var list: MutableList<LotteryPdfModel> = arrayListOf()
     private var page_number: Int=1
     private var item_count: Int=30
     private var past_visible_item: Int =0
@@ -37,16 +36,12 @@ class OldResultActivity : AppCompatActivity() {
     private var isLoading: Boolean=true
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOldResultBinding.inflate(layoutInflater)
-        val factory: OldResultViewModelFactory = OldResultViewModelFactory((application as MyApplication).myApi)
-        viewModel= ViewModelProvider(this,factory).get(OldResultViewModel::class.java)
+        binding= ActivityWinningNumberBinding.inflate(layoutInflater)
+        val factory: WinningNumberActivityViewModelFactory = WinningNumberActivityViewModelFactory((application as MyApplication).myApi)
+        viewModel= ViewModelProvider(this,factory).get(WinningNumberActivityViewModel::class.java)
         setContentView(binding.root)
-
-
-
 
 
         initAll()
@@ -65,7 +60,7 @@ class OldResultActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter= OldResultRecyclerAdapter(this,list)
+        adapter= LotteryNumberRecyclerAdapter(this,list)
         layoutManager= LinearLayoutManager(this)
         binding.recyclerView.layoutManager=layoutManager
         binding.recyclerView.adapter=adapter
@@ -96,13 +91,15 @@ class OldResultActivity : AppCompatActivity() {
     private fun loadAllLotteryResult() {
         Coroutines.main {
             binding.spinKit.visibility=View.VISIBLE
-            val response=viewModel.lotteryResultList(page_number.toString(),item_count.toString())
+            val response=viewModel.findLotteryNumberListWithWinType(page_number.toString(),item_count.toString(),Constants.winTypeFirst)
             if (response.isSuccessful && response.code()==200) {
                 binding.spinKit.visibility=View.GONE
                 if (response.body()!=null) {
                     if (response.body()?.status.equals("success",true)) {
                         list.addAll(response.body()?.data!!)
                         adapter.notifyDataSetChanged()
+                    } else {
+                        shortToast("message:- ${response.body()?.message}")
                     }
                 }
             } else {
@@ -128,11 +125,6 @@ class OldResultActivity : AppCompatActivity() {
             super.attachBaseContext(newBase)
         }
     }
-
-
-
-
-
 
 
 

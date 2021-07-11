@@ -1,5 +1,6 @@
 package com.skithub.resultdear.ui.GridLayout.special_or_bumper
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import com.skithub.resultdear.model.LotteryPdfModel
 import com.skithub.resultdear.ui.GridLayout.old_result.OldResultViewModel
 import com.skithub.resultdear.ui.GridLayout.old_result.OldResultViewModelFactory
 import com.skithub.resultdear.ui.MyApplication
+import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Coroutines
 
 class SPL_Or_BumperActivity : AppCompatActivity() {
@@ -114,6 +116,14 @@ class SPL_Or_BumperActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         binding.particleView.pause()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase!=null) {
+            super.attachBaseContext(CommonMethod.updateLanguage(newBase))
+        } else {
+            super.attachBaseContext(newBase)
+        }
     }
 
 

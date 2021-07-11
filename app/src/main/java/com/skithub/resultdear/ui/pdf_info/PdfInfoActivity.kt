@@ -2,6 +2,7 @@ package com.skithub.resultdear.ui.pdf_info
 
 import android.Manifest
 import android.app.DownloadManager
+import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -303,6 +304,14 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.resultTwoImageView -> showZoomImageAlertDialog(list[1].imageUrl!!)
                 else -> return
             }
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase!=null) {
+            super.attachBaseContext(CommonMethod.updateLanguage(newBase))
+        } else {
+            super.attachBaseContext(newBase)
         }
     }
 

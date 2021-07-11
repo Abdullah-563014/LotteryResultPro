@@ -48,6 +48,10 @@ object SharedPreUtils {
         return initSharedPref(context).getString(key,defaultValue)
     }
 
+    fun getStringFromStorageWithoutSuspend(context: Context,key: String, defaultValue: String?) : String? {
+        return initSharedPref(context).getString(key,defaultValue)
+    }
+
     suspend fun getBooleanFromStorage(context: Context,key: String, defaultValue: Boolean) : Boolean {
         return initSharedPref(context).getBoolean(key,defaultValue)
     }

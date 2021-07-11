@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Insets
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -163,6 +165,28 @@ object CommonMethod {
             val displayMetrics = DisplayMetrics()
             activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
             displayMetrics.heightPixels
+        }
+    }
+
+    fun updateLanguage(context: Context): Context {
+        val lanCode: String= SharedPreUtils.getStringFromStorageWithoutSuspend(context,Constants.appLanguageKey,Constants.appDefaultLanCode)!!
+        Coroutines.io {
+            SharedPreUtils.setStringToStorage(context,Constants.appLanguageKey,lanCode)
+            SharedPreUtils.setBooleanToStorage(context,Constants.appLanguageStatusKey,true)
+        }
+        val local: Locale= Locale(lanCode)
+        val res: Resources=context.resources
+        val config: Configuration=res.configuration
+
+        Locale.setDefault(local)
+        config.setLocale(local)
+        config.setLayoutDirection(local)
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
+            return context.createConfigurationContext(config)
+        } else {
+            config.locale=local
+            res.updateConfiguration(config,res.displayMetrics)
+            return context
         }
     }
 

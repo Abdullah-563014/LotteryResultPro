@@ -1,5 +1,6 @@
 package com.skithub.resultdear.ui.GridLayout.yes_vs_pre
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -76,6 +77,14 @@ class YesVsPreActivity : AppCompatActivity(), View.OnClickListener {
     override fun onPause() {
         super.onPause()
         binding.particleView.pause()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase!=null) {
+            super.attachBaseContext(CommonMethod.updateLanguage(newBase))
+        } else {
+            super.attachBaseContext(newBase)
+        }
     }
 
 

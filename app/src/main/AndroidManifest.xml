@@ -20,6 +20,7 @@
         android:theme="@style/Theme.Lutt"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
+        <activity android:name=".ui.GridLayout.winning_number.WinningNumberActivity"></activity>
         <activity android:name=".ui.privacy_policy.PrivacyPolicyActivity" />
         <activity android:name=".ui.today_lottery_number_check.TodayLotteryNumberCheckActivity" />
         <activity android:name=".ui.GridLayout.lottery_number_list.LotteryNumberListActivity" />
@@ -45,13 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
-
-<!--    <queries>-->
-<!--        <intent>-->
-<!--            <action android:name="com.google.android.youtube.api.service.START" />-->
-<!--        </intent>-->
-<!--    </queries>-->
 
 </manifest>

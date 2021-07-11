@@ -1,11 +1,14 @@
 package com.skithub.resultdear.ui.main
 
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
+import android.os.LocaleList
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -14,12 +17,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
+import com.onesignal.language.LanguageContext
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
 import com.skithub.resultdear.ui.GridLayout.get_help.To_Get_HelpActivity
 import com.skithub.resultdear.ui.GridLayout.old_result.OldResultActivity
 import com.skithub.resultdear.ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity
 import com.skithub.resultdear.ui.GridLayout.today_result.TodayResultActivity
+import com.skithub.resultdear.ui.GridLayout.winning_number.WinningNumberActivity
 import com.skithub.resultdear.ui.GridLayout.yes_vs_pre.YesVsPreActivity
 import com.skithub.resultdear.ui.GridLayout.yesterday_result.YesterdayResultActivity
 import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
@@ -104,14 +109,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun changeLocale(lanCode: String) {
-        val local: Locale= Locale(lanCode)
-        Locale.setDefault(local)
-        resources.configuration.setLocale(local)
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
-            applicationContext.createConfigurationContext(resources.configuration)
-        } else {
-            resources.updateConfiguration(resources.configuration,resources.displayMetrics)
-        }
         Coroutines.io {
             SharedPreUtils.setStringToStorage(applicationContext,Constants.appLanguageKey,lanCode)
             SharedPreUtils.setBooleanToStorage(applicationContext,Constants.appLanguageStatusKey,true)
@@ -227,6 +224,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(gridIntent)
                 }
 
+                R.id.winingNumberCardView -> {
+                    gridIntent= Intent(applicationContext, WinningNumberActivity::class.java)
+                    startActivity(gridIntent)
+                }
+
                 R.id.tutorialImageView -> CommonMethod.openVideo(this,Constants.tutorialVideoId)
             }
         }
@@ -257,6 +259,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onPause() {
         super.onPause()
         binding.particleView.pause()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase!=null) {
+            super.attachBaseContext(CommonMethod.updateLanguage(newBase))
+        } else {
+            super.attachBaseContext(newBase)
+        }
     }
 
     companion object {

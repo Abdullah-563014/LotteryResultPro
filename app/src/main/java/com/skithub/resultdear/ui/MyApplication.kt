@@ -1,6 +1,7 @@
 package com.skithub.resultdear.ui
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -10,6 +11,7 @@ import com.google.firebase.ktx.Firebase
 import com.onesignal.OSNotificationReceivedEvent
 import com.onesignal.OneSignal
 import com.skithub.resultdear.database.network.MyApi
+import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 
 class MyApplication : Application() {
@@ -58,6 +60,14 @@ class MyApplication : Application() {
         OneSignal.unsubscribeWhenNotificationsAreDisabled(true)
         OneSignal.pauseInAppMessages(true)
         OneSignal.setLocationShared(false)
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        if (base!=null) {
+            super.attachBaseContext(CommonMethod.updateLanguage(base))
+        } else {
+            super.attachBaseContext(base)
+        }
     }
 
 

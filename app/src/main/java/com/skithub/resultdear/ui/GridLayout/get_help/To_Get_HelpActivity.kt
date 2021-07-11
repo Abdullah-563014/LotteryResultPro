@@ -1,12 +1,14 @@
 package com.skithub.resultdear.ui.GridLayout.get_help
 
 import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityToGetHelpBinding
+import com.skithub.resultdear.utils.CommonMethod
 
 class To_Get_HelpActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -46,6 +48,14 @@ class To_Get_HelpActivity : AppCompatActivity(), View.OnClickListener {
             when (it.id) {
                 R.id.sendMailButton -> sendMail()
             }
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase!=null) {
+            super.attachBaseContext(CommonMethod.updateLanguage(newBase))
+        } else {
+            super.attachBaseContext(newBase)
         }
     }
 

@@ -2,6 +2,7 @@ package com.skithub.resultdear.ui.privacy_policy
 
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -14,6 +15,7 @@ import android.webkit.*
 import androidx.annotation.RequiresApi
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityPrivacyPolicyBinding
+import com.skithub.resultdear.utils.CommonMethod
 
 class PrivacyPolicyActivity : AppCompatActivity() {
 
@@ -117,6 +119,14 @@ class PrivacyPolicyActivity : AppCompatActivity() {
             binding.webView.goBack()
         } else {
             super.onBackPressed()
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase!=null) {
+            super.attachBaseContext(CommonMethod.updateLanguage(newBase))
+        } else {
+            super.attachBaseContext(newBase)
         }
     }
 

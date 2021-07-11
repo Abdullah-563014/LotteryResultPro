@@ -1,5 +1,6 @@
 package com.skithub.resultdear.ui.today_lottery_number_check
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,6 +13,7 @@ import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.ui.pdf_info.PdfInfoViewModel
 import com.skithub.resultdear.ui.pdf_info.PdfInfoViewModelFactory
+import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Coroutines
 import com.skithub.resultdear.utils.MyExtensions.shortToast
 
@@ -100,6 +102,14 @@ class TodayLotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListene
     override fun onPause() {
         super.onPause()
         binding.particleView.pause()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase!=null) {
+            super.attachBaseContext(CommonMethod.updateLanguage(newBase))
+        } else {
+            super.attachBaseContext(newBase)
+        }
     }
 
 
