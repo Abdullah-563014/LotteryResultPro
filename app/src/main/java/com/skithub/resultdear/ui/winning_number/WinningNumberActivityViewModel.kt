@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.GridLayout.winning_number
+package com.skithub.resultdear.ui.winning_number
 
 import androidx.lifecycle.ViewModel
 import com.skithub.resultdear.database.PdfRepositories

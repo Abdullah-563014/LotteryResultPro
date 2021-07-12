@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity">
+    tools:context=".ui.special_or_bumper.SPL_Or_BumperActivity">
     <me.ibrahimsn.particle.ParticleView
         android:id="@+id/particleView"
         android:layout_width="match_parent"

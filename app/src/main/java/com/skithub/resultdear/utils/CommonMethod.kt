@@ -170,10 +170,6 @@ object CommonMethod {
 
     fun updateLanguage(context: Context): Context {
         val lanCode: String= SharedPreUtils.getStringFromStorageWithoutSuspend(context,Constants.appLanguageKey,Constants.appDefaultLanCode)!!
-        Coroutines.io {
-            SharedPreUtils.setStringToStorage(context,Constants.appLanguageKey,lanCode)
-            SharedPreUtils.setBooleanToStorage(context,Constants.appLanguageStatusKey,true)
-        }
         val local: Locale= Locale(lanCode)
         val res: Resources=context.resources
         val config: Configuration=res.configuration

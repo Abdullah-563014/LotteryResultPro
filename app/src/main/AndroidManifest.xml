@@ -20,22 +20,23 @@
         android:theme="@style/Theme.Lutt"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".ui.GridLayout.winning_number.WinningNumberActivity"></activity>
+        <activity android:name=".ui.common_number.CommonNumberActivity"></activity>
+        <activity android:name=".ui.winning_number.WinningNumberActivity" />
         <activity android:name=".ui.privacy_policy.PrivacyPolicyActivity" />
         <activity android:name=".ui.today_lottery_number_check.TodayLotteryNumberCheckActivity" />
         <activity android:name=".ui.GridLayout.lottery_number_list.LotteryNumberListActivity" />
-        <activity android:name=".ui.pdf_info.PdfInfoActivity" />
-        <activity android:name=".ui.GridLayout.yes_vs_pre.YesVsPreActivity" />
+        <activity android:name=".ui.result_image_info.ResultImageInfoActivity" />
+        <activity android:name=".ui.yes_vs_pre.YesVsPreActivity" />
         <activity
-            android:name=".ui.GridLayout.yesterday_result.YesterdayResultActivity"
+            android:name=".ui.yesterday_result.YesterdayResultActivity"
             android:parentActivityName=".ui.main.MainActivity" />
         <activity android:name=".ui.GridLayout.wining_numbers.Winning_NumbersActivity" />
         <activity
-            android:name=".ui.GridLayout.today_result.TodayResultActivity"
+            android:name=".ui.today_result.TodayResultActivity"
             android:parentActivityName=".ui.main.MainActivity" />
-        <activity android:name=".ui.GridLayout.get_help.To_Get_HelpActivity" />
-        <activity android:name=".ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity" />
-        <activity android:name=".ui.GridLayout.old_result.OldResultActivity" />
+        <activity android:name=".ui.get_help.To_Get_HelpActivity" />
+        <activity android:name=".ui.special_or_bumper.SPL_Or_BumperActivity" />
+        <activity android:name=".ui.old_result.OldResultActivity" />
         <activity android:name=".ui.GridLayout.claim_form.Claim_formActivity" />
         <activity android:name=".ui.lucky_number.Your_Lucky_NumbersActivity" />
         <activity android:name=".ui.first_prize_winner.Fst_Prize_WinnersActivity" />

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Lottery Sambad Pro</string>
+    <string name="app_name" translatable="false">Lottery Master Pro</string>
 
     <string name="open" translatable="false">Open</string>
     <string name="close" translatable="false">Close</string>
@@ -28,7 +28,17 @@
     <string name="contact_us">Contact Us</string>
     <string name="more_apps">More Apps</string>
     <string name="last_four_degit_of_lottery_number">last 4 digit of lottery number</string>
+    <string name="common_number">Common Number</string>
+    <string name="found_new_version">Found New Version</string>
+    <string name="app_update_message">Your app is not updated, Please update to latest version.</string>
+    <string name="ok">Ok</string>
 
+
+
+
+
+
+    <string name="not_implemented_message">Please wait 3-4 days to see this option.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

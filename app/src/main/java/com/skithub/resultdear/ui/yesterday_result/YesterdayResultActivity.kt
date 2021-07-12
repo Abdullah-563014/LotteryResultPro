@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.GridLayout.yes_vs_pre
+package com.skithub.resultdear.ui.yesterday_result
 
 import android.content.Context
 import android.content.Intent
@@ -6,27 +6,27 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.skithub.resultdear.R
-import com.skithub.resultdear.databinding.ActivityYesVsPreBinding
-import com.skithub.resultdear.ui.pdf_info.PdfInfoActivity
+import com.skithub.resultdear.databinding.ActivityYesterdayResultBinding
+import com.skithub.resultdear.ui.result_image_info.ResultImageInfoActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 
-class YesVsPreActivity : AppCompatActivity(), View.OnClickListener {
+class YesterdayResultActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityYesVsPreBinding
+    private lateinit var binding: ActivityYesterdayResultBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityYesVsPreBinding.inflate(layoutInflater)
+        binding = ActivityYesterdayResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
 
 
 
         initAll()
 
+        updateUi()
 
 
     }
@@ -38,31 +38,35 @@ class YesVsPreActivity : AppCompatActivity(), View.OnClickListener {
         binding.nightButton.setOnClickListener(this)
     }
 
+    private fun updateUi() {
+        binding.yesterdayTimeTextView.text="Yesterday Result ${CommonMethod.increaseDecreaseDaysUsingValue(-1)} ${CommonMethod.getDayNameUsingDate(CommonMethod.increaseDecreaseDaysUsingValue(-1))}"
+    }
+
     override fun onClick(v: View?) {
         v?.let {
             var pdfInfoIntent: Intent
             when (it.id) {
                 R.id.morningButton -> {
-                    pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
+                    pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.morningTime)
-                    pdfInfoIntent.putExtra(Constants.isVersusResultKey,true)
+                    pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
                     startActivity(pdfInfoIntent)
                 }
 
                 R.id.eveningButton -> {
-                    pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
+                    pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.eveningTime)
-                    pdfInfoIntent.putExtra(Constants.isVersusResultKey,true)
+                    pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
                     startActivity(pdfInfoIntent)
                 }
 
                 R.id.nightButton -> {
-                    pdfInfoIntent= Intent(this, PdfInfoActivity::class.java)
+                    pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.nightTime)
-                    pdfInfoIntent.putExtra(Constants.isVersusResultKey,true)
+                    pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
                     startActivity(pdfInfoIntent)
                 }
             }
@@ -86,9 +90,6 @@ class YesVsPreActivity : AppCompatActivity(), View.OnClickListener {
             super.attachBaseContext(newBase)
         }
     }
-
-
-
 
 
 

@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.GridLayout.special_or_bumper
+package com.skithub.resultdear.ui.special_or_bumper
 
 import androidx.lifecycle.ViewModel
 import com.skithub.resultdear.database.PdfRepositories

@@ -113,6 +113,28 @@
                     android:layout_weight="1"
                     app:nb_text="@string/winning_number"/>
             </LinearLayout>
+            <LinearLayout
+                style="@style/HomeButtonParentLayoutStyle"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.smb.glowbutton.NeonButton
+                    android:id="@+id/commonNumberButton"
+                    style="@style/MyNeonButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:nb_text="@string/common_number"/>
+
+                <com.smb.glowbutton.NeonButton
+                    android:id="@+id/privacyPolicyButton"
+                    style="@style/MyNeonButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:nb_text="@string/privacy_policy"/>
+            </LinearLayout>
         </LinearLayout>
 
 

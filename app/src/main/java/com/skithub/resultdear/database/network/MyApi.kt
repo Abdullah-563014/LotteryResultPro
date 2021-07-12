@@ -44,6 +44,12 @@ interface MyApi {
         @Query("WinType") winType: String
     ): Response<LotteryNumberResponse>
 
+    @GET("get_duplicate_lottery_number_list.php?")
+    suspend fun getDuplicateLotteryNumberList(
+        @Query("PageNumber") pageNumber: String,
+        @Query("ItemCount") itemCount: String
+    ): Response<LotteryNumberResponse>
+
     @GET("index.php?")
     suspend fun getLotteryResultList(
         @Query("PageNumber") pageNumber: String,

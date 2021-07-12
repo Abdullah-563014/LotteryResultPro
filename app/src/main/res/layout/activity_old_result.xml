@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.GridLayout.old_result.OldResultActivity">
+    tools:context=".ui.old_result.OldResultActivity">
     <me.ibrahimsn.particle.ParticleView
         android:id="@+id/particleView"
         android:layout_width="match_parent"

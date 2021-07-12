@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.GridLayout.old_result
+package com.skithub.resultdear.ui.old_result
 
 import androidx.lifecycle.ViewModel
 import com.skithub.resultdear.database.PdfRepositories

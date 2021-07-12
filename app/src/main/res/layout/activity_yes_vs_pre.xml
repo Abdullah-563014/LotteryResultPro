@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.GridLayout.yes_vs_pre.YesVsPreActivity">
+    tools:context=".ui.yes_vs_pre.YesVsPreActivity">
     <me.ibrahimsn.particle.ParticleView
         android:id="@+id/particleView"
         android:layout_width="match_parent"

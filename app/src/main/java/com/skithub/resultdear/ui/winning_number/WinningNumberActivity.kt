@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.GridLayout.winning_number
+package com.skithub.resultdear.ui.winning_number
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -7,14 +7,10 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.skithub.resultdear.R
 import com.skithub.resultdear.adapter.LotteryNumberRecyclerAdapter
-import com.skithub.resultdear.adapter.OldResultRecyclerAdapter
 import com.skithub.resultdear.databinding.ActivityWinningNumberBinding
 import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.ui.MyApplication
-import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckViewModel
-import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckViewModelFactory
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.Coroutines

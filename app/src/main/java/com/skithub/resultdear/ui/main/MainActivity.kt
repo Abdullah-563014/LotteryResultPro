@@ -1,14 +1,9 @@
 package com.skithub.resultdear.ui.main
 
 import android.content.Context
-import android.content.ContextWrapper
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.res.Configuration
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
-import android.os.LocaleList
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -17,23 +12,24 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
-import com.onesignal.language.LanguageContext
+import com.google.firebase.database.*
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
-import com.skithub.resultdear.ui.GridLayout.get_help.To_Get_HelpActivity
-import com.skithub.resultdear.ui.GridLayout.old_result.OldResultActivity
-import com.skithub.resultdear.ui.GridLayout.special_or_bumper.SPL_Or_BumperActivity
-import com.skithub.resultdear.ui.GridLayout.today_result.TodayResultActivity
-import com.skithub.resultdear.ui.GridLayout.winning_number.WinningNumberActivity
-import com.skithub.resultdear.ui.GridLayout.yes_vs_pre.YesVsPreActivity
-import com.skithub.resultdear.ui.GridLayout.yesterday_result.YesterdayResultActivity
+import com.skithub.resultdear.ui.common_number.CommonNumberActivity
+import com.skithub.resultdear.ui.get_help.To_Get_HelpActivity
+import com.skithub.resultdear.ui.old_result.OldResultActivity
+import com.skithub.resultdear.ui.special_or_bumper.SPL_Or_BumperActivity
+import com.skithub.resultdear.ui.today_result.TodayResultActivity
+import com.skithub.resultdear.ui.winning_number.WinningNumberActivity
+import com.skithub.resultdear.ui.yes_vs_pre.YesVsPreActivity
+import com.skithub.resultdear.ui.yesterday_result.YesterdayResultActivity
 import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
 import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.Coroutines
+import com.skithub.resultdear.utils.MyExtensions.shortToast
 import com.skithub.resultdear.utils.SharedPreUtils
-import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -84,6 +80,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.winingNumberCardView.setOnClickListener(this)
         binding.lotteryNumberCheck.setOnClickListener(this)
         binding.tutorialImageView.setOnClickListener(this)
+        binding.commonNumberButton.setOnClickListener(this)
+        binding.privacyPolicyButton.setOnClickListener(this)
         Glide.with(this).load(R.drawable.tutorial_thumb).fitCenter().into(binding.tutorialImageView)
     }
 
@@ -176,6 +174,39 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun checkMandatoryUpdate() {
+        val versionRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("LotteryMasterProVersionName")
+        versionRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var versionName: String = "1.0"
+                if (snapshot.exists() && snapshot.getValue(String::class.java)!=null) {
+                    versionName = snapshot.getValue(String::class.java)!!
+                    val databaseVersionName: Double=versionName.toDouble()
+                    val appVersionNameInString: String=applicationContext.packageManager.getPackageInfo(applicationContext.packageName,0).versionName
+                    val appVersionName: Double=appVersionNameInString.toDouble()
+                    if (appVersionName<databaseVersionName) {
+                        val builder: AlertDialog.Builder=AlertDialog.Builder(this@MainActivity)
+                            .setCancelable(false)
+                            .setTitle(resources.getString(R.string.found_new_version))
+                            .setMessage(resources.getString(R.string.app_update_message))
+                            .setPositiveButton(resources.getString(R.string.ok)) {
+                                    p0, p1 -> CommonMethod.openAppLink(this@MainActivity)
+                            }
+                        val alertDialog: AlertDialog=builder.create()
+                        if (!isFinishing) {
+                            alertDialog.show()
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -229,7 +260,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(gridIntent)
                 }
 
-                R.id.tutorialImageView -> CommonMethod.openVideo(this,Constants.tutorialVideoId)
+                R.id.commonNumberButton -> {
+                    gridIntent= Intent(applicationContext, CommonNumberActivity::class.java)
+                    startActivity(gridIntent)
+                }
+
+                R.id.privacyPolicyButton -> {
+                    gridIntent= Intent(applicationContext, PrivacyPolicyActivity::class.java)
+                    startActivity(gridIntent)
+                }
+
+                R.id.tutorialImageView -> shortToast(resources.getString(R.string.not_implemented_message))
             }
         }
     }
@@ -254,6 +295,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             noInternetDialog()
         }
         binding.particleView.resume()
+        checkMandatoryUpdate()
     }
 
     override fun onPause() {

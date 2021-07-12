@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.pdf_info
+package com.skithub.resultdear.ui.result_image_info
 
 import android.Manifest
 import android.app.DownloadManager
@@ -29,7 +29,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.leinardi.android.speeddial.SpeedDialActionItem
 import com.leinardi.android.speeddial.SpeedDialView
 import com.skithub.resultdear.R
-import com.skithub.resultdear.databinding.ActivityPdfInfoBinding
+import com.skithub.resultdear.databinding.ActivityResultImageInfoBinding
 import com.skithub.resultdear.model.LotteryPdfModel
 import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.utils.CommonMethod
@@ -38,10 +38,10 @@ import com.skithub.resultdear.utils.Coroutines
 import com.skithub.resultdear.utils.MyExtensions.shortToast
 
 
-class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
+class ResultImageInfoActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityPdfInfoBinding
-    private lateinit var viewModel: PdfInfoViewModel
+    private lateinit var binding: ActivityResultImageInfoBinding
+    private lateinit var viewModel: ResultImageInfoViewModel
     private var resultDate: String=CommonMethod.increaseDecreaseDaysUsingValue(0)
     private var resultTime: String=Constants.eveningTime
     private var resultDateTwo: String=CommonMethod.increaseDecreaseDaysUsingValue(-2)
@@ -49,15 +49,14 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var circularZoomImageView: PhotoView
     private var zoomImageAlertDialog: AlertDialog?=null
     private var isVersusResult: Boolean=false
-    private var downloadingFileName: String="image"
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityPdfInfoBinding.inflate(layoutInflater)
-        val factory: PdfInfoViewModelFactory= PdfInfoViewModelFactory((application as MyApplication).myApi)
-        viewModel=ViewModelProvider(this,factory).get(PdfInfoViewModel::class.java)
+        binding= ActivityResultImageInfoBinding.inflate(layoutInflater)
+        val factory: ResultImageInfoViewModelFactory= ResultImageInfoViewModelFactory((application as MyApplication).myApi)
+        viewModel=ViewModelProvider(this,factory).get(ResultImageInfoViewModel::class.java)
         setContentView(binding.root)
 
 
@@ -85,13 +84,12 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-
     }
 
 
     private fun initAll() {
-        binding.pdfViewSwipeRefreshLayout.setOnRefreshListener {
-            binding.pdfViewSwipeRefreshLayout.isRefreshing=false
+        binding.imageViewSwipeRefreshLayout.setOnRefreshListener {
+            binding.imageViewSwipeRefreshLayout.isRefreshing=false
             loadImageInfoUsingDateAndTime()
         }
         binding.resultOneImageView.setOnClickListener(this)
@@ -99,14 +97,6 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupFloatingActionButton() {
-        binding.speedDial.addActionItem(SpeedDialActionItem.Builder(R.id.download_type_pdf,R.drawable.ic_download)
-            .setFabBackgroundColor(ResourcesCompat.getColor(resources,R.color.red,theme))
-            .setFabImageTintColor(ResourcesCompat.getColor(resources,R.color.white,theme))
-            .setLabel(R.string.download_pdf)
-            .setLabelColor(ResourcesCompat.getColor(resources,R.color.red,theme))
-            .setLabelBackgroundColor(ResourcesCompat.getColor(resources,R.color.white,theme))
-            .setLabelClickable(true)
-            .create())
         binding.speedDial.addActionItem(SpeedDialActionItem.Builder(R.id.download_type_image,R.drawable.ic_download)
             .setFabBackgroundColor(ResourcesCompat.getColor(resources,R.color.red,theme))
             .setFabImageTintColor(ResourcesCompat.getColor(resources,R.color.white,theme))
@@ -119,23 +109,8 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
             override fun onActionSelected(actionItem: SpeedDialActionItem?): Boolean {
                 actionItem?.let {
                     when (it.id) {
-                        R.id.download_type_pdf -> {
-                            downloadingFileName="pdf"
-                            if (Build.VERSION.SDK_INT>=23 && (ActivityCompat.checkSelfPermission(this@PdfInfoActivity,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)) {
-                                showPermissionDialog()
-                                return true
-                            }
-                            if (list.size > 0) {
-                                for (i in 0 until list.size) {
-                                    downloadFile(list[i].pdfUrl!!)
-                                }
-                            }
-                            binding.speedDial.close()
-                            return true
-                        }
                         R.id.download_type_image -> {
-                            downloadingFileName="image"
-                            if (Build.VERSION.SDK_INT>=23 && (ActivityCompat.checkSelfPermission(this@PdfInfoActivity,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)) {
+                            if (Build.VERSION.SDK_INT>=23 && (ActivityCompat.checkSelfPermission(this@ResultImageInfoActivity,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)) {
                                 showPermissionDialog()
                                 return true
                             }
@@ -184,13 +159,13 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
                     if (response.body()?.status.equals("success")) {
                         list.clear()
                         list.addAll(response.body()?.data!!)
-                        if (list[0]!=null && list[0].imageUrl!=null) {
+                        if (list.size>0 && list[0]!=null && list[0].imageUrl!=null) {
                             showImageOne(list[0].imageUrl!!)
                         } else {
                             binding.resultRootLayout.visibility=View.GONE
                             binding.spinKit.visibility=View.GONE
                         }
-                        if (isVersusResult && list[1]!=null && list[1].imageUrl!=null) {
+                        if (isVersusResult && list.size>=2 && list[1]!=null && list[1].imageUrl!=null) {
                             showImageTwo(list[1].imageUrl!!)
                         } else {
                             binding.resultTwoRootLayout.visibility=View.GONE
@@ -269,17 +244,9 @@ class PdfInfoActivity : AppCompatActivity(), View.OnClickListener {
             .withListener(object : MultiplePermissionsListener{
                 override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
                     if (p0!=null && p0.areAllPermissionsGranted()) {
-                        if (downloadingFileName.equals("pdf",true)) {
-                            if (list.size > 0) {
-                                for (i in 0 until list.size) {
-                                    downloadFile(list[i].pdfUrl!!)
-                                }
-                            }
-                        } else {
-                            if (list.size > 0) {
-                                for (i in 0 until list.size) {
-                                    downloadFile(list[i].imageUrl!!)
-                                }
+                        if (list.size > 0) {
+                            for (i in 0 until list.size) {
+                                downloadFile(list[i].imageUrl!!)
                             }
                         }
                     }

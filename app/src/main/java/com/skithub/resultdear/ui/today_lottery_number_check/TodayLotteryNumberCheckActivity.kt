@@ -11,8 +11,6 @@ import com.skithub.resultdear.adapter.LotteryNumberRecyclerAdapter
 import com.skithub.resultdear.databinding.ActivityNumberCheckBinding
 import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.ui.MyApplication
-import com.skithub.resultdear.ui.pdf_info.PdfInfoViewModel
-import com.skithub.resultdear.ui.pdf_info.PdfInfoViewModelFactory
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Coroutines
 import com.skithub.resultdear.utils.MyExtensions.shortToast

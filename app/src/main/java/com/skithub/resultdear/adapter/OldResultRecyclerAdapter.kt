@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.OldResultRecyclerViewModelLayoutBinding
 import com.skithub.resultdear.model.LotteryPdfModel
-import com.skithub.resultdear.ui.pdf_info.PdfInfoActivity
+import com.skithub.resultdear.ui.result_image_info.ResultImageInfoActivity
 import com.skithub.resultdear.utils.Constants
 
 class OldResultRecyclerAdapter(val context: Context, val list: MutableList<LotteryPdfModel>): RecyclerView.Adapter<OldResultRecyclerAdapter.OldResultRecyclerViewHolder>() {
@@ -41,7 +41,7 @@ class OldResultRecyclerAdapter(val context: Context, val list: MutableList<Lotte
 
         override fun onClick(v: View?) {
             v?.let {
-                val oldResultIntent= Intent(context,PdfInfoActivity::class.java)
+                val oldResultIntent= Intent(context,ResultImageInfoActivity::class.java)
                 when (it.id) {
                     R.id.oldResultRootLayout -> {
                         oldResultIntent.putExtra(Constants.resultTimeKey,list[adapterPosition].resultTime)

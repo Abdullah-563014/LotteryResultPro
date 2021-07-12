@@ -1,6 +1,5 @@
-package com.skithub.resultdear.ui.GridLayout.get_help
+package com.skithub.resultdear.ui.get_help
 
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
