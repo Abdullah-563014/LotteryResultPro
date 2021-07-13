@@ -30,6 +30,7 @@ object Constants {
     val winTypeKey: String="WinTypeKey"
     val appLanguageKey: String="AppLanguageKey"
     val appLanguageStatusKey: String="AppLanguageStatusKey"
+    val lotteryNumberKey: String="LotteryNumberKey"
 
 //    all keys are declared above
 

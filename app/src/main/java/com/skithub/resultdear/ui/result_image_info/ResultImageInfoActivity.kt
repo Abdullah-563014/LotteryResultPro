@@ -36,15 +36,16 @@ import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.Coroutines
 import com.skithub.resultdear.utils.MyExtensions.shortToast
+import java.util.*
 
 
 class ResultImageInfoActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityResultImageInfoBinding
     private lateinit var viewModel: ResultImageInfoViewModel
-    private var resultDate: String=CommonMethod.increaseDecreaseDaysUsingValue(0)
+    private var resultDate: String=CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH)
     private var resultTime: String=Constants.eveningTime
-    private var resultDateTwo: String=CommonMethod.increaseDecreaseDaysUsingValue(-2)
+    private var resultDateTwo: String=CommonMethod.increaseDecreaseDaysUsingValue(-2, Locale.ENGLISH)
     private var list: MutableList<LotteryPdfModel> = arrayListOf()
     private lateinit var circularZoomImageView: PhotoView
     private var zoomImageAlertDialog: AlertDialog?=null
@@ -62,7 +63,7 @@ class ResultImageInfoActivity : AppCompatActivity(), View.OnClickListener {
 
         val bundle=intent.extras
         if (bundle!=null) {
-            resultDate=bundle.getString(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0))
+            resultDate=bundle.getString(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH))
             resultTime=bundle.getString(Constants.resultTimeKey,Constants.morningTime)
             isVersusResult=bundle.getBoolean(Constants.isVersusResultKey,false)
             if (!isVersusResult) {
@@ -197,8 +198,8 @@ class ResultImageInfoActivity : AppCompatActivity(), View.OnClickListener {
         binding.resultRootLayout.visibility=View.VISIBLE
         binding.resultOneRootLayout.visibility=View.VISIBLE
         binding.waitingRootLayout.visibility=View.GONE
-        binding.resultOneTitleTextView.text="Result $resultDate ${CommonMethod.getDayNameUsingDate(resultDate)}"
-        Glide.with(this).load(imageUrl).fitCenter().into(binding.resultOneImageView)
+        binding.resultOneTitleTextView.text="Result $resultDate ${CommonMethod.getDayNameUsingDate(resultDate,Locale.getDefault())}"
+        Glide.with(this).load(imageUrl).placeholder(R.drawable.loading_placeholder).fitCenter().into(binding.resultOneImageView)
     }
 
     private fun showImageTwo(imageUrl: String) {
@@ -206,8 +207,8 @@ class ResultImageInfoActivity : AppCompatActivity(), View.OnClickListener {
         binding.resultRootLayout.visibility=View.VISIBLE
         binding.resultTwoRootLayout.visibility=View.VISIBLE
         binding.waitingRootLayout.visibility=View.GONE
-        binding.resultTwoTitleTextView.text="Result $resultDateTwo ${CommonMethod.getDayNameUsingDate(resultDateTwo)}"
-        Glide.with(this).load(imageUrl).fitCenter().into(binding.resultTwoImageView)
+        binding.resultTwoTitleTextView.text="Result $resultDateTwo ${CommonMethod.getDayNameUsingDate(resultDateTwo,Locale.getDefault())}"
+        Glide.with(this).load(imageUrl).placeholder(R.drawable.loading_placeholder).fitCenter().into(binding.resultTwoImageView)
     }
 
     private fun initZoomImageAlertDialog() {
@@ -223,7 +224,7 @@ class ResultImageInfoActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showZoomImageAlertDialog(imageUrl: String) {
         if (zoomImageAlertDialog != null && !isFinishing) {
-            Glide.with(this).load(imageUrl).into(circularZoomImageView)
+            Glide.with(this).load(imageUrl).placeholder(R.drawable.loading_placeholder).into(circularZoomImageView)
             zoomImageAlertDialog?.show()
             val displayWidth: Int = CommonMethod.getScreenWidth(this)
             val displayHeight: Int = CommonMethod.getScreenHeight(this)
@@ -281,6 +282,8 @@ class ResultImageInfoActivity : AppCompatActivity(), View.OnClickListener {
             super.attachBaseContext(newBase)
         }
     }
+
+
 
 
 }

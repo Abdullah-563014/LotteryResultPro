@@ -22,15 +22,15 @@ object CommonMethod {
 
 
 
-    fun increaseDecreaseDaysUsingValue(days: Int): String {
+    fun increaseDecreaseDaysUsingValue(days: Int, locale: Locale): String {
         val calendar: Calendar=Calendar.getInstance()
-        val simpleDateFormat=SimpleDateFormat(Constants.dayFormat,Locale.getDefault())
+        val simpleDateFormat=SimpleDateFormat(Constants.dayFormat,locale)
         calendar.set(Calendar.DAY_OF_YEAR,calendar.get(Calendar.DAY_OF_YEAR)+days)
         return simpleDateFormat.format(calendar.time)
     }
 
-    fun getCurrentTimeUsingFormat(format: String): String {
-        val dateFormat: SimpleDateFormat = SimpleDateFormat(format, Locale.getDefault())
+    fun getCurrentTimeUsingFormat(format: String,locale: Locale): String {
+        val dateFormat: SimpleDateFormat = SimpleDateFormat(format, locale)
         return dateFormat.format(Date()).toString()
     }
 
@@ -39,11 +39,11 @@ object CommonMethod {
         return date.time.toString()
     }
 
-    fun getDayNameUsingDate(date: String): String {
+    fun getDayNameUsingDate(date: String,locale: Locale): String {
         try {
-            val format=SimpleDateFormat(Constants.dayFormat, Locale.getDefault())
+            val format=SimpleDateFormat(Constants.dayFormat, locale)
             val formattedDate=format.parse(date)
-            val simpleDateFormat=SimpleDateFormat("EEEE", Locale.getDefault())
+            val simpleDateFormat=SimpleDateFormat("EEEE", locale)
             return simpleDateFormat.format(formattedDate)
         } catch (e: Exception) {
             return "day name not found"

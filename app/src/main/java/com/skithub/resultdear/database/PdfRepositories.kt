@@ -12,6 +12,10 @@ class PdfRepositories {
         return myApi.findLotteryInfoUsingLotteryNumber(lotteryNumber)
     }
 
+    suspend fun getLotteryNumberListUsingLotteryNumber(lotteryNumber: String, myApi: MyApi): Response<LotteryNumberResponse> {
+        return myApi.getLotteryNumberListUsingLotteryNumber(lotteryNumber)
+    }
+
     suspend fun checkTodayResultUsingNumberDateTimeAndType(lotteryNumber: String,winDate: String, winTime: String, winType: String, myApi: MyApi): Response<LotteryNumberResponse> {
         return myApi.checkTodayResultUsingNumberDateTimeAndType(lotteryNumber,winDate,winTime,winType)
     }

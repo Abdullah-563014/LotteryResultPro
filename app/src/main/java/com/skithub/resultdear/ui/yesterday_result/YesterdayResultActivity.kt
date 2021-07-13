@@ -10,6 +10,7 @@ import com.skithub.resultdear.databinding.ActivityYesterdayResultBinding
 import com.skithub.resultdear.ui.result_image_info.ResultImageInfoActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
+import java.util.*
 
 class YesterdayResultActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -39,7 +40,7 @@ class YesterdayResultActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun updateUi() {
-        binding.yesterdayTimeTextView.text="Yesterday Result ${CommonMethod.increaseDecreaseDaysUsingValue(-1)} ${CommonMethod.getDayNameUsingDate(CommonMethod.increaseDecreaseDaysUsingValue(-1))}"
+        binding.yesterdayTimeTextView.text="Yesterday Result ${CommonMethod.increaseDecreaseDaysUsingValue(-1, Locale.getDefault())} ${CommonMethod.getDayNameUsingDate(CommonMethod.increaseDecreaseDaysUsingValue(-1,Locale.getDefault()),Locale.getDefault())}"
     }
 
     override fun onClick(v: View?) {
@@ -48,7 +49,7 @@ class YesterdayResultActivity : AppCompatActivity(), View.OnClickListener {
             when (it.id) {
                 R.id.morningButton -> {
                     pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
-                    pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
+                    pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1, Locale.ENGLISH))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.morningTime)
                     pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
                     startActivity(pdfInfoIntent)
@@ -56,7 +57,7 @@ class YesterdayResultActivity : AppCompatActivity(), View.OnClickListener {
 
                 R.id.eveningButton -> {
                     pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
-                    pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
+                    pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1, Locale.ENGLISH))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.eveningTime)
                     pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
                     startActivity(pdfInfoIntent)
@@ -64,7 +65,7 @@ class YesterdayResultActivity : AppCompatActivity(), View.OnClickListener {
 
                 R.id.nightButton -> {
                     pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
-                    pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1))
+                    pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1, Locale.ENGLISH))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.nightTime)
                     pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
                     startActivity(pdfInfoIntent)

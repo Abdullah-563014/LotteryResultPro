@@ -20,7 +20,8 @@
         android:theme="@style/Theme.Lutt"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".ui.common_number.CommonNumberActivity"></activity>
+        <activity android:name=".ui.common_number_details.CommonNumberDetailsActivity"></activity>
+        <activity android:name=".ui.common_number.CommonNumberActivity" />
         <activity android:name=".ui.winning_number.WinningNumberActivity" />
         <activity android:name=".ui.privacy_policy.PrivacyPolicyActivity" />
         <activity android:name=".ui.today_lottery_number_check.TodayLotteryNumberCheckActivity" />
