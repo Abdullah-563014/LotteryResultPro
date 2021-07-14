@@ -13,11 +13,11 @@
     <color name="Light_black">#2D847E8F</color>
     <color name="red">#E91E63</color>
     <color name="gray">#808080</color>
-    <color name="orange">#FF5722</color>
+    <color name="orange">#F13F06</color>
     <color name="light_orange">#FF9800</color>
 
     <color name="neon_color_border">#03D9F4</color>
-    <color name="neon_color_one">#7ABF2E</color>
+    <color name="neon_color_one">#83F406</color>
     <color name="neon_color_start">#FFEB3B</color>
     <color name="neon_color_end">#E91E63</color>
 

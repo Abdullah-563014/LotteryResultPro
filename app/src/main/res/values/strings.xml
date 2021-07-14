@@ -6,7 +6,7 @@
     <string name="support_email" translatable="false">clist.abd@gmail.com</string>
 
 
-    <string name="lottery_result_check">Lottery Result Check</string>
+    <string name="search_number">Search Number</string>
     <string name="today_result">Today Result</string>
     <string name="yesterday_result">Yesterday Result</string>
     <string name="yesterday_and_pre">Yesterday &amp; Previous</string>

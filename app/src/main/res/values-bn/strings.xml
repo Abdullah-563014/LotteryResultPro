@@ -2,7 +2,7 @@
 <resources>
 
 
-    <string name="lottery_result_check">লটারী ফলাফল চেক</string>
+    <string name="search_number">নম্বর অনুসন্ধান</string>
     <string name="today_result">আজকের রেজাল্ট</string>
     <string name="yesterday_result">গতকালের রেজাল্ট</string>
     <string name="yesterday_and_pre">গতকাল এবং আগের দিন</string>

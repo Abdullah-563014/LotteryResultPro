@@ -40,33 +40,56 @@
                 style="@style/MyNeonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
+                app:nb_gradientStart="@color/neon_color_one"
+                app:nb_gradientEnd="@color/gradient_center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 app:nb_drawableStart="@drawable/ic_search"
-                app:nb_text="@string/lottery_result_check"
-                app:layout_constraintTop_toBottomOf="@+id/tutorialImageView" />
-
-            <LinearLayout
+                app:nb_text="@string/search_number" />
+            <com.smb.glowbutton.NeonButton
+                android:id="@+id/commonNumberButton"
+                style="@style/MyNeonButtonStyle"
+                app:nb_drawableStart="@drawable/ic_search"
+                app:nb_gradientStart="@color/neon_color_one"
+                app:nb_gradientEnd="@color/gradient_center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:nb_text="@string/common_number"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 style="@style/HomeButtonParentLayoutStyle"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
+                <ImageView
+                    android:id="@+id/newTextAnimationImageView"
+                    app:layout_constraintTop_toTopOf="@+id/todayResultCardView"
+                    app:layout_constraintStart_toStartOf="@+id/todayResultCardView"
+                    app:layout_constraintEnd_toEndOf="@id/todayResultCardView"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp" />
                 <com.smb.glowbutton.NeonButton
                     android:id="@+id/todayResultCardView"
                     style="@style/MyNeonButtonStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/yesterDayResultCardView"
+                    app:layout_constraintHorizontal_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     app:nb_text="@string/today_result"/>
 
                 <com.smb.glowbutton.NeonButton
                     android:id="@+id/yesterDayResultCardView"
                     style="@style/MyNeonButtonStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/todayResultCardView"
+                    app:layout_constraintHorizontal_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     app:nb_text="@string/yesterday_result"/>
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 style="@style/HomeButtonParentLayoutStyle"
@@ -112,28 +135,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:nb_text="@string/winning_number"/>
-            </LinearLayout>
-            <LinearLayout
-                style="@style/HomeButtonParentLayoutStyle"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.smb.glowbutton.NeonButton
-                    android:id="@+id/commonNumberButton"
-                    style="@style/MyNeonButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:nb_text="@string/common_number"/>
-
-                <com.smb.glowbutton.NeonButton
-                    android:id="@+id/privacyPolicyButton"
-                    style="@style/MyNeonButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:nb_text="@string/privacy_policy"/>
             </LinearLayout>
         </LinearLayout>
 

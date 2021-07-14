@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="lottery_result_check">लॉटरी रिजल्ट चेक</string>
+    <string name="search_number">खोज संख्या</string>
     <string name="today_result">आज का परिणाम</string>
     <string name="yesterday_result">कल का परिणाम</string>
     <string name="yesterday_and_pre">कल और परसों</string>

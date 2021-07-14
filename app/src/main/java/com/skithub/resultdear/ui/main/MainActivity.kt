@@ -81,8 +81,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.lotteryNumberCheck.setOnClickListener(this)
         binding.tutorialImageView.setOnClickListener(this)
         binding.commonNumberButton.setOnClickListener(this)
-        binding.privacyPolicyButton.setOnClickListener(this)
         Glide.with(this).load(R.drawable.tutorial_thumb).fitCenter().into(binding.tutorialImageView)
+        Glide.with(this).load(R.drawable.new_text_animation).fitCenter().into(binding.newTextAnimationImageView)
     }
 
     private fun showChangeLanguageDialog() {
@@ -262,11 +262,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 R.id.commonNumberButton -> {
                     gridIntent= Intent(applicationContext, CommonNumberActivity::class.java)
-                    startActivity(gridIntent)
-                }
-
-                R.id.privacyPolicyButton -> {
-                    gridIntent= Intent(applicationContext, PrivacyPolicyActivity::class.java)
                     startActivity(gridIntent)
                 }
 
