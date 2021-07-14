@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -207,6 +209,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -278,6 +285,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     binding.drawerLayout.openDrawer(GravityCompat.START)
                 }
+                return true
+            }
+
+            R.id.changeLanguageToolbarMenuId -> {
+                showChangeLanguageDialog()
                 return true
             }
         }

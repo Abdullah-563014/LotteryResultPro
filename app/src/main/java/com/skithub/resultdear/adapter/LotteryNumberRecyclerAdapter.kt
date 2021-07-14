@@ -35,8 +35,8 @@ class LotteryNumberRecyclerAdapter(val context: Context, val list: MutableList<L
         fun bind(item: LotteryNumberModel) {
             binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
             binding.winDateTextView.text="Win Date:- ${item.winDate}"
+            binding.winTimeTextView.text="Win Time:- ${item.winTime}"
             binding.winTypeTextView.text="Prize Type:- ${item.winType}"
-            binding.stateTextView.text="State Name:- ${item.stateName}"
         }
     }
 

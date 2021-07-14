@@ -32,6 +32,7 @@
     <string name="found_new_version">Found New Version</string>
     <string name="app_update_message">Your app is not updated, Please update to latest version.</string>
     <string name="ok">Ok</string>
+    <string name="language_change">Language change</string>
 
 
     <string name="not_implemented_message">Please wait 3-4 days to see this option.</string>
