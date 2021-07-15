@@ -21,6 +21,7 @@ object Constants {
     val winTypeSecond="2nd"
     val winTypeThird="3rd"
     val winTypeFourth="4th"
+    val winTypeFifth="5th"
     val appDefaultLanCode="en_US"
 //    default values end here
 

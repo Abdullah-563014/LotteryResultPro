@@ -37,7 +37,27 @@ class LotteryNumberRecyclerAdapter(val context: Context, val list: MutableList<L
             binding.winDateTextView.text="Win Date:- ${item.winDate}"
             binding.winTimeTextView.text="Win Time:- ${item.winTime}"
             binding.winTypeTextView.text="Prize Type:- ${item.winType}"
+            binding.prizeAmountTextView.text="Prize Amount:- ${getPrizeAmount(item.winType)}"
         }
+    }
+
+    private fun getPrizeAmount(type: String?): String {
+        if (type.isNullOrEmpty()) {
+            return "Amount not detectable"
+        } else {
+            if (type.equals(Constants.winTypeFirst)) {
+                return "1 Crore"
+            } else if (type.equals(Constants.winTypeSecond)) {
+                return "(Rs:9,000)"
+            } else if (type.equals(Constants.winTypeThird)) {
+                return "(Rs:500)"
+            } else if (type.equals(Constants.winTypeFourth)) {
+                return "(Rs:250)"
+            } else if (type.equals(Constants.winTypeFifth)) {
+                return "(Rs:120)"
+            }
+        }
+        return "Amount not detectable"
     }
 
 

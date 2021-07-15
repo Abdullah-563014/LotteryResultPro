@@ -121,6 +121,10 @@ dependencies {
 //    for photo view
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
+//    for pdf view
+//    implementation 'com.github.afreakyelf:Pdf-Viewer:1.0.7'
+//    implementation 'es.voghdev.pdfviewpager:library:1.1.2'
+
 //    for floating action button
     implementation "com.leinardi.android:speed-dial:3.2.0"
 
