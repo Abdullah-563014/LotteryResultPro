@@ -16,6 +16,12 @@
 
 
 
+    <style name="Theme.Lutt.NoTitle" parent="Theme.Lutt">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
     <style name="MyCardViewStyle">
         <item name="android:layout_marginTop">@dimen/_5sdp</item>
         <item name="android:layout_marginBottom">@dimen/_5sdp</item>

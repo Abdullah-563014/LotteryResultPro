@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="search_number">खोज संख्या</string>
+    <string name="search_number">टिकट चुनें</string>
     <string name="today_result">आज का परिणाम</string>
     <string name="yesterday_result">कल का परिणाम</string>
     <string name="yesterday_and_pre">कल और परसों</string>
@@ -23,15 +23,16 @@
     <string name="contact_us">संपर्क करें</string>
     <string name="more_apps">और ऐप</string>
     <string name="last_four_degit_of_lottery_number">लॉटरी संख्या का अंतिम 4 अंक</string>
-    <string name="common_number">सामान्य संख्या</string>
+    <string name="common_number">ये नंबर अधिक खेलते हैं</string>
     <string name="found_new_version">नया संस्करण मिला</string>
     <string name="app_update_message">आपका ऐप अपडेट नहीं है, कृपया नवीनतम संस्करण में अपडेट करें।</string>
     <string name="ok">ठीक है</string>
     <string name="language_change">भाषा परिवर्तन</string>
+    <string name="search_number_description">आप जो टिकट खरीदेंगे, जब टिकट आखिरी बार खेला गया था, उसे यहां खोजें और देखें।</string>
 
 
 
-    <string name="not_implemented_message">कृपया इस विकल्प को देखने के लिए 3-4 दिन प्रतीक्षा करें।</string>
+    <string name="not_implemented_message">कृपया प्रतीक्षा करें। यह विकल्प अभी तक लागू नहीं किया गया है</string>
 
 
 

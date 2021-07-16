@@ -2,6 +2,7 @@ package com.skithub.resultdear.ui.main
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
@@ -39,14 +40,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var tog: ActionBarDrawerToggle? = null
     private var mBackPressed: Long = 0
     private lateinit var connectivityManager: ConnectivityManager
+    private var rainbowColors: IntArray= intArrayOf(Color.parseColor("#FF2B22"),Color.parseColor("#FF7F22"),Color.parseColor("#EDFF22"),Color.parseColor("#22FF22"),Color.parseColor("#05EEFA"),Color.parseColor("#08B4BD"),Color.parseColor("#056B70"))
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
 
 
@@ -83,8 +85,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.lotteryNumberCheck.setOnClickListener(this)
         binding.tutorialImageView.setOnClickListener(this)
         binding.commonNumberButton.setOnClickListener(this)
+        binding.englishLanguageTextView.setOnClickListener(this)
+        binding.banglaLanguageTextView.setOnClickListener(this)
+        binding.hindiLanguageTextView.setOnClickListener(this)
         Glide.with(this).load(R.drawable.tutorial_thumb).fitCenter().into(binding.tutorialImageView)
         Glide.with(this).load(R.drawable.new_text_animation).fitCenter().into(binding.newTextAnimationImageView)
+        binding.pickTicketDescriptionTextView.setColors(*rainbowColors)
     }
 
     private fun showChangeLanguageDialog() {
@@ -131,7 +137,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupNavigationBar() {
-        tog=ActionBarDrawerToggle(this,binding.drawerLayout,R.string.open,R.string.close)
+        tog=ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar,R.string.open,R.string.close)
         binding.drawerLayout.addDrawerListener(tog!!)
         tog?.syncState()
         binding.navigationView.setNavigationItemSelectedListener { item ->
@@ -209,11 +215,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -272,6 +273,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(gridIntent)
                 }
 
+                R.id.englishLanguageTextView -> changeLocale("en_US")
+
+                R.id.banglaLanguageTextView -> changeLocale("bn")
+
+                R.id.hindiLanguageTextView -> changeLocale("hi")
+
                 R.id.tutorialImageView -> shortToast(resources.getString(R.string.not_implemented_message))
             }
         }
@@ -285,11 +292,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     binding.drawerLayout.openDrawer(GravityCompat.START)
                 }
-                return true
-            }
-
-            R.id.changeLanguageToolbarMenuId -> {
-                showChangeLanguageDialog()
                 return true
             }
         }

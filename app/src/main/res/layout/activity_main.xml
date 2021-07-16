@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
@@ -7,139 +8,224 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity"
     tools:openDrawer="start">
-    <me.ibrahimsn.particle.ParticleView
-        android:id="@+id/particleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:particleCount="60"
-        app:particleMinRadius="5"
-        app:particleMaxRadius="15"
-        app:particlesBackgroundColor="@color/purple_700"
-        app:particleColor="@color/neon_color_start"
-        app:particleLineColor="@color/neon_color_start"
-        app:particleLinesEnabled="true" />
-    <ScrollView
-        android:id="@+id/scroll"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
-            android:orientation="vertical"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:elevation="@dimen/_4sdp"
+                android:background="?attr/colorPrimary"
+                android:theme="?attr/actionBarTheme"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/titleTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/englishLanguageTextView"
+                        android:textColor="@color/white"
+                        android:text="@string/app_name"
+                        android:gravity="start|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:id="@+id/hindiLanguageTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="हिंदी"
+                        android:textColor="@color/white"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:background="@color/gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/banglaLanguageTextView"
+                        app:layout_constraintEnd_toStartOf="@id/hindiLanguageTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="বাংলা"
+                        android:textColor="@color/white"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:background="@color/gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/englishLanguageTextView"
+                        app:layout_constraintEnd_toStartOf="@id/banglaLanguageTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="English"
+                        android:textColor="@color/white"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:background="@color/gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+        <me.ibrahimsn.particle.ParticleView
+            android:id="@+id/particleView"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:particleCount="60"
+            app:particleMinRadius="5"
+            app:particleMaxRadius="15"
+            app:particlesBackgroundColor="@color/purple_700"
+            app:particleColor="@color/neon_color_start"
+            app:particleLineColor="@color/neon_color_start"
+            app:particleLinesEnabled="true" />
+        <ScrollView
+            android:id="@+id/scroll"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
 
-            <ImageView
-                android:id="@+id/tutorialImageView"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_height="@dimen/_150sdp"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.smb.glowbutton.NeonButton
-                android:id="@+id/lottery_number_check"
-                style="@style/MyNeonButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:nb_gradientStart="@color/neon_color_one"
-                app:nb_gradientEnd="@color/gradient_center"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                app:nb_drawableStart="@drawable/ic_search"
-                app:nb_text="@string/search_number" />
-            <com.smb.glowbutton.NeonButton
-                android:id="@+id/commonNumberButton"
-                style="@style/MyNeonButtonStyle"
-                app:nb_drawableStart="@drawable/ic_search"
-                app:nb_gradientStart="@color/neon_color_one"
-                app:nb_gradientEnd="@color/gradient_center"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:nb_text="@string/common_number"/>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                style="@style/HomeButtonParentLayoutStyle"
-                android:layout_marginTop="@dimen/_20sdp"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ImageView
-                    android:id="@+id/newTextAnimationImageView"
-                    app:layout_constraintTop_toTopOf="@+id/todayResultCardView"
-                    app:layout_constraintStart_toStartOf="@+id/todayResultCardView"
-                    app:layout_constraintEnd_toEndOf="@id/todayResultCardView"
-                    android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_40sdp" />
+                    android:id="@+id/tutorialImageView"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <com.hanks.htextview.rainbow.RainbowTextView
+                    android:id="@+id/pickTicketDescriptionTextView"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/search_number_description"
+                    android:textSize="@dimen/_15ssp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:colorSpace="150dp"
+                    app:colorSpeed="4dp"/>
+                <ImageView
+                    android:src="@drawable/ic_down_arrow"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
                 <com.smb.glowbutton.NeonButton
-                    android:id="@+id/todayResultCardView"
+                    android:id="@+id/lottery_number_check"
                     style="@style/MyNeonButtonStyle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/yesterDayResultCardView"
-                    app:layout_constraintHorizontal_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    app:nb_text="@string/today_result"/>
-
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:nb_gradientStart="@color/neon_color_one"
+                    app:nb_gradientEnd="@color/gradient_center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:nb_drawableStart="@drawable/ic_search"
+                    app:nb_text="@string/search_number" />
                 <com.smb.glowbutton.NeonButton
-                    android:id="@+id/yesterDayResultCardView"
+                    android:id="@+id/commonNumberButton"
                     style="@style/MyNeonButtonStyle"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/todayResultCardView"
-                    app:layout_constraintHorizontal_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    app:nb_text="@string/yesterday_result"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:nb_drawableStart="@drawable/ic_search"
+                    app:nb_gradientStart="@color/neon_color_one"
+                    app:nb_gradientEnd="@color/gradient_center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:nb_text="@string/common_number"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/HomeButtonParentLayoutStyle"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/newTextAnimationImageView"
+                        app:layout_constraintTop_toTopOf="@+id/todayResultCardView"
+                        app:layout_constraintStart_toStartOf="@+id/todayResultCardView"
+                        app:layout_constraintEnd_toEndOf="@id/todayResultCardView"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp" />
+                    <com.smb.glowbutton.NeonButton
+                        android:id="@+id/todayResultCardView"
+                        style="@style/MyNeonButtonStyle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/yesterDayResultCardView"
+                        app:layout_constraintHorizontal_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:nb_text="@string/today_result"/>
 
-            <LinearLayout
-                style="@style/HomeButtonParentLayoutStyle"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <com.smb.glowbutton.NeonButton
+                        android:id="@+id/yesterDayResultCardView"
+                        style="@style/MyNeonButtonStyle"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/todayResultCardView"
+                        app:layout_constraintHorizontal_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:nb_text="@string/yesterday_result"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <com.smb.glowbutton.NeonButton
-                    android:id="@+id/yesterDayVsPreResultCardView"
-                    style="@style/MyNeonButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:nb_text="@string/yesterday_and_pre"/>
+                <LinearLayout
+                    style="@style/HomeButtonParentLayoutStyle"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <com.smb.glowbutton.NeonButton
-                    android:id="@+id/oldResultCardView"
-                    style="@style/MyNeonButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:nb_text="@string/old_result"/>
+                    <com.smb.glowbutton.NeonButton
+                        android:id="@+id/yesterDayVsPreResultCardView"
+                        style="@style/MyNeonButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:nb_text="@string/yesterday_and_pre"/>
+
+                    <com.smb.glowbutton.NeonButton
+                        android:id="@+id/oldResultCardView"
+                        style="@style/MyNeonButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:nb_text="@string/old_result"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/HomeButtonParentLayoutStyle"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.smb.glowbutton.NeonButton
+                        android:id="@+id/specialOrBumperResultCardView"
+                        style="@style/MyNeonButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:nb_text="@string/special_or_bumper"/>
+
+                    <com.smb.glowbutton.NeonButton
+                        android:id="@+id/winingNumberCardView"
+                        style="@style/MyNeonButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:nb_text="@string/winning_number"/>
+                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                style="@style/HomeButtonParentLayoutStyle"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <com.smb.glowbutton.NeonButton
-                    android:id="@+id/specialOrBumperResultCardView"
-                    style="@style/MyNeonButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:nb_text="@string/special_or_bumper"/>
-
-                <com.smb.glowbutton.NeonButton
-                    android:id="@+id/winingNumberCardView"
-                    style="@style/MyNeonButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:nb_text="@string/winning_number"/>
-            </LinearLayout>
-        </LinearLayout>
-
-
-    </ScrollView>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="match_parent"
@@ -150,6 +236,4 @@
         android:background="@color/purple_700"
         app:headerLayout="@layout/heder"
         app:menu="@menu/iconmenu" />
-
-
 </androidx.drawerlayout.widget.DrawerLayout>

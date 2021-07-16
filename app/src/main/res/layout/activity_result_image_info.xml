@@ -68,61 +68,17 @@
 
         <LinearLayout
             android:id="@+id/waitingRootLayout"
+            android:background="@drawable/gradient_bg"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:text="অপেক্ষা করুন ..."
-                android:textSize="@dimen/_22ssp"
+            <com.hanks.htextview.rainbow.RainbowTextView
+                android:text="@string/result_not_publish_message"
+                android:textSize="@dimen/_17ssp"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="ফলাফল যথা সময় এ প্রকাশ করা হবে, অনুগ্রহ করা অপেক্ষা করুন !!"
-                android:textSize="@dimen/_15ssp"
-                android:gravity="center"
-                android:textColor="@color/purple_700"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="Please Wait..."
-                android:textSize="@dimen/_22ssp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="result will be published on right time !!"
-                android:textSize="@dimen/_15ssp"
-                android:gravity="center"
-                android:textColor="@color/purple_700"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="कृपया प्रतीक्षा करें..."
-                android:textSize="@dimen/_22ssp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="परिणाम सही समय पर प्रकाशित होगा !!"
-                android:textSize="@dimen/_15ssp"
-                android:gravity="center"
-                android:textColor="@color/purple_700"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

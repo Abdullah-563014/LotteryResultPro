@@ -141,6 +141,14 @@ dependencies {
 //    for attractive background
     implementation 'com.github.ibrahimsn98:android-particles:2.0'
 
+    //    for animated text
+    def htextview_version = "0.1.6"
+    implementation "com.hanks:htextview-base:$htextview_version"
+    implementation "com.hanks:htextview-line:$htextview_version"
+    implementation "com.hanks:htextview-rainbow:$htextview_version"
+    implementation "com.hanks:htextview-typer:$htextview_version"
+    implementation "com.hanks:htextview-scale:$htextview_version"
+
 
 
 

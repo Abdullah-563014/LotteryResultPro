@@ -2,7 +2,7 @@
 <resources>
 
 
-    <string name="search_number">নম্বর অনুসন্ধান</string>
+    <string name="search_number">টিকিট বাছাই করুন</string>
     <string name="today_result">আজকের রেজাল্ট</string>
     <string name="yesterday_result">গতকালের রেজাল্ট</string>
     <string name="yesterday_and_pre">গতকাল এবং আগের দিন</string>
@@ -24,16 +24,17 @@
     <string name="contact_us">যোগাযোগ করুন</string>
     <string name="more_apps">আরো অ্যাপ্লিকেশান</string>
     <string name="last_four_degit_of_lottery_number">লটারির সংখ্যাটির শেষ 4 সংখ্যা</string>
-    <string name="common_number">সাধারণ সংখ্যা</string>
+    <string name="common_number">এই নাম্বার গুলো বেশি খেলে</string>
     <string name="found_new_version">নতুন সংস্করণ পাওয়া গেছে</string>
     <string name="app_update_message">আপনার অ্যাপ্লিকেশন আপডেট করা হয়নি, দয়া করে সর্বশেষ সংস্করণে আপডেট করুন।</string>
     <string name="ok">ঠিক আছে</string>
     <string name="language_change">ভাষা পরিবর্তন</string>
+    <string name="search_number_description">আপনি যে টিকিট কিনবেন,সেই টিকিট লাষ্ট কবে খেলেছে,এখানে সেটা সার্চ করে দেখে নিন।</string>
 
 
 
 
-    <string name="not_implemented_message">এই বিকল্পটি দেখতে দয়া করে 3-4 দিন অপেক্ষা করুন।</string>
+    <string name="not_implemented_message">অনুগ্রহপূর্বক অপেক্ষা করুন. এই বিকল্পটি এখনও কার্যকর করা হয়নি</string>
 
 
 
