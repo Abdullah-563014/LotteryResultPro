@@ -3,6 +3,7 @@ package com.skithub.resultdear.ui
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
@@ -11,6 +12,7 @@ import com.google.firebase.ktx.Firebase
 import com.onesignal.OSNotificationReceivedEvent
 import com.onesignal.OneSignal
 import com.skithub.resultdear.database.network.MyApi
+import com.skithub.resultdear.ui.today_result.TodayResultActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 
@@ -43,18 +45,19 @@ class MyApplication : Application() {
         OneSignal.setNotificationWillShowInForegroundHandler { notificationReceivedEvent: OSNotificationReceivedEvent ->
             val notification = notificationReceivedEvent.notification
             val data = notification.additionalData
-
             notificationReceivedEvent.complete(notification)
         }
         OneSignal.setNotificationOpenedHandler { result ->
             result?.let {
-                val launchUrl: String = it.notification.launchURL
-//            val notificationIntent: Intent =
-//                Intent(applicationContext, SplashActivity::class.java)
-////            notificationIntent.putExtra(Constants.targetUrl, launchUrl)
-//            notificationIntent.flags =
-//                Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_NEW_TASK
-//            startActivity(notificationIntent)
+                val launchUrl: String? = it.notification?.launchURL
+                val notificationIntent: Intent
+                if (launchUrl==null) {
+                    notificationIntent = Intent(applicationContext, TodayResultActivity::class.java)
+                } else {
+                    notificationIntent= Intent(Intent.ACTION_VIEW, Uri.parse(launchUrl))
+                }
+                notificationIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(notificationIntent)
             }
         }
         OneSignal.unsubscribeWhenNotificationsAreDisabled(true)

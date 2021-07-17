@@ -68,6 +68,39 @@
         <item name="android:layout_marginStart">@dimen/_1sdp</item>
         <item name="android:layout_marginEnd">@dimen/_1sdp</item>
     </style>
+    <style name="MyNormalTextViewStyle">
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="MyNormalBoldTextViewStyle">
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="MyMediumTextViewStyle">
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="MyMediumBoldTextViewStyle">
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="MyLargeTextViewStyle">
+        <item name="android:textSize">@dimen/_22ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="MyLargeBoldTextViewStyle">
+        <item name="android:textSize">@dimen/_22ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 
 

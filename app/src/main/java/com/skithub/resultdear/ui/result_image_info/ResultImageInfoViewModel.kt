@@ -9,7 +9,7 @@ class ResultImageInfoViewModel(var myApi: MyApi): ViewModel() {
 
 
 
-    suspend fun lotteryInfoByDateAndTime(date: String, time: String, dateTwo: String) =PdfRepositories().getLotteryInfoByDateAndTime(date,time,dateTwo,myApi)
+    suspend fun getLotteryNumberListByDateTime(date: String, time: String) =PdfRepositories().getLotteryNumberListByDateTime(date,time,myApi)
 
 
 

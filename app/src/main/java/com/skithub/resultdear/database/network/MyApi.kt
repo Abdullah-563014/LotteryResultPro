@@ -26,6 +26,12 @@ interface MyApi {
         @Query("LotteryNumber") lotteryNumber: String
     ): Response<LotteryNumberResponse>
 
+    @GET("get_lottery_number_list_by_win_date_time.php?")
+    suspend fun getLotteryNumberListByDateTime(
+        @Query("WinDate") winDate: String,
+        @Query("WinTime") winTime: String
+    ): Response<LotteryNumberResponse>
+
     @GET("check_today_result_by_lottery_number_and_win_date_time_type.php?")
     suspend fun checkTodayResultUsingNumberDateTimeAndType(
         @Query("LotteryNumber") lotteryNumber: String,

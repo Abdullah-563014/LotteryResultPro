@@ -6,6 +6,8 @@
     <string name="support_email" translatable="false">clist.abd@gmail.com</string>
     <string name="result_not_publish_message" translatable="false">ফলাফল যথা সময়ে প্রকাশ করা হবে,অনুগ্রহ করে অপেক্ষা করুন।
 (পাবলিশ হয়ে গেলে নোটিফিকেশন পাবেন)</string>
+    <string name="dear" translatable="false">DEAR</string>
+    <string name="nagaland_state" translatable="false">Nagaland State Lotteries</string>
 
 
     <string name="search_number">Pick a ticket</string>
@@ -36,6 +38,9 @@
     <string name="ok">Ok</string>
     <string name="language_change">Language change</string>
     <string name="search_number_description">The ticket that you will buy, when the ticket was last played, search it here.</string>
+    <string name="win_type">Win Type</string>
+
+
 
 
     <string name="not_implemented_message">Please wait. This option is not implemented yet.</string>
