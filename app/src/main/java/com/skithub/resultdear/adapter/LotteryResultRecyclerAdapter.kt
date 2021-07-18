@@ -33,8 +33,21 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
         fun bind(item: LotteryResultRecyclerModel) {
             try {
                 binding.resultTypeTextView.text="${context.resources.getString(R.string.win_type)}:- ${item.winType}"
-                val layoutManager: GridLayoutManager= GridLayoutManager(context,4)
-                val adapter: LotteryResultChildRecyclerAdapter=LotteryResultChildRecyclerAdapter(context,item.data!!)
+                val layoutManager: GridLayoutManager= GridLayoutManager(context,7)
+                val childList: MutableList<LotteryNumberModel> =item.data!!
+                childList.sortBy {
+                    it.lotteryNumber
+                }
+                val adapter: LotteryResultChildRecyclerAdapter=LotteryResultChildRecyclerAdapter(context,childList)
+                layoutManager.spanSizeLookup= object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return if (adapter.getItemViewType(position)==0) {
+                            2
+                        } else {
+                            1
+                        }
+                    }
+                }
                 binding.resultChildRecyclerView.layoutManager=layoutManager
                 binding.resultChildRecyclerView.adapter=adapter
             } catch (e: Exception) {

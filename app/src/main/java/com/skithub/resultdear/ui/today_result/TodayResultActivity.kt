@@ -7,7 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityTodayResultBinding
-import com.skithub.resultdear.ui.result_image_info.ResultImageInfoActivity
+import com.skithub.resultdear.ui.lottery_result_info.LotteryResultInfoActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import java.util.*
@@ -47,7 +47,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
             var pdfInfoIntent: Intent
             when (it.id) {
                 R.id.morningButton -> {
-                    pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
+                    pdfInfoIntent= Intent(this, LotteryResultInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.morningTime)
                     pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
@@ -55,7 +55,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.eveningButton -> {
-                    pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
+                    pdfInfoIntent= Intent(this, LotteryResultInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.eveningTime)
                     pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
@@ -63,7 +63,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.nightButton -> {
-                    pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
+                    pdfInfoIntent= Intent(this, LotteryResultInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.nightTime)
                     pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
@@ -71,7 +71,7 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.bumperNightButton -> {
-                    pdfInfoIntent= Intent(this, ResultImageInfoActivity::class.java)
+                    pdfInfoIntent= Intent(this, LotteryResultInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH))
                     pdfInfoIntent.putExtra(Constants.resultTimeKey,Constants.bumperTime)
                     pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)

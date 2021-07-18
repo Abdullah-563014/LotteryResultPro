@@ -1,39 +1,15 @@
-package com.skithub.resultdear.ui.result_image_info
+package com.skithub.resultdear.ui.lottery_result_info
 
-import android.Manifest
-import android.app.DownloadManager
 import android.content.Context
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.webkit.URLUtil
-import android.widget.ImageView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.github.chrisbanes.photoview.PhotoView
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.MultiplePermissionsReport
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.leinardi.android.speeddial.SpeedDialActionItem
-import com.leinardi.android.speeddial.SpeedDialView
 import com.skithub.resultdear.R
 import com.skithub.resultdear.adapter.LotteryResultRecyclerAdapter
-import com.skithub.resultdear.databinding.ActivityResultImageInfoBinding
+import com.skithub.resultdear.databinding.ActivityLotteryResultInfoBinding
 import com.skithub.resultdear.model.LotteryNumberModel
-import com.skithub.resultdear.model.LotteryPdfModel
 import com.skithub.resultdear.model.LotteryResultRecyclerModel
 import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.utils.CommonMethod
@@ -43,10 +19,10 @@ import com.skithub.resultdear.utils.MyExtensions.shortToast
 import java.util.*
 
 
-class ResultImageInfoActivity : AppCompatActivity() {
+class LotteryResultInfoActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityResultImageInfoBinding
-    private lateinit var viewModel: ResultImageInfoViewModel
+    private lateinit var binding: ActivityLotteryResultInfoBinding
+    private lateinit var viewModelLottery: LotteryResultInfoViewModel
     private var resultDate: String=CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH)
     private var resultTime: String=Constants.eveningTime
     private var resultDateTwo: String=CommonMethod.increaseDecreaseDaysUsingValue(-2, Locale.ENGLISH)
@@ -59,9 +35,9 @@ class ResultImageInfoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityResultImageInfoBinding.inflate(layoutInflater)
-        val factory: ResultImageInfoViewModelFactory= ResultImageInfoViewModelFactory((application as MyApplication).myApi)
-        viewModel=ViewModelProvider(this,factory).get(ResultImageInfoViewModel::class.java)
+        binding= ActivityLotteryResultInfoBinding.inflate(layoutInflater)
+        val factoryLottery: LotteryResultInfoViewModelFactory= LotteryResultInfoViewModelFactory((application as MyApplication).myApi)
+        viewModelLottery=ViewModelProvider(this,factoryLottery).get(LotteryResultInfoViewModel::class.java)
         setContentView(binding.root)
 
 
@@ -91,8 +67,10 @@ class ResultImageInfoActivity : AppCompatActivity() {
             binding.imageViewSwipeRefreshLayout.isRefreshing=false
             loadLotteryNumberInfoUsingDateAndTime()
         }
-        binding.dateTextView.text=resultDate
-        binding.timeTextView.text=resultTime
+        binding.leftDateTextView.text=resultDate
+        binding.leftTimeTextView.text=resultTime
+        binding.rightDateTextView.text=resultDate
+        binding.rightTimeTextView.text=resultTime
         binding.stateNameTextView.text=resources.getString(R.string.nagaland_state)
     }
 
@@ -109,7 +87,7 @@ class ResultImageInfoActivity : AppCompatActivity() {
             binding.resultRootLayout.visibility=View.GONE
             binding.waitingRootLayout.visibility=View.GONE
 
-            val response=viewModel.getLotteryNumberListByDateTime(resultDate,resultTime)
+            val response=viewModelLottery.getLotteryNumberListByDateTime(resultDate,resultTime)
             binding.spinKit.visibility=View.GONE
             if (response.isSuccessful && response.code()==200) {
                 if (response.body()!=null) {

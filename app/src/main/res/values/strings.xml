@@ -8,6 +8,9 @@
 (পাবলিশ হয়ে গেলে নোটিফিকেশন পাবেন)</string>
     <string name="dear" translatable="false">DEAR</string>
     <string name="nagaland_state" translatable="false">Nagaland State Lotteries</string>
+    <string name="copied_successfully" translatable="false">copied successfully.</string>
+
+
 
 
     <string name="search_number">Pick a ticket</string>

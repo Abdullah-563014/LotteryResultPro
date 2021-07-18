@@ -1,10 +1,10 @@
-package com.skithub.resultdear.ui.result_image_info
+package com.skithub.resultdear.ui.lottery_result_info
 
 import androidx.lifecycle.ViewModel
 import com.skithub.resultdear.database.PdfRepositories
 import com.skithub.resultdear.database.network.MyApi
 
-class ResultImageInfoViewModel(var myApi: MyApi): ViewModel() {
+class LotteryResultInfoViewModel(var myApi: MyApi): ViewModel() {
 
 
 

@@ -24,7 +24,7 @@
         <activity android:name=".ui.winning_number.WinningNumberActivity" />
         <activity android:name=".ui.privacy_policy.PrivacyPolicyActivity" />
         <activity android:name=".ui.today_lottery_number_check.TodayLotteryNumberCheckActivity" />
-        <activity android:name=".ui.result_image_info.ResultImageInfoActivity" />
+        <activity android:name=".ui.lottery_result_info.LotteryResultInfoActivity" />
         <activity android:name=".ui.yes_vs_pre.YesVsPreActivity" />
         <activity
             android:name=".ui.yesterday_result.YesterdayResultActivity"
