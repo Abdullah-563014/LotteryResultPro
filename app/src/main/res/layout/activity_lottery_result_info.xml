@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/imageViewSwipeRefreshLayout"
-    android:background="@drawable/gradient_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.lottery_result_info.LotteryResultInfoActivity">
@@ -25,8 +24,9 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/stateNameTextView"
-                    style="@style/MyMediumTextViewStyle"
+                    style="@style/MyNormalTextViewStyle"
                     android:text="@string/app_name"
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,12 +44,14 @@
                             android:id="@+id/leftDateTextView"
                             style="@style/MyNormalBoldTextViewStyle"
                             android:text="@string/app_name"
+                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
                             android:id="@+id/leftTimeTextView"
                             style="@style/MyNormalBoldTextViewStyle"
                             android:text="@string/app_name"
+                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -75,15 +77,77 @@
                             android:id="@+id/rightDateTextView"
                             style="@style/MyNormalBoldTextViewStyle"
                             android:text="@string/app_name"
+                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
                             android:id="@+id/rightTimeTextView"
                             style="@style/MyNormalBoldTextViewStyle"
                             android:text="@string/app_name"
+                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/firstPrizeTextView"
+                        style="@style/MyMediumBoldTextViewStyle"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/firstPrizeAmountTextView"
+                        android:text="1st Prize \u20B9"
+                        android:textColor="@color/gradient_center"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/firstPrizeAmountTextView"
+                        style="@style/MyLargeBoldTextViewStyle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="1 Crore/-"
+                        android:textColor="@color/orange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/firstPrizeLotteryNumberTextView"
+                        style="@style/MyMediumBoldTextViewStyle"
+                        app:layout_constraintStart_toEndOf="@+id/firstPrizeAmountTextView"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/app_name"
+                        android:textColor="@color/gradient_center"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/consPrizeTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textColor="@color/black"
+                        android:text="Cons. Prize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/remainingAllSerialTextView"
+                        app:layout_constraintStart_toEndOf="@+id/consPrizeTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textColor="@color/black"
+                        android:text="@string/app_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/resultRecyclerView"
@@ -96,6 +160,7 @@
 
         <LinearLayout
             android:id="@+id/waitingRootLayout"
+            android:background="@drawable/gradient_bg"
             android:visibility="gone"
             android:orientation="vertical"
             android:gravity="center"

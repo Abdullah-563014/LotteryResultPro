@@ -58,28 +58,32 @@ class TodayLotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListene
 
     private fun checkNumber() {
         Coroutines.main {
-            val lotteryNumber: String=binding.lotteryNumberEditText.text.toString()
-            binding.spinKit.visibility= View.VISIBLE
-            list.clear()
-            adapter.notifyDataSetChanged()
-            val response=viewModel.findLotteryInfoUsingLotteryNumber(lotteryNumber)
-            if (response.isSuccessful && response.code()==200) {
-                binding.spinKit.visibility= View.GONE
-                if (response.body()?.status.equals("success",true)) {
-                    list.addAll(response.body()?.data!!)
-                    adapter.notifyDataSetChanged()
-                    if (list.size>0) {
-                        binding.recyclerView.visibility=View.VISIBLE
+            try {
+                val lotteryNumber: String=binding.lotteryNumberEditText.text.toString()
+                binding.spinKit.visibility= View.VISIBLE
+                list.clear()
+                adapter.notifyDataSetChanged()
+                val response=viewModel.findLotteryInfoUsingLotteryNumber(lotteryNumber)
+                if (response.isSuccessful && response.code()==200) {
+                    binding.spinKit.visibility= View.GONE
+                    if (response.body()?.status.equals("success",true)) {
+                        list.addAll(response.body()?.data!!)
+                        adapter.notifyDataSetChanged()
+                        if (list.size>0) {
+                            binding.recyclerView.visibility=View.VISIBLE
+                        } else {
+                            binding.recyclerView.visibility=View.GONE
+                            shortToast("Sorry, no data found")
+                        }
                     } else {
-                        binding.recyclerView.visibility=View.GONE
-                        shortToast("Sorry, no data found")
+                        shortToast(response.body()?.message!!)
                     }
                 } else {
-                    shortToast(response.body()?.message!!)
+                    binding.spinKit.visibility= View.GONE
+                    shortToast("failed for:- ${response.errorBody()?.toString()}")
                 }
-            } else {
+            } catch (e: Exception) {
                 binding.spinKit.visibility= View.GONE
-                shortToast("failed for:- ${response.errorBody()?.toString()}")
             }
         }
     }

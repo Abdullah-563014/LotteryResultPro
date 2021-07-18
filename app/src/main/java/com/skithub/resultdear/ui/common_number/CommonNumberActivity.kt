@@ -90,20 +90,24 @@ class CommonNumberActivity : AppCompatActivity() {
 
     private fun loadDuplicateLotteryNumber() {
         Coroutines.main {
-            binding.spinKit.visibility= View.VISIBLE
-            val response=viewModel.getDuplicateLotteryNumberList(page_number.toString(),item_count.toString())
-            if (response.isSuccessful && response.code()==200) {
-                binding.spinKit.visibility= View.GONE
-                if (response.body()!=null) {
-                    if (response.body()?.status.equals("success",true)) {
-                        list.addAll(response.body()?.data!!)
-                        adapter.notifyDataSetChanged()
-                    } else {
-                        shortToast("message:- ${response.body()?.message}")
-                        Log.d(Constants.TAG,"message:- ${response.body()?.message}")
+            try {
+                binding.spinKit.visibility= View.VISIBLE
+                val response=viewModel.getDuplicateLotteryNumberList(page_number.toString(),item_count.toString())
+                if (response.isSuccessful && response.code()==200) {
+                    binding.spinKit.visibility= View.GONE
+                    if (response.body()!=null) {
+                        if (response.body()?.status.equals("success",true)) {
+                            list.addAll(response.body()?.data!!)
+                            adapter.notifyDataSetChanged()
+                        } else {
+                            shortToast("message:- ${response.body()?.message}")
+                            Log.d(Constants.TAG,"message:- ${response.body()?.message}")
+                        }
                     }
+                } else {
+                    binding.spinKit.visibility= View.GONE
                 }
-            } else {
+            } catch (e: Exception) {
                 binding.spinKit.visibility= View.GONE
             }
         }

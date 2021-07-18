@@ -54,9 +54,8 @@ class LotteryResultChildRecyclerAdapter(val context: Context, val list: MutableL
         fun bind(item: LotteryNumberModel) {
             try {
                 if (item.winType.equals(Constants.winTypeFirst)) {
-                    binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber} = 1 Crore/-"
-                    binding.lotteryNumberTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,21.0f)
-                    binding.lotteryNumberRecyclerRootLayout.setBackgroundColor(Color.parseColor("#F13F06"))
+                    binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
+                    binding.lotteryNumberTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,20.0f)
                 } else {
                     binding.lotteryNumberTextView.text="${item.lotteryNumber}"
                 }

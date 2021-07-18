@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/lotteryNumberRecyclerRootLayout"
     android:orientation="vertical"
-    android:background="@color/teal_700"
     android:layout_margin="@dimen/_1sdp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -11,6 +10,7 @@
         android:id="@+id/lotteryNumberTextView"
         style="@style/MyNormalBoldTextViewStyle"
         android:text="@string/app_name"
+        android:textColor="@color/black"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

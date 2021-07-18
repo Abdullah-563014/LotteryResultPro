@@ -86,20 +86,24 @@ class WinningNumberActivity : AppCompatActivity() {
 
     private fun loadAllLotteryResult() {
         Coroutines.main {
-            binding.spinKit.visibility=View.VISIBLE
-            val response=viewModel.findLotteryNumberListWithWinType(page_number.toString(),item_count.toString(),Constants.winTypeFirst)
-            if (response.isSuccessful && response.code()==200) {
-                binding.spinKit.visibility=View.GONE
-                if (response.body()!=null) {
-                    if (response.body()?.status.equals("success",true)) {
-                        list.addAll(response.body()?.data!!)
-                        adapter.notifyDataSetChanged()
-                    } else {
-                        shortToast("message:- ${response.body()?.message}")
+            try {
+                binding.spinKit.visibility=View.VISIBLE
+                val response=viewModel.findLotteryNumberListWithWinType(page_number.toString(),item_count.toString(),Constants.winTypeFirst)
+                if (response.isSuccessful && response.code()==200) {
+                    binding.spinKit.visibility=View.GONE
+                    if (response.body()!=null) {
+                        if (response.body()?.status.equals("success",true)) {
+                            list.addAll(response.body()?.data!!)
+                            adapter.notifyDataSetChanged()
+                        } else {
+                            shortToast("message:- ${response.body()?.message}")
+                        }
                     }
+                } else {
+                    binding.spinKit.visibility=View.GONE
                 }
-            } else {
-                binding.spinKit.visibility=View.GONE
+            } catch (e: Exception) {
+                binding.spinKit.visibility= View.GONE
             }
         }
     }

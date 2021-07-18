@@ -30,6 +30,8 @@ class LotteryResultInfoActivity : AppCompatActivity() {
     private var finalList: MutableList<LotteryResultRecyclerModel> = arrayListOf()
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var adapter: LotteryResultRecyclerAdapter
+    private var adsImageUrl: String="https://lotteryresultpro.lotterysambadpro.xyz/uploads/images/sample.jpg"
+    private var adsTargetUrl: String="https://www.google.com/"
 
 
 
@@ -76,55 +78,59 @@ class LotteryResultInfoActivity : AppCompatActivity() {
 
     private fun setUpRecyclerView() {
         layoutManager= LinearLayoutManager(this)
-        adapter= LotteryResultRecyclerAdapter(this,finalList)
+        adapter= LotteryResultRecyclerAdapter(this,finalList,adsImageUrl,adsTargetUrl)
         binding.resultRecyclerView.layoutManager=layoutManager
         binding.resultRecyclerView.adapter=adapter
     }
 
     private fun loadLotteryNumberInfoUsingDateAndTime() {
         Coroutines.main {
-            binding.spinKit.visibility=View.VISIBLE
-            binding.resultRootLayout.visibility=View.GONE
-            binding.waitingRootLayout.visibility=View.GONE
-
-            val response=viewModelLottery.getLotteryNumberListByDateTime(resultDate,resultTime)
-            binding.spinKit.visibility=View.GONE
-            if (response.isSuccessful && response.code()==200) {
-                if (response.body()!=null) {
-                    if (response.body()?.status.equals("success")) {
-                        list.clear()
-                        list.addAll(response.body()?.data!!)
-                        if (list.size>0) {
-                            filteringLotteryNumber(list)
-                            binding.resultRootLayout.visibility=View.VISIBLE
-                            binding.waitingRootLayout.visibility=View.GONE
+            try {
+                binding.spinKit.visibility=View.VISIBLE
+                binding.resultRootLayout.visibility=View.GONE
+                binding.waitingRootLayout.visibility=View.GONE
+                val response=viewModelLottery.getLotteryNumberListByDateTime(resultDate,resultTime)
+                binding.spinKit.visibility=View.GONE
+                if (response.isSuccessful && response.code()==200) {
+                    if (response.body()!=null) {
+                        if (response.body()?.status.equals("success")) {
+                            list.clear()
+                            list.addAll(response.body()?.data!!)
+                            if (list.size>0) {
+                                filteringLotteryNumber(list)
+                                binding.resultRootLayout.visibility=View.VISIBLE
+                                binding.waitingRootLayout.visibility=View.GONE
+                            } else {
+                                binding.resultRootLayout.visibility=View.GONE
+                                binding.waitingRootLayout.visibility=View.VISIBLE
+                            }
                         } else {
+                            binding.spinKit.visibility=View.GONE
                             binding.resultRootLayout.visibility=View.GONE
                             binding.waitingRootLayout.visibility=View.VISIBLE
+                            shortToast("${response.body()?.message}")
                         }
                     } else {
                         binding.spinKit.visibility=View.GONE
                         binding.resultRootLayout.visibility=View.GONE
                         binding.waitingRootLayout.visibility=View.VISIBLE
-                        shortToast("${response.body()?.message}")
+                        shortToast("Sorry, Unknown error occurred.")
                     }
                 } else {
                     binding.spinKit.visibility=View.GONE
                     binding.resultRootLayout.visibility=View.GONE
                     binding.waitingRootLayout.visibility=View.VISIBLE
-                    shortToast("Sorry, Unknown error occurred.")
+                    shortToast("failed for:- ${response.errorBody()?.string()}")
                 }
-            } else {
-                binding.spinKit.visibility=View.GONE
+            } catch (e: Exception) {
                 binding.resultRootLayout.visibility=View.GONE
                 binding.waitingRootLayout.visibility=View.VISIBLE
-                shortToast("failed for:- ${response.errorBody()?.string()}")
             }
         }
     }
 
     private fun filteringLotteryNumber(list: MutableList<LotteryNumberModel>) {
-        val firstList: MutableList<LotteryNumberModel> = arrayListOf()
+//        val firstList: MutableList<LotteryNumberModel> = arrayListOf()
         val secondList: MutableList<LotteryNumberModel> = arrayListOf()
         val thirdList: MutableList<LotteryNumberModel> = arrayListOf()
         val fourthList: MutableList<LotteryNumberModel> = arrayListOf()
@@ -132,7 +138,9 @@ class LotteryResultInfoActivity : AppCompatActivity() {
 
         for ( item in list) {
             if (item.winType.equals(Constants.winTypeFirst)) {
-                firstList.add(item)
+//                firstList.add(item)
+                binding.firstPrizeLotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
+                binding.remainingAllSerialTextView.text="\u20B9 1000/- ${item.lotteryNumber} (REMAINING ALL SERIALS)"
             } else if (item.winType.equals(Constants.winTypeSecond)) {
                 secondList.add(item)
             } else if (item.winType.equals(Constants.winTypeThird)) {
@@ -143,7 +151,7 @@ class LotteryResultInfoActivity : AppCompatActivity() {
                 fifthList.add(item)
             }
         }
-        finalList.add(LotteryResultRecyclerModel(Constants.winTypeFirst,firstList))
+//        finalList.add(LotteryResultRecyclerModel(Constants.winTypeFirst,firstList))
         finalList.add(LotteryResultRecyclerModel(Constants.winTypeSecond,secondList))
         finalList.add(LotteryResultRecyclerModel(Constants.winTypeThird,thirdList))
         finalList.add(LotteryResultRecyclerModel(Constants.winTypeFourth,fourthList))
