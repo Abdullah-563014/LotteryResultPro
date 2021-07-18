@@ -3,6 +3,8 @@ package com.skithub.resultdear.adapter
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.Color
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +54,9 @@ class LotteryResultChildRecyclerAdapter(val context: Context, val list: MutableL
         fun bind(item: LotteryNumberModel) {
             try {
                 if (item.winType.equals(Constants.winTypeFirst)) {
-                    binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
+                    binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber} = 1 Crore/-"
+                    binding.lotteryNumberTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,21.0f)
+                    binding.lotteryNumberRecyclerRootLayout.setBackgroundColor(Color.parseColor("#F13F06"))
                 } else {
                     binding.lotteryNumberTextView.text="${item.lotteryNumber}"
                 }

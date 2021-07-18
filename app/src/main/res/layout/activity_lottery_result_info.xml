@@ -11,12 +11,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/resultRootLayout"
             android:fillViewport="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
+                android:background="@drawable/result_background"
+                android:layout_margin="@dimen/_1sdp"
+                android:padding="@dimen/_5sdp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -84,11 +87,10 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/resultRecyclerView"
-                    android:padding="@dimen/_5sdp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
         <!--    Image view layout is ended here-->
 
 
