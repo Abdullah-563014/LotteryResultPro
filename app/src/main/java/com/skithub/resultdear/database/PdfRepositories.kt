@@ -41,7 +41,7 @@ class PdfRepositories {
         return myApi.getLotteryNumberListByDateTime(date,time)
     }
 
-    suspend fun getLotteryResultList(pageNumber: String, itemCount: String, myApi: MyApi): Response<LotteryPdfResponse> {
+    suspend fun getLotteryResultList(pageNumber: String, itemCount: String, myApi: MyApi): Response<LotteryNumberResponse> {
         return myApi.getLotteryResultList(pageNumber,itemCount)
     }
 

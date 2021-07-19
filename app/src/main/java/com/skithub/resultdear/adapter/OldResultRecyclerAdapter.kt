@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.OldResultRecyclerViewModelLayoutBinding
+import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.model.LotteryPdfModel
 import com.skithub.resultdear.ui.lottery_result_info.LotteryResultInfoActivity
 import com.skithub.resultdear.utils.Constants
 
-class OldResultRecyclerAdapter(val context: Context, val list: MutableList<LotteryPdfModel>): RecyclerView.Adapter<OldResultRecyclerAdapter.OldResultRecyclerViewHolder>() {
+class OldResultRecyclerAdapter(val context: Context, val list: MutableList<LotteryNumberModel>): RecyclerView.Adapter<OldResultRecyclerAdapter.OldResultRecyclerViewHolder>() {
 
 
 
@@ -32,10 +33,10 @@ class OldResultRecyclerAdapter(val context: Context, val list: MutableList<Lotte
 
     inner class OldResultRecyclerViewHolder(val binding: OldResultRecyclerViewModelLayoutBinding): RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
-        fun bind(item: LotteryPdfModel) {
-            binding.dateTextView.text=item.resultDate
-            binding.timeTextView.text=item.resultTime
-            binding.dayNameTextView.text=item.dayName
+        fun bind(item: LotteryNumberModel) {
+            binding.dateTextView.text=item.winDate
+            binding.timeTextView.text=item.winTime
+            binding.dayNameTextView.text=item.winDayName
             binding.oldResultRootLayout.setOnClickListener(this)
         }
 
@@ -44,8 +45,8 @@ class OldResultRecyclerAdapter(val context: Context, val list: MutableList<Lotte
                 val oldResultIntent= Intent(context,LotteryResultInfoActivity::class.java)
                 when (it.id) {
                     R.id.oldResultRootLayout -> {
-                        oldResultIntent.putExtra(Constants.resultTimeKey,list[adapterPosition].resultTime)
-                        oldResultIntent.putExtra(Constants.resultDateKey,list[adapterPosition].resultDate)
+                        oldResultIntent.putExtra(Constants.resultTimeKey,list[adapterPosition].winTime)
+                        oldResultIntent.putExtra(Constants.resultDateKey,list[adapterPosition].winDate)
                         oldResultIntent.putExtra(Constants.isVersusResultKey,false)
                         context.startActivity(oldResultIntent)
                     }

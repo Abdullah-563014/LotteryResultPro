@@ -66,7 +66,7 @@ interface MyApi {
     suspend fun getLotteryResultList(
         @Query("PageNumber") pageNumber: String,
         @Query("ItemCount") itemCount: String
-    ): Response<LotteryPdfResponse>
+    ): Response<LotteryNumberResponse>
 
     @GET("get_bumper_result_list.php?")
     suspend fun getBumperLotteryResultList(

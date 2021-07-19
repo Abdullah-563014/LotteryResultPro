@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skithub.resultdear.adapter.OldResultRecyclerAdapter
 import com.skithub.resultdear.databinding.ActivityOldResultBinding
+import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.model.LotteryPdfModel
 import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.utils.CommonMethod
@@ -20,7 +21,7 @@ class OldResultActivity : AppCompatActivity() {
     private lateinit var viewModel: OldResultViewModel
     private lateinit var adapter: OldResultRecyclerAdapter
     private lateinit var layoutManager: LinearLayoutManager
-    private var list: MutableList<LotteryPdfModel> = arrayListOf()
+    private var list: MutableList<LotteryNumberModel> = arrayListOf()
     private var page_number: Int=1
     private var item_count: Int=30
     private var past_visible_item: Int =0
@@ -91,16 +92,15 @@ class OldResultActivity : AppCompatActivity() {
             try {
                 binding.spinKit.visibility=View.VISIBLE
                 val response=viewModel.lotteryResultList(page_number.toString(),item_count.toString())
+                binding.spinKit.visibility=View.GONE
                 if (response.isSuccessful && response.code()==200) {
-                    binding.spinKit.visibility=View.GONE
                     if (response.body()!=null) {
-                        if (response.body()?.status.equals("success",true)) {
-                            list.addAll(response.body()?.data!!)
+                        if (response.body()!!.status.equals("success",true)) {
+                            list.clear()
+                            list.addAll(response.body()!!.data!!)
                             adapter.notifyDataSetChanged()
                         }
                     }
-                } else {
-                    binding.spinKit.visibility=View.GONE
                 }
             } catch (e: Exception) {
                 binding.spinKit.visibility=View.GONE

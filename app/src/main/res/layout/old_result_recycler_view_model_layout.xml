@@ -5,7 +5,7 @@
     android:id="@+id/oldResultRootLayout"
     android:layout_marginTop="@dimen/_5sdp"
     android:layout_marginBottom="@dimen/_5sdp"
-    app:cardBackgroundColor="@color/teal_700"
+    app:cardBackgroundColor="@color/purple_500"
     app:cardCornerRadius="@dimen/_5sdp"
     app:cardElevation="@dimen/_5sdp"
     android:elevation="@dimen/_5sdp"

@@ -51,7 +51,7 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
         if (position<adsImagePosition) {
             (holder as LotteryResultRecyclerViewHolder).bind(list[position])
         } else if (position==adsImagePosition) {
-            (holder as LotteryResultRecyclerImageViewHolder).bind(adsImageList[0])
+            (holder as LotteryResultRecyclerImageViewHolder).bind()
         } else if (position>adsImagePosition){
             (holder as LotteryResultRecyclerViewHolder).bind(list[position-1])
         }
@@ -99,13 +99,13 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
     inner class LotteryResultRecyclerImageViewHolder(val binding: AdsImageViewLayoutBinding): RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
 
-        fun bind(adsImageModel: AdsImageModel) {
+        fun bind() {
             try {
-                if (adsImageModel.activeStatus.isNullOrEmpty() || adsImageModel.activeStatus.equals("false",true)) {
+                if (adsImageList[0].activeStatus.isNullOrEmpty() || adsImageList[0].activeStatus.equals("false",true)) {
                     binding.lotteryImageView.visibility=View.GONE
                 } else {
                     binding.lotteryImageView.visibility=View.VISIBLE
-                    Glide.with(context).load(adsImageModel.imageUrl).placeholder(R.drawable.loading_placeholder).into(binding.lotteryImageView)
+                    Glide.with(context).load(adsImageList[0].imageUrl).placeholder(R.drawable.loading_placeholder).into(binding.lotteryImageView)
                     binding.lotteryImageView.setOnClickListener(this)
                 }
             } catch (e: Exception) {
