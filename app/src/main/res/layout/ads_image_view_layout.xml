@@ -9,6 +9,7 @@
         android:id="@+id/lotteryImageView"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/tutorial_thumb"
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp" />
 </LinearLayout>

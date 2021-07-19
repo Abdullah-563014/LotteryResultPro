@@ -1,5 +1,6 @@
 package com.skithub.resultdear.adapter
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -14,15 +15,13 @@ import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.LotteryResultChildRecyclerViewModelLayoutBinding
 import com.skithub.resultdear.databinding.LotteryResultRecyclerViewModelLayoutBinding
 import com.skithub.resultdear.model.LotteryNumberModel
+import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.MyExtensions.shortToast
 
-class LotteryResultChildRecyclerAdapter(val context: Context, val list: MutableList<LotteryNumberModel>): RecyclerView.Adapter<LotteryResultChildRecyclerAdapter.LotteryResultChildRecyclerViewHolder>() {
+class LotteryResultChildRecyclerAdapter(val context: Context, val list: MutableList<LotteryNumberModel>, val columnCount: Int): RecyclerView.Adapter<LotteryResultChildRecyclerAdapter.LotteryResultChildRecyclerViewHolder>() {
 
-    private val firstPrizeViewType: Int=0
-    private val otherPrizeViewType: Int=1
     private val clipBoardManager: ClipboardManager=context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -40,26 +39,18 @@ class LotteryResultChildRecyclerAdapter(val context: Context, val list: MutableL
         return list.size
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (list[position].winType.equals(Constants.winTypeFirst)) {
-            firstPrizeViewType
-        } else {
-            otherPrizeViewType
-        }
-    }
-
     inner class LotteryResultChildRecyclerViewHolder(val binding: LotteryResultChildRecyclerViewModelLayoutBinding): RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
 
         fun bind(item: LotteryNumberModel) {
             try {
-                if (item.winType.equals(Constants.winTypeFirst)) {
-                    binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
-                    binding.lotteryNumberTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,20.0f)
-                } else {
-                    binding.lotteryNumberTextView.text="${item.lotteryNumber}"
-                }
+                binding.lotteryNumberTextView.text="${item.lotteryNumber}"
                 binding.lotteryNumberRecyclerRootLayout.setOnClickListener(this)
+
+                val layoutParams=binding.lotteryNumberRecyclerRootLayout.layoutParams
+                val oneItemWidth: Int=(CommonMethod.getScreenWidth(context as Activity)/columnCount)
+                layoutParams.width=(oneItemWidth-(oneItemWidth/(columnCount*2)))
+                binding.lotteryNumberRecyclerRootLayout.layoutParams=layoutParams
             } catch (e: Exception) {
 
             }

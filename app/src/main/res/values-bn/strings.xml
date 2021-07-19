@@ -31,6 +31,7 @@
     <string name="language_change">ভাষা পরিবর্তন</string>
     <string name="search_number_description">আপনি যে টিকিট কিনবেন,সেই টিকিট লাষ্ট কবে খেলেছে,এখানে সেটা সার্চ করে দেখে নিন।</string>
     <string name="win_type">জয়ের ধরণ</string>
+    <string name="result_not_publish_message">ফলাফল যথা সময়ে প্রকাশ করা হবে,অনুগ্রহ করে অপেক্ষা করুন।(পাবলিশ হয়ে গেলে নোটিফিকেশন পাবেন)</string>
 
 
 
