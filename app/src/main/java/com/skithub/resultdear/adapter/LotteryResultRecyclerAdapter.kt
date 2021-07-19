@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -20,12 +21,13 @@ import com.bumptech.glide.request.transition.Transition
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.AdsImageViewLayoutBinding
 import com.skithub.resultdear.databinding.LotteryResultRecyclerViewModelLayoutBinding
+import com.skithub.resultdear.model.AdsImageModel
 import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.model.LotteryResultRecyclerModel
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 
-class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<LotteryResultRecyclerModel>, val adsImageUrl: String, val adsTargetUrl: String): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<LotteryResultRecyclerModel>, val adsImageList: MutableList<AdsImageModel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val lotteryViewType: Int=0
     private val imageViewType: Int=1
@@ -49,7 +51,7 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
         if (position<adsImagePosition) {
             (holder as LotteryResultRecyclerViewHolder).bind(list[position])
         } else if (position==adsImagePosition) {
-            (holder as LotteryResultRecyclerImageViewHolder).bind(adsImageUrl,adsTargetUrl)
+            (holder as LotteryResultRecyclerImageViewHolder).bind(adsImageList[0])
         } else if (position>adsImagePosition){
             (holder as LotteryResultRecyclerViewHolder).bind(list[position-1])
         }
@@ -97,13 +99,13 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
     inner class LotteryResultRecyclerImageViewHolder(val binding: AdsImageViewLayoutBinding): RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
 
-        fun bind(imageUrl: String, targetUrl: String) {
+        fun bind(adsImageModel: AdsImageModel) {
             try {
-                if (adsImageUrl.isNullOrEmpty()) {
+                if (adsImageModel.activeStatus.isNullOrEmpty() || adsImageModel.activeStatus.equals("false",true)) {
                     binding.lotteryImageView.visibility=View.GONE
                 } else {
                     binding.lotteryImageView.visibility=View.VISIBLE
-                    Glide.with(context).load(imageUrl).placeholder(R.drawable.loading_placeholder).into(binding.lotteryImageView)
+                    Glide.with(context).load(adsImageModel.imageUrl).placeholder(R.drawable.loading_placeholder).into(binding.lotteryImageView)
                     binding.lotteryImageView.setOnClickListener(this)
                 }
             } catch (e: Exception) {
@@ -115,7 +117,7 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
             v?.let {
                 when (it.id) {
                     R.id.lotteryImageView -> {
-                        val targetIntent=Intent(Intent.ACTION_VIEW, Uri.parse(adsTargetUrl))
+                        val targetIntent=Intent(Intent.ACTION_VIEW, Uri.parse(adsImageList[0].targetUrl))
                         context.startActivity(Intent.createChooser(targetIntent,"Choose one:"))
                     }
                 }

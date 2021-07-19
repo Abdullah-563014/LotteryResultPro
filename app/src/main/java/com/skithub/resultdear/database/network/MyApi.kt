@@ -3,6 +3,7 @@ package com.skithub.resultdear.database.network
 import android.util.Base64
 import com.google.gson.JsonElement
 import com.skithub.resultdear.BuildConfig
+import com.skithub.resultdear.model.AdsImageResponse
 import com.skithub.resultdear.model.LotteryNumberResponse
 import com.skithub.resultdear.model.LotteryPdfResponse
 import okhttp3.*
@@ -86,6 +87,9 @@ interface MyApi {
         @Query("ResultDateTwo") resultDateTwo: String,
         @Query("ResultTime") resultTime: String
     ): Response<LotteryPdfResponse>
+
+    @GET("get_ads_info.php?")
+    suspend fun getAdsInfo(): Response<AdsImageResponse>
 
 
     companion object {

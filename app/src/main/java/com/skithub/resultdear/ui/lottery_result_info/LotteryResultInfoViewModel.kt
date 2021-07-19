@@ -11,6 +11,8 @@ class LotteryResultInfoViewModel(var myApi: MyApi): ViewModel() {
 
     suspend fun getLotteryNumberListByDateTime(date: String, time: String) =PdfRepositories().getLotteryNumberListByDateTime(date,time,myApi)
 
+    suspend fun getAdsImageInfo() =PdfRepositories().getAdsImageInfo(myApi)
+
 
 
 

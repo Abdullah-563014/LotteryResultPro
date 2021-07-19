@@ -1,6 +1,7 @@
 package com.skithub.resultdear.database
 
 import com.skithub.resultdear.database.network.MyApi
+import com.skithub.resultdear.model.AdsImageResponse
 import com.skithub.resultdear.model.LotteryNumberResponse
 import com.skithub.resultdear.model.LotteryPdfResponse
 import retrofit2.Response
@@ -50,6 +51,10 @@ class PdfRepositories {
 
     suspend fun getBumperLotteryResultList(pageNumber: String, itemCount: String, myApi: MyApi): Response<LotteryPdfResponse> {
         return myApi.getBumperLotteryResultList(pageNumber,itemCount)
+    }
+
+    suspend fun getAdsImageInfo(myApi: MyApi): Response<AdsImageResponse> {
+        return myApi.getAdsInfo()
     }
 
 

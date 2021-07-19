@@ -2,6 +2,7 @@ package com.skithub.resultdear.ui.lottery_result_info
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skithub.resultdear.R
 import com.skithub.resultdear.adapter.LotteryResultRecyclerAdapter
 import com.skithub.resultdear.databinding.ActivityLotteryResultInfoBinding
+import com.skithub.resultdear.model.AdsImageModel
 import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.model.LotteryResultRecyclerModel
 import com.skithub.resultdear.ui.MyApplication
@@ -30,8 +32,7 @@ class LotteryResultInfoActivity : AppCompatActivity() {
     private var finalList: MutableList<LotteryResultRecyclerModel> = arrayListOf()
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var adapter: LotteryResultRecyclerAdapter
-    private var adsImageUrl: String="https://lotteryresultpro.lotterysambadpro.xyz/uploads/images/sample.jpg"
-    private var adsTargetUrl: String="https://www.google.com/"
+    private var adsImageList: MutableList<AdsImageModel> = arrayListOf()
 
 
 
@@ -56,6 +57,8 @@ class LotteryResultInfoActivity : AppCompatActivity() {
 
         loadLotteryNumberInfoUsingDateAndTime()
 
+        loadAdsImageInfo()
+
 
 
 
@@ -78,9 +81,31 @@ class LotteryResultInfoActivity : AppCompatActivity() {
 
     private fun setUpRecyclerView() {
         layoutManager= LinearLayoutManager(this)
-        adapter= LotteryResultRecyclerAdapter(this,finalList,adsImageUrl,adsTargetUrl)
+        adapter= LotteryResultRecyclerAdapter(this,finalList,adsImageList)
         binding.resultRecyclerView.layoutManager=layoutManager
         binding.resultRecyclerView.adapter=adapter
+    }
+
+    private fun loadAdsImageInfo() {
+        Coroutines.main {
+            try {
+                adsImageList.clear()
+                val response=viewModelLottery.getAdsImageInfo()
+                if (response.isSuccessful && response.code()==200) {
+                    if (response.body()!=null) {
+                        if (response.body()?.status.equals("success")) {
+                            try {
+                                adsImageList.addAll(response.body()?.data!!)
+                            } finally {
+                                adapter.notifyDataSetChanged()
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
     }
 
     private fun loadLotteryNumberInfoUsingDateAndTime() {
