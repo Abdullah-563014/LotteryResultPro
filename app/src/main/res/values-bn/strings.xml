@@ -11,7 +11,7 @@
     <string name="winning_number">বিজয়ী সংখ্যাগুলি</string>
     <string name="support_email_subject">লটারি সংবাদ প্রো অ্যাপ্লিকেশন সম্পর্কে ব্যবহারকারী জিজ্ঞাসা</string>
     <string name="support_email_message">এখানে আপনার বার্তা অনুগ্রহ করে লিখুন...</string>
-    <string name="morning_time">সকাল ১১ টা</string>
+    <string name="morning_time">দুপুর ১ টা</string>
     <string name="evening_time">বিকেল ৪ টা</string>
     <string name="night_time">রাত ৮ টা</string>
     <string name="bumper_night_time">বাম্পার রাত ৮ টা</string>
@@ -27,7 +27,7 @@
     <string name="app_update_message">আপনার অ্যাপ্লিকেশন আপডেট করা হয়নি, দয়া করে সর্বশেষ সংস্করণে আপডেট করুন।</string>
     <string name="ok">ঠিক আছে</string>
     <string name="search_number_description">আপনি যে টিকিট কিনবেন,সেই টিকিট লাষ্ট কবে খেলেছে,এখানে সেটা সার্চ করে দেখে নিন।</string>
-    <string name="result_not_publish_message">ফলাফল যথা সময়ে প্রকাশ করা হবে,অনুগ্রহ করে অপেক্ষা করুন।(পাবলিশ হয়ে গেলে নোটিফিকেশন পাবেন)</string>
+
 
 
 

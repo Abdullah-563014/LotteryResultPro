@@ -10,7 +10,7 @@
     <string name="winning_number">विजेता संख्या</string>
     <string name="support_email_subject">लॉटरी सांबद प्रो ऐप के बारे में उपयोगकर्ता प्रश्न</string>
     <string name="support_email_message">कृपया अपना संदेश यहां लिखें...</string>
-    <string name="morning_time">सुबह 11 बजे</string>
+    <string name="morning_time">दोपहर 1 बजे</string>
     <string name="evening_time">शाम 4 बजे</string>
     <string name="night_time">रात 8 बजे</string>
     <string name="bumper_night_time">रात 8 बजे बंपर</string>
@@ -26,7 +26,7 @@
     <string name="app_update_message">आपका ऐप अपडेट नहीं है, कृपया नवीनतम संस्करण में अपडेट करें।</string>
     <string name="ok">ठीक है</string>
     <string name="search_number_description">आप जो टिकट खरीदेंगे, जब टिकट आखिरी बार खेला गया था, उसे यहां खोजें और देखें।</string>
-    <string name="result_not_publish_message">परिणाम नियत समय में जारी किया जाएगा, कृपया प्रतीक्षा करें। (प्रकाशित होने पर अधिसूचना प्राप्त होगी)</string>
+
 
 
 

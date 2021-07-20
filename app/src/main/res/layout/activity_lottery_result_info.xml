@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,186 +7,197 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.lottery_result_info.LotteryResultInfoActivity">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/resultRootLayout"
+        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/resultRootLayout"
-            android:fillViewport="true"
+        <LinearLayout
+            android:background="@drawable/result_background"
+            android:layout_margin="@dimen/_1sdp"
+            android:padding="@dimen/_5sdp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:background="@drawable/result_background"
-                android:layout_margin="@dimen/_1sdp"
-                android:padding="@dimen/_5sdp"
-                android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/stateNameTextView"
+                style="@style/MyNormalTextViewStyle"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/timeAndDateLeftParentLayout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/leftDateTextView"
+                        style="@style/MyNormalBoldTextViewStyle"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/leftTimeTextView"
+                        style="@style/MyNormalBoldTextViewStyle"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <com.hanks.htextview.rainbow.RainbowTextView
+                    android:id="@+id/dearTextView"
+                    style="@style/MyExtraLargeBoldTextViewStyle"
+                    app:layout_constraintStart_toEndOf="@+id/timeAndDateLeftParentLayout"
+                    app:layout_constraintEnd_toStartOf="@+id/timeAndDateRightParentLayout"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="@string/dear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/timeAndDateRightParentLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/rightDateTextView"
+                        style="@style/MyNormalBoldTextViewStyle"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/rightTimeTextView"
+                        style="@style/MyNormalBoldTextViewStyle"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/stateNameTextView"
-                    style="@style/MyNormalTextViewStyle"
-                    android:text="@string/app_name"
-                    android:textColor="@color/black"
-                    android:layout_width="match_parent"
+                    android:id="@+id/firstPrizeTextView"
+                    style="@style/MyMediumTextViewStyle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/firstPrizeAmountTextView"
+                    android:text="1st Prize \u20B9"
+                    android:textColor="@color/gradient_center"
+                    android:layout_marginEnd="@dimen/_3sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:id="@+id/timeAndDateLeftParentLayout"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/leftDateTextView"
-                            style="@style/MyNormalBoldTextViewStyle"
-                            android:text="@string/app_name"
-                            android:textColor="@color/black"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/leftTimeTextView"
-                            style="@style/MyNormalBoldTextViewStyle"
-                            android:text="@string/app_name"
-                            android:textColor="@color/black"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <com.hanks.htextview.rainbow.RainbowTextView
-                        android:id="@+id/dearTextView"
-                        style="@style/MyExtraLargeBoldTextViewStyle"
-                        app:layout_constraintStart_toEndOf="@+id/timeAndDateLeftParentLayout"
-                        app:layout_constraintEnd_toStartOf="@+id/timeAndDateRightParentLayout"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:text="@string/dear"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <LinearLayout
-                        android:id="@+id/timeAndDateRightParentLayout"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/rightDateTextView"
-                            style="@style/MyNormalBoldTextViewStyle"
-                            android:text="@string/app_name"
-                            android:textColor="@color/black"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/rightTimeTextView"
-                            style="@style/MyNormalBoldTextViewStyle"
-                            android:text="@string/app_name"
-                            android:textColor="@color/black"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/firstPrizeTextView"
-                        style="@style/MyMediumTextViewStyle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/firstPrizeAmountTextView"
-                        android:text="1st Prize \u20B9"
-                        android:textColor="@color/gradient_center"
-                        android:layout_marginEnd="@dimen/_3sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/firstPrizeAmountTextView"
-                        style="@style/MyLargeBoldTextViewStyle"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:text="1 Crore/-"
-                        android:textColor="@color/orange"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/firstPrizeLotteryNumberTextView"
-                        style="@style/MyMediumBoldTextViewStyle"
-                        app:layout_constraintStart_toEndOf="@+id/firstPrizeAmountTextView"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:letterSpacing="-0.07"
-                        android:text="@string/app_name"
-                        android:textColor="@color/gradient_center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/consPrizeTextView"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:textColor="@color/black"
-                        android:text="Cons. Prize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/remainingAllSerialTextView"
-                        app:layout_constraintStart_toEndOf="@+id/consPrizeTextView"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:textColor="@color/black"
-                        android:text="@string/app_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/resultRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-        <!--    Image view layout is ended here-->
-
-
-        <LinearLayout
-            android:id="@+id/waitingRootLayout"
-            android:background="@drawable/gradient_bg"
-            android:visibility="gone"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <com.hanks.htextview.rainbow.RainbowTextView
-                android:text="@string/result_not_publish_message"
-                android:textSize="@dimen/_17ssp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold"
+                <TextView
+                    android:id="@+id/firstPrizeAmountTextView"
+                    style="@style/MyLargeBoldTextViewStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="1 Crore/-"
+                    android:textColor="@color/orange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/firstPrizeLotteryNumberTextView"
+                    style="@style/MyMediumBoldTextViewStyle"
+                    app:layout_constraintStart_toEndOf="@+id/firstPrizeAmountTextView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:letterSpacing="-0.07"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gradient_center"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/consPrizeTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textColor="@color/black"
+                    android:text="Cons. Prize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/remainingAllSerialTextView"
+                    app:layout_constraintStart_toEndOf="@+id/consPrizeTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textColor="@color/black"
+                    android:text="@string/app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/resultRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
-<!--        waiting page's design end here-->
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:id="@+id/spin_kit"
-            style="@style/SpinKitView.Large.Circle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_gravity="center"
-            app:SpinKit_Color="@color/purple_700" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.core.widget.NestedScrollView>
+    <!--    Image view layout is ended here-->
+
+
+    <LinearLayout
+        android:id="@+id/waitingRootLayout"
+        android:background="@drawable/gradient_bg"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.hanks.htextview.rainbow.RainbowTextView
+            android:text="@string/result_not_publish_message_english"
+            android:textSize="@dimen/_15ssp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.hanks.htextview.rainbow.RainbowTextView
+            android:text="@string/result_not_publish_message_bangla"
+            android:textSize="@dimen/_15ssp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.hanks.htextview.rainbow.RainbowTextView
+            android:text="@string/result_not_publish_message_hindi"
+            android:textSize="@dimen/_15ssp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <!--        waiting page's design end here-->
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/purple_700" />
+</androidx.constraintlayout.widget.ConstraintLayout>

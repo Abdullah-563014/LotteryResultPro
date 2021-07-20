@@ -48,7 +48,7 @@ class LotteryResultInfoActivity : AppCompatActivity() {
         if (bundle!=null) {
             resultDateTwo=bundle.getString(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH))
             resultDate=bundle.getString(Constants.resultDateKey,CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH))
-            resultTime=bundle.getString(Constants.resultTimeKey,Constants.morningTime)
+            resultTime=bundle.getString(Constants.resultTimeKey,Constants.noonTime)
         }
 
         initAll()
@@ -68,10 +68,6 @@ class LotteryResultInfoActivity : AppCompatActivity() {
 
 
     private fun initAll() {
-        binding.imageViewSwipeRefreshLayout.setOnRefreshListener {
-            binding.imageViewSwipeRefreshLayout.isRefreshing=false
-            loadLotteryNumberInfoUsingDateAndTime()
-        }
         binding.leftDateTextView.text=resultDate
         binding.leftTimeTextView.text=resultTime
         binding.rightDateTextView.text=resultDate
@@ -176,6 +172,7 @@ class LotteryResultInfoActivity : AppCompatActivity() {
                 fifthList.add(item)
             }
         }
+        finalList.clear()
 //        finalList.add(LotteryResultRecyclerModel(Constants.winTypeFirst,firstList))
         finalList.add(LotteryResultRecyclerModel(Constants.winTypeSecond,secondList))
         finalList.add(LotteryResultRecyclerModel(Constants.winTypeThird,thirdList))

@@ -13,7 +13,7 @@ object Constants {
 
     val dayFormat: String="dd-MM-yyyy"
     val timeFormat: String="hh:mm a"
-    val morningTime: String="11:55 AM"
+    val noonTime: String="01:00 PM"
     val eveningTime: String="04:00 PM"
     val nightTime: String="08:00 PM"
     val bumperTime: String="08:00 PM"

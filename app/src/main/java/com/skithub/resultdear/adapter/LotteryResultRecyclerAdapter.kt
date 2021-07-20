@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.skithub.resultdear.R
@@ -80,6 +81,8 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
                 var layoutManager: GridLayoutManager
                 if (item.winType.equals(Constants.winTypeFifth)) {
                     layoutManager= GridLayoutManager(context,lotteryNumberVerticalSpanCount,GridLayoutManager.HORIZONTAL,false)
+                } else if (item.winType.equals(Constants.winTypeSecond)) {
+                    layoutManager= GridLayoutManager(context,lotteryNumberColumnCount-1)
                 } else {
                     layoutManager= GridLayoutManager(context,lotteryNumberColumnCount)
                 }
@@ -105,7 +108,13 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
                     binding.lotteryImageView.visibility=View.GONE
                 } else {
                     binding.lotteryImageView.visibility=View.VISIBLE
-                    Glide.with(context).load(adsImageList[0].imageUrl).placeholder(R.drawable.loading_placeholder).into(binding.lotteryImageView)
+                    Glide
+                        .with(context)
+                        .load(adsImageList[0].imageUrl)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true)
+                        .placeholder(R.drawable.loading_placeholder)
+                        .into(binding.lotteryImageView)
                     binding.lotteryImageView.setOnClickListener(this)
                 }
             } catch (e: Exception) {

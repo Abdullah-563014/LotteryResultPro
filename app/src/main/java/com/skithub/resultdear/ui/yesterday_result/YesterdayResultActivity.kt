@@ -50,7 +50,7 @@ class YesterdayResultActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.morningButton -> {
                     pdfInfoIntent= Intent(this, LotteryResultInfoActivity::class.java)
                     pdfInfoIntent.putExtra(Constants.resultDateKey, CommonMethod.increaseDecreaseDaysUsingValue(-1, Locale.ENGLISH))
-                    pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.morningTime)
+                    pdfInfoIntent.putExtra(Constants.resultTimeKey, Constants.noonTime)
                     pdfInfoIntent.putExtra(Constants.isVersusResultKey,false)
                     startActivity(pdfInfoIntent)
                 }
