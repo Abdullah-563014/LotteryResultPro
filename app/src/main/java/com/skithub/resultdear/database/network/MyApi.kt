@@ -17,8 +17,8 @@ import retrofit2.http.Query
 interface MyApi {
 
 
-    @GET("find_lottery_number_info.php?")
-    suspend fun findLotteryInfoUsingLotteryNumber(
+    @GET("get_similar_lottery_number_list.php?")
+    suspend fun findSimilarLotteryNumberList(
         @Query("LotteryNumber") lotteryNumber: String
     ): Response<LotteryNumberResponse>
 
@@ -31,22 +31,6 @@ interface MyApi {
     suspend fun getLotteryNumberListByDateTime(
         @Query("WinDate") winDate: String,
         @Query("WinTime") winTime: String
-    ): Response<LotteryNumberResponse>
-
-    @GET("check_today_result_by_lottery_number_and_win_date_time_type.php?")
-    suspend fun checkTodayResultUsingNumberDateTimeAndType(
-        @Query("LotteryNumber") lotteryNumber: String,
-        @Query("WinDate") winDate: String,
-        @Query("WinTime") winTime: String,
-        @Query("WinType") winType: String
-    ): Response<LotteryNumberResponse>
-
-    @GET("get_lottery_number_list_by_time_and_win_type.php?")
-    suspend fun getLotteryNumberListByWinTimeAndWinType(
-        @Query("PageNumber") pageNumber: String,
-        @Query("ItemCount") itemCount: String,
-        @Query("WinTime") winTime: String,
-        @Query("WinType") winType: String
     ): Response<LotteryNumberResponse>
 
     @GET("get_lottery_number_list_by_win_type.php?")
@@ -72,20 +56,6 @@ interface MyApi {
     suspend fun getBumperLotteryResultList(
         @Query("PageNumber") pageNumber: String,
         @Query("ItemCount") itemCount: String
-    ): Response<LotteryPdfResponse>
-
-    @GET("get_lottery_result_info_by_date_and_time.php?")
-    suspend fun getLotteryInfoByDateAndTime(
-        @Query("ResultDate") resultDate: String,
-        @Query("ResultDateTwo") resultDateTwo: String,
-        @Query("ResultTime") resultTime: String
-    ): Response<LotteryPdfResponse>
-
-    @GET("get_bumper_lottery_result_info_by_date_and_time.php?")
-    suspend fun getBumperLotteryInfoByDateAndTime(
-        @Query("ResultDate") resultDate: String,
-        @Query("ResultDateTwo") resultDateTwo: String,
-        @Query("ResultTime") resultTime: String
     ): Response<LotteryPdfResponse>
 
     @GET("get_ads_info.php?")

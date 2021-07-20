@@ -5,8 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -21,13 +19,12 @@ import com.skithub.resultdear.databinding.ActivityMainBinding
 import com.skithub.resultdear.ui.common_number.CommonNumberActivity
 import com.skithub.resultdear.ui.get_help.To_Get_HelpActivity
 import com.skithub.resultdear.ui.old_result.OldResultActivity
-import com.skithub.resultdear.ui.special_or_bumper.SPL_Or_BumperActivity
+import com.skithub.resultdear.ui.special_or_bumper.SplOrBumperActivity
 import com.skithub.resultdear.ui.today_result.TodayResultActivity
 import com.skithub.resultdear.ui.winning_number.WinningNumberActivity
-import com.skithub.resultdear.ui.yes_vs_pre.YesVsPreActivity
 import com.skithub.resultdear.ui.yesterday_result.YesterdayResultActivity
 import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
-import com.skithub.resultdear.ui.today_lottery_number_check.TodayLotteryNumberCheckActivity
+import com.skithub.resultdear.ui.lottery_number_check.LotteryNumberCheckActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.Coroutines
@@ -244,7 +241,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.yesterDayVsPreResultCardView -> {
-                    gridIntent= Intent(applicationContext, YesVsPreActivity::class.java)
+                    gridIntent= Intent(applicationContext, OldResultActivity::class.java)
                     startActivity(gridIntent)
                 }
 
@@ -254,12 +251,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.specialOrBumperResultCardView -> {
-                    gridIntent= Intent(applicationContext, SPL_Or_BumperActivity::class.java)
+                    gridIntent= Intent(applicationContext, SplOrBumperActivity::class.java)
                     startActivity(gridIntent)
                 }
 
                 R.id.lottery_number_check -> {
-                    gridIntent= Intent(applicationContext, TodayLotteryNumberCheckActivity::class.java)
+                    gridIntent= Intent(applicationContext, LotteryNumberCheckActivity::class.java)
                     startActivity(gridIntent)
                 }
 

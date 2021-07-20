@@ -18,8 +18,6 @@
     <string name="old_result">Old Result</string>
     <string name="special_or_bumper">SPL or Bumper</string>
     <string name="winning_number">Winning Numbers</string>
-    <string name="download_pdf">Download Pdf</string>
-    <string name="download_image">Download Image</string>
     <string name="support_email_subject">User Query About Lottery Sambad Pro App</string>
     <string name="support_email_message">Please write your message here...</string>
     <string name="morning_time">Morning 11 AM</string>
@@ -37,9 +35,7 @@
     <string name="found_new_version">Found New Version</string>
     <string name="app_update_message">Your app is not updated, Please update to latest version.</string>
     <string name="ok">Ok</string>
-    <string name="language_change">Language change</string>
     <string name="search_number_description">The ticket that you will buy, when the ticket was last played, search it here.</string>
-    <string name="win_type">Win Type</string>
     <string name="result_not_publish_message">Results will be released in due course, please wait. (Will get notification when published)</string>
 
 
@@ -48,5 +44,4 @@
     <string name="not_implemented_message">Please wait. This option is not implemented yet.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>

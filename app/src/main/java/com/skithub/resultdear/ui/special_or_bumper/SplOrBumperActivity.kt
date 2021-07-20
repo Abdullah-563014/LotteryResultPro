@@ -5,20 +5,20 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.skithub.resultdear.adapter.OldResultRecyclerAdapter
-import com.skithub.resultdear.databinding.ActivitySPLOrBumperBinding
+import com.skithub.resultdear.R
+import com.skithub.resultdear.databinding.ActivitySplOrBumperBinding
 import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.model.LotteryPdfModel
 import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Coroutines
+import com.skithub.resultdear.utils.MyExtensions.longToast
+import com.skithub.resultdear.utils.MyExtensions.shortToast
 
-class SPL_Or_BumperActivity : AppCompatActivity() {
+class SplOrBumperActivity : AppCompatActivity() {
 
 
-    private lateinit var binding: ActivitySPLOrBumperBinding
+    private lateinit var binding: ActivitySplOrBumperBinding
     private lateinit var viewModel: SpecialOrBumperViewModel
 //    private lateinit var adapter: OldResultRecyclerAdapter
 //    private lateinit var layoutManager: LinearLayoutManager
@@ -34,7 +34,7 @@ class SPL_Or_BumperActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySPLOrBumperBinding.inflate(layoutInflater)
+        binding = ActivitySplOrBumperBinding.inflate(layoutInflater)
         val factory: SpecialOrBumperViewModelFactory = SpecialOrBumperViewModelFactory((application as MyApplication).myApi)
         viewModel= ViewModelProvider(this,factory).get(SpecialOrBumperViewModel::class.java)
         setContentView(binding.root)
@@ -49,7 +49,7 @@ class SPL_Or_BumperActivity : AppCompatActivity() {
 //
 //        loadAllLotteryResult()
 
-
+        longToast(resources.getString(R.string.not_implemented_message))
 
 
     }

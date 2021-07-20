@@ -23,7 +23,7 @@
         <activity android:name=".ui.common_number.CommonNumberActivity" />
         <activity android:name=".ui.winning_number.WinningNumberActivity" />
         <activity android:name=".ui.privacy_policy.PrivacyPolicyActivity" />
-        <activity android:name=".ui.today_lottery_number_check.TodayLotteryNumberCheckActivity" />
+        <activity android:name=".ui.lottery_number_check.LotteryNumberCheckActivity" />
         <activity android:name=".ui.lottery_result_info.LotteryResultInfoActivity" />
         <activity android:name=".ui.yes_vs_pre.YesVsPreActivity" />
         <activity
@@ -33,7 +33,7 @@
             android:name=".ui.today_result.TodayResultActivity"
             android:parentActivityName=".ui.main.MainActivity" />
         <activity android:name=".ui.get_help.To_Get_HelpActivity" />
-        <activity android:name=".ui.special_or_bumper.SPL_Or_BumperActivity" />
+        <activity android:name=".ui.special_or_bumper.SplOrBumperActivity" />
         <activity android:name=".ui.old_result.OldResultActivity" />
         <activity
             android:name=".ui.main.MainActivity"

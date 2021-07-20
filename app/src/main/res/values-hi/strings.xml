@@ -8,8 +8,6 @@
     <string name="old_result">पुराने परिणाम</string>
     <string name="special_or_bumper">विशेष और बम्पर</string>
     <string name="winning_number">विजेता संख्या</string>
-    <string name="download_pdf">डाउनलोड पीडीऍफ़</string>
-    <string name="download_image">छवि डाउनलोड करें</string>
     <string name="support_email_subject">लॉटरी सांबद प्रो ऐप के बारे में उपयोगकर्ता प्रश्न</string>
     <string name="support_email_message">कृपया अपना संदेश यहां लिखें...</string>
     <string name="morning_time">सुबह 11 बजे</string>
@@ -27,9 +25,7 @@
     <string name="found_new_version">नया संस्करण मिला</string>
     <string name="app_update_message">आपका ऐप अपडेट नहीं है, कृपया नवीनतम संस्करण में अपडेट करें।</string>
     <string name="ok">ठीक है</string>
-    <string name="language_change">भाषा परिवर्तन</string>
     <string name="search_number_description">आप जो टिकट खरीदेंगे, जब टिकट आखिरी बार खेला गया था, उसे यहां खोजें और देखें।</string>
-    <string name="win_type">जीत प्रकार</string>
     <string name="result_not_publish_message">परिणाम नियत समय में जारी किया जाएगा, कृपया प्रतीक्षा करें। (प्रकाशित होने पर अधिसूचना प्राप्त होगी)</string>
 
 

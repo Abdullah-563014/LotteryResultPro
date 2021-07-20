@@ -1,4 +1,4 @@
-package com.skithub.resultdear.ui.today_lottery_number_check
+package com.skithub.resultdear.ui.lottery_number_check
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -8,17 +8,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skithub.resultdear.R
 import com.skithub.resultdear.adapter.LotteryNumberRecyclerAdapter
-import com.skithub.resultdear.databinding.ActivityNumberCheckBinding
+import com.skithub.resultdear.databinding.ActivityLotteryNumberCheckBinding
 import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Coroutines
 import com.skithub.resultdear.utils.MyExtensions.shortToast
 
-class TodayLotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListener {
+class LotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityNumberCheckBinding
-    private lateinit var viewModel: TodayLotteryNumberCheckViewModel
+    private lateinit var binding: ActivityLotteryNumberCheckBinding
+    private lateinit var viewModel: LotteryNumberCheckViewModel
     private var list: MutableList<LotteryNumberModel> = arrayListOf()
     private lateinit var adapter: LotteryNumberRecyclerAdapter
     private lateinit var layoutManager: LinearLayoutManager
@@ -27,9 +27,9 @@ class TodayLotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListene
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityNumberCheckBinding.inflate(layoutInflater)
-        val factory: TodayLotteryNumberCheckViewModelFactory = TodayLotteryNumberCheckViewModelFactory((application as MyApplication).myApi)
-        viewModel= ViewModelProvider(this,factory).get(TodayLotteryNumberCheckViewModel::class.java)
+        binding= ActivityLotteryNumberCheckBinding.inflate(layoutInflater)
+        val factory: LotteryNumberCheckViewModelFactory = LotteryNumberCheckViewModelFactory((application as MyApplication).myApi)
+        viewModel= ViewModelProvider(this,factory).get(LotteryNumberCheckViewModel::class.java)
         setContentView(binding.root)
 
 

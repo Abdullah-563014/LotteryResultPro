@@ -25,11 +25,11 @@ class WinningNumberActivity : AppCompatActivity() {
     private lateinit var layoutManager: LinearLayoutManager
     private var page_number: Int=1
     private var item_count: Int=30
-    private var past_visible_item: Int =0
-    private var visible_item_count: Int =0
-    private var total_item_count: Int =0
-    private var previous_total: Int =0
-    private var isLoading: Boolean=true
+//    private var past_visible_item: Int =0
+//    private var visible_item_count: Int =0
+//    private var total_item_count: Int =0
+//    private var previous_total: Int =0
+//    private var isLoading: Boolean=true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,28 +60,28 @@ class WinningNumberActivity : AppCompatActivity() {
         layoutManager= LinearLayoutManager(this)
         binding.recyclerView.layoutManager=layoutManager
         binding.recyclerView.adapter=adapter
-        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                visible_item_count=layoutManager.childCount
-                total_item_count=layoutManager.itemCount
-                past_visible_item=layoutManager.findFirstVisibleItemPosition()
-                if (dy>0) {
-                    if (isLoading) {
-                        if (total_item_count > previous_total) {
-                            isLoading = false
-                            previous_total = total_item_count
-                        }
-                        if (!isLoading && (total_item_count - visible_item_count) <= (past_visible_item + item_count)) {
-                            page_number++
-                            loadAllLotteryResult()
-                            isLoading = true
-                        }
-                    }
-                }
-            }
-        })
+//        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//
+//                visible_item_count=layoutManager.childCount
+//                total_item_count=layoutManager.itemCount
+//                past_visible_item=layoutManager.findFirstVisibleItemPosition()
+//                if (dy>0) {
+//                    if (isLoading) {
+//                        if (total_item_count > previous_total) {
+//                            isLoading = false
+//                            previous_total = total_item_count
+//                        }
+//                        if (!isLoading && (total_item_count - visible_item_count) <= (past_visible_item + item_count)) {
+//                            page_number++
+//                            loadAllLotteryResult()
+//                            isLoading = true
+//                        }
+//                    }
+//                }
+//            }
+//        })
     }
 
     private fun loadAllLotteryResult() {

@@ -9,8 +9,6 @@
     <string name="old_result">পুরোনো রেজাল্ট</string>
     <string name="special_or_bumper">স্পেশাল ও বাম্পার</string>
     <string name="winning_number">বিজয়ী সংখ্যাগুলি</string>
-    <string name="download_pdf">পিডিএফ ডাউনলোড করুন</string>
-    <string name="download_image">চিত্র ডাউনলোড করুন</string>
     <string name="support_email_subject">লটারি সংবাদ প্রো অ্যাপ্লিকেশন সম্পর্কে ব্যবহারকারী জিজ্ঞাসা</string>
     <string name="support_email_message">এখানে আপনার বার্তা অনুগ্রহ করে লিখুন...</string>
     <string name="morning_time">সকাল ১১ টা</string>
@@ -28,9 +26,7 @@
     <string name="found_new_version">নতুন সংস্করণ পাওয়া গেছে</string>
     <string name="app_update_message">আপনার অ্যাপ্লিকেশন আপডেট করা হয়নি, দয়া করে সর্বশেষ সংস্করণে আপডেট করুন।</string>
     <string name="ok">ঠিক আছে</string>
-    <string name="language_change">ভাষা পরিবর্তন</string>
     <string name="search_number_description">আপনি যে টিকিট কিনবেন,সেই টিকিট লাষ্ট কবে খেলেছে,এখানে সেটা সার্চ করে দেখে নিন।</string>
-    <string name="win_type">জয়ের ধরণ</string>
     <string name="result_not_publish_message">ফলাফল যথা সময়ে প্রকাশ করা হবে,অনুগ্রহ করে অপেক্ষা করুন।(পাবলিশ হয়ে গেলে নোটিফিকেশন পাবেন)</string>
 
 

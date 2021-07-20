@@ -28,11 +28,11 @@ class CommonNumberActivity : AppCompatActivity() {
     private lateinit var layoutManager: LinearLayoutManager
     private var page_number: Int=1
     private var item_count: Int=30
-    private var past_visible_item: Int =0
-    private var visible_item_count: Int =0
-    private var total_item_count: Int =0
-    private var previous_total: Int =0
-    private var isLoading: Boolean=true
+//    private var past_visible_item: Int =0
+//    private var visible_item_count: Int =0
+//    private var total_item_count: Int =0
+//    private var previous_total: Int =0
+//    private var isLoading: Boolean=true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
