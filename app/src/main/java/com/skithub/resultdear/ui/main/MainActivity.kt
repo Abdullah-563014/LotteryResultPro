@@ -1,19 +1,33 @@
 package com.skithub.resultdear.ui.main
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
+import android.telephony.TelephonyManager
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.telephony.TelephonyManagerCompat
 import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.database.*
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
 import com.skithub.resultdear.ui.common_number.CommonNumberActivity
@@ -38,6 +52,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var mBackPressed: Long = 0
     private lateinit var connectivityManager: ConnectivityManager
     private var rainbowColors: IntArray= intArrayOf(Color.parseColor("#FF2B22"),Color.parseColor("#FF7F22"),Color.parseColor("#EDFF22"),Color.parseColor("#22FF22"),Color.parseColor("#05EEFA"),Color.parseColor("#08B4BD"),Color.parseColor("#056B70"))
+    private lateinit var telephonyManager: TelephonyManager
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,12 +83,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-
     }
 
 
     private fun initAll() {
         connectivityManager=getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        telephonyManager=getSystemService(TELEPHONY_SERVICE) as TelephonyManager
         binding.todayResultCardView.setOnClickListener(this)
         binding.yesterDayResultCardView.setOnClickListener(this)
         binding.yesterDayVsPreResultCardView.setOnClickListener(this)
@@ -212,6 +228,42 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
+//    @SuppressLint("MissingPermission")
+//    private fun checkPremiumStatus() {
+//        Log.d(Constants.TAG,"device id:- ${telephonyManager.deviceId}")
+//        Log.d(Constants.TAG,"sim serial number:- ${telephonyManager.simSerialNumber}")
+//        Log.d(Constants.TAG,"line one number:- ${telephonyManager.line1Number}")
+//    }
+//
+//    private fun checkPermission() {
+//        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+//            Dexter
+//                .withContext(this)
+//                .withPermission(Manifest.permission.READ_PHONE_STATE)
+//                .withListener(object : PermissionListener {
+//                    override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
+//                        checkPremiumStatus()
+//                    }
+//
+//                    override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
+//                        shortToast(resources.getString(R.string.need_to_accept_permission))
+//                        finishAffinity()
+//                    }
+//
+//                    override fun onPermissionRationaleShouldBeShown(
+//                        p0: PermissionRequest?,
+//                        p1: PermissionToken?
+//                    ) {
+//                        p1?.continuePermissionRequest()
+//                    }
+//
+//                })
+//                .check()
+//        } else {
+//            checkPremiumStatus()
+//        }
+//    }
+
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -268,6 +320,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.commonNumberButton -> {
                     gridIntent= Intent(applicationContext, CommonNumberActivity::class.java)
                     startActivity(gridIntent)
+//                    checkPermission()
                 }
 
                 R.id.englishLanguageTextView -> changeLocale("en_US")

@@ -27,6 +27,7 @@
     <string name="app_update_message">আপনার অ্যাপ্লিকেশন আপডেট করা হয়নি, দয়া করে সর্বশেষ সংস্করণে আপডেট করুন।</string>
     <string name="ok">ঠিক আছে</string>
     <string name="search_number_description">আপনি যে টিকিট কিনবেন,সেই টিকিট লাষ্ট কবে খেলেছে,এখানে সেটা সার্চ করে দেখে নিন।</string>
+    <string name="need_to_accept_permission">এই বিকল্পটি ব্যবহার করার জন্য আপনাকে অনুমতি গ্রহণ করতে হবে।</string>
 
 
 

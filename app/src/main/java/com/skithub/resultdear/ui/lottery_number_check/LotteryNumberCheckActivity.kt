@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skithub.resultdear.R
@@ -22,6 +23,7 @@ class LotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListener {
     private var list: MutableList<LotteryNumberModel> = arrayListOf()
     private lateinit var adapter: LotteryNumberRecyclerAdapter
     private lateinit var layoutManager: LinearLayoutManager
+    private lateinit var inputMethodManager: InputMethodManager
 
 
 
@@ -44,6 +46,7 @@ class LotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initAll() {
+        inputMethodManager=getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         binding.spinKit.visibility= View.GONE
         binding.recyclerView.visibility= View.GONE
         binding.lotteryNumberCheckButton.setOnClickListener(this)
@@ -59,6 +62,7 @@ class LotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListener {
     private fun checkNumber() {
         Coroutines.main {
             try {
+                hideKeyBoard()
                 val lotteryNumber: String=binding.lotteryNumberEditText.text.toString()
                 binding.spinKit.visibility= View.VISIBLE
                 list.clear()
@@ -88,6 +92,10 @@ class LotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun hideKeyBoard() {
+        inputMethodManager.hideSoftInputFromWindow(binding.lotteryNumberEditText.windowToken,0)
+    }
+
     override fun onClick(v: View?) {
         v?.let {
             when (it.id) {
@@ -98,12 +106,12 @@ class LotteryNumberCheckActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        binding.particleView.resume()
+//        binding.particleView.resume()
     }
 
     override fun onPause() {
         super.onPause()
-        binding.particleView.pause()
+//        binding.particleView.pause()
     }
 
     override fun attachBaseContext(newBase: Context?) {

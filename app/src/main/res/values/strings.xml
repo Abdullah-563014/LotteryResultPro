@@ -7,11 +7,12 @@
     <string name="dear" translatable="false">DEAR</string>
     <string name="nagaland_state" translatable="false">Nagaland State Lotteries</string>
     <string name="copied_successfully" translatable="false">copied successfully.</string>
-    <string name="result_not_publish_message_english" translatable="false">Results will be released in due course, please wait. (Will get notification when published)</string>
-    <string name="result_not_publish_message_bangla" translatable="false">ফলাফল যথা সময়ে প্রকাশ করা হবে,অনুগ্রহ করে অপেক্ষা করুন।(পাবলিশ হয়ে গেলে নোটিফিকেশন পাবেন)</string>
-    <string name="result_not_publish_message_hindi" translatable="false">परिणाम नियत समय में जारी किया जाएगा, कृपया प्रतीक्षा करें। (प्रकाशित होने पर अधिसूचना प्राप्त होगी)</string>
-
-
+    <string name="result_not_publish_message_english" translatable="false">Results will be released in due course, please wait, (Will get notification when published). Result publish time:-</string>
+    <string name="result_not_publish_message_bangla" translatable="false">ফলাফল যথা সময়ে প্রকাশ করা হবে,অনুগ্রহ করে অপেক্ষা করুন, (পাবলিশ হয়ে গেলে নোটিফিকেশন পাবেন)। ফলাফল প্রকাশের সময়:-</string>
+    <string name="result_not_publish_message_hindi" translatable="false">परिणाम नियत समय में जारी किया जाएगा, कृपया प्रतीक्षा करें, (प्रकाशित होने पर अधिसूचना प्राप्त होगी)। परिणाम प्रकाशित होने का समय:-</string>
+    <string name="result_not_publish_title" translatable="false">রেজাল্ট এর টাইম / परिणाम समय / Result Time</string>
+    <string name="result_not_publish_time" translatable="false">01:15 (Morning) \n 04:15pm (Day) \n 08:15pm (Night)</string>
+    <string name="result_not_publish_bottom_text" translatable="false">অনুগ্রহ করে অপেক্ষা করুন \n कृपया प्रतीक्षा कीजिये \n Please Wait</string>
 
 
     <string name="search_number">Pick a ticket</string>
@@ -39,6 +40,7 @@
     <string name="app_update_message">Your app is not updated, Please update to latest version.</string>
     <string name="ok">Ok</string>
     <string name="search_number_description">The ticket that you will buy, when the ticket was last played, search it here.</string>
+    <string name="need_to_accept_permission">You need to accept the permission to use this option.</string>
 
 
 

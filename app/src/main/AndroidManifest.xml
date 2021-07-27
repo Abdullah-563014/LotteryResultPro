@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<!--    <uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
 
     <application
         android:name=".ui.MyApplication"
@@ -26,12 +27,10 @@
         <activity android:name=".ui.lottery_number_check.LotteryNumberCheckActivity" />
         <activity android:name=".ui.lottery_result_info.LotteryResultInfoActivity" />
         <activity android:name=".ui.yes_vs_pre.YesVsPreActivity" />
-        <activity
-            android:name=".ui.yesterday_result.YesterdayResultActivity"
-            android:parentActivityName=".ui.main.MainActivity" />
+        <activity android:name=".ui.yesterday_result.YesterdayResultActivity" />
         <activity
             android:name=".ui.today_result.TodayResultActivity"
-            android:parentActivityName=".ui.main.MainActivity" />
+            android:launchMode="singleTask" />
         <activity android:name=".ui.get_help.To_Get_HelpActivity" />
         <activity android:name=".ui.special_or_bumper.SplOrBumperActivity" />
         <activity android:name=".ui.old_result.OldResultActivity" />

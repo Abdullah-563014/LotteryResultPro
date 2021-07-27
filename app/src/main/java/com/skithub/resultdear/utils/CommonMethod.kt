@@ -13,6 +13,7 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.WindowInsets
 import android.webkit.MimeTypeMap
 import java.text.SimpleDateFormat
@@ -185,6 +186,10 @@ object CommonMethod {
             res.updateConfiguration(config,res.displayMetrics)
             return context
         }
+    }
+
+    fun dpToPix(dp: Float, context: Context): Int {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp,context.resources.displayMetrics).toInt()
     }
 
 

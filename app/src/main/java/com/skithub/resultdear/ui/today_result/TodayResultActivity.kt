@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityTodayResultBinding
 import com.skithub.resultdear.ui.lottery_result_info.LotteryResultInfoActivity
+import com.skithub.resultdear.ui.main.MainActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import java.util.*
@@ -81,6 +82,15 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onBackPressed() {
+        if (isTaskRoot) {
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         binding.particleView.resume()
@@ -98,6 +108,8 @@ class TodayResultActivity : AppCompatActivity(), View.OnClickListener {
             super.attachBaseContext(newBase)
         }
     }
+
+
 
 
 }

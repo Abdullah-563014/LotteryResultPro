@@ -3,20 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/purple_700"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.lottery_number_check.LotteryNumberCheckActivity">
-    <me.ibrahimsn.particle.ParticleView
-        android:id="@+id/particleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:particleCount="60"
-        app:particleMinRadius="5"
-        app:particleMaxRadius="15"
-        app:particlesBackgroundColor="@color/purple_700"
-        app:particleColor="@color/neon_color_start"
-        app:particleLineColor="@color/neon_color_start"
-        app:particleLinesEnabled="true" />
+<!--    <me.ibrahimsn.particle.ParticleView-->
+<!--        android:id="@+id/particleView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:particleCount="60"-->
+<!--        app:particleMinRadius="5"-->
+<!--        app:particleMaxRadius="15"-->
+<!--        app:particlesBackgroundColor="@color/purple_700"-->
+<!--        app:particleColor="@color/neon_color_start"-->
+<!--        app:particleLineColor="@color/neon_color_start"-->
+<!--        app:particleLinesEnabled="true" />-->
     <EditText
         android:id="@+id/lotteryNumberEditText"
         app:layout_constraintTop_toTopOf="parent"
