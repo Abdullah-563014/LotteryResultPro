@@ -210,8 +210,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             .setCancelable(false)
                             .setTitle(resources.getString(R.string.found_new_version))
                             .setMessage(resources.getString(R.string.app_update_message))
-                            .setPositiveButton(resources.getString(R.string.ok)) {
-                                    p0, p1 -> CommonMethod.openAppLink(this@MainActivity)
+                            .setPositiveButton(resources.getString(R.string.ok)) { p0, p1 ->
+                                cacheDir.deleteRecursively()
+                                CommonMethod.openAppLink(this@MainActivity)
                             }
                         val alertDialog: AlertDialog=builder.create()
                         if (!isFinishing) {

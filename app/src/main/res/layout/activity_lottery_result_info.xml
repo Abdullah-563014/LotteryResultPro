@@ -4,11 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/imageViewSwipeRefreshLayout"
+    android:background="@drawable/gradient_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.lottery_result_info.LotteryResultInfoActivity">
     <androidx.core.widget.NestedScrollView
         android:id="@+id/resultRootLayout"
+        android:visibility="visible"
+        android:background="@color/white"
         android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -158,42 +161,131 @@
     <!--    Image view layout is ended here-->
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/waitingRootLayout"
-        android:background="@drawable/gradient_bg"
         android:visibility="gone"
-        android:padding="@dimen/_5sdp"
+        android:layout_margin="@dimen/_1sdp"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:text="@string/result_not_publish_title"
-            android:textSize="@dimen/_15ssp"
-            android:textColor="@color/orange"
+        <LinearLayout
+            android:orientation="vertical"
             android:gravity="center"
-            android:textStyle="bold"
+            android:padding="@dimen/_5sdp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="@string/result_not_publish_time"
-            android:textSize="@dimen/_18ssp"
-            android:textColor="@color/orange"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/result_not_publish_title"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/orange"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:shadowColor="@color/gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@string/result_not_publish_morning_time"
+                    android:textSize="@dimen/_18ssp"
+                    android:textColor="@color/purple_500"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <com.hanks.htextview.rainbow.RainbowTextView
+                    android:text="@string/result_not_publish_morning"
+                    android:textSize="@dimen/_18ssp"
+                    android:textColor="@color/purple_500"
+                    android:gravity="start"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@string/result_not_publish_day_time"
+                    android:textSize="@dimen/_18ssp"
+                    android:textColor="@color/purple_500"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <com.hanks.htextview.rainbow.RainbowTextView
+                    android:text="@string/result_not_publish_day"
+                    android:textSize="@dimen/_18ssp"
+                    android:textColor="@color/purple_500"
+                    android:gravity="start"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@string/result_not_publish_night_time"
+                    android:textSize="@dimen/_18ssp"
+                    android:textColor="@color/purple_500"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <com.hanks.htextview.rainbow.RainbowTextView
+                    android:text="@string/result_not_publish_night"
+                    android:textSize="@dimen/_18ssp"
+                    android:textColor="@color/purple_500"
+                    android:gravity="start"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView
+                android:text="@string/result_not_publish_bottom_text"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/orange"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:shadowColor="@color/gray"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <pl.droidsonroids.gif.GifImageView
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:src="@drawable/border"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="@string/result_not_publish_bottom_text"
-            android:textSize="@dimen/_15ssp"
-            android:textColor="@color/orange"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="match_parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <!--        waiting page's design end here-->
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/spin_kit"
