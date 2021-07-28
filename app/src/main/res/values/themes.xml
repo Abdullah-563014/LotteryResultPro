@@ -23,6 +23,12 @@
         <item name="android:windowActionBar">false</item>
     </style>
 
+    <style name="MyButtonStyle">
+        <item name="backgroundTint">@null</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:background">@drawable/rounded_transparent_bg</item>
+    </style>
+
     <style name="HomeButtonParentLayoutStyle">
         <item name="android:layout_marginTop">@dimen/_7sdp</item>
         <item name="android:layout_marginBottom">@dimen/_7sdp</item>

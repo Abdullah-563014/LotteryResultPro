@@ -1,6 +1,7 @@
 package com.skithub.resultdear.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.LotteryNumberRecyclerViewModelLayoutBinding
 import com.skithub.resultdear.model.LotteryNumberModel
+import com.skithub.resultdear.ui.lottery_result_info.LotteryResultInfoActivity
 import com.skithub.resultdear.utils.Constants
 
 class LotteryNumberRecyclerAdapter(val context: Context, val list: MutableList<LotteryNumberModel>): RecyclerView.Adapter<LotteryNumberRecyclerAdapter.LotteryNumberRecyclerViewHolder>() {
@@ -30,14 +32,29 @@ class LotteryNumberRecyclerAdapter(val context: Context, val list: MutableList<L
     }
 
 
-    inner class LotteryNumberRecyclerViewHolder(val binding: LotteryNumberRecyclerViewModelLayoutBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class LotteryNumberRecyclerViewHolder(val binding: LotteryNumberRecyclerViewModelLayoutBinding): RecyclerView.ViewHolder(binding.root),
+        View.OnClickListener {
 
         fun bind(item: LotteryNumberModel) {
             binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
             binding.winDateTextView.text="Win Date:- ${item.winDate}"
-            binding.winTimeTextView.text="Win Time:- ${item.winTime}"
+            binding.winTimeTextView.text="Time:- ${item.winTime}"
             binding.winTypeTextView.text="Prize Type:- ${item.winType}"
             binding.prizeAmountTextView.text="Prize Amount:- ${getPrizeAmount(item.winType)}"
+            binding.viewFullResultTextView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            v?.let {
+                when (it.id) {
+                    R.id.viewFullResultTextView-> {
+                        val detailsIntent: Intent= Intent(context,LotteryResultInfoActivity::class.java)
+                        detailsIntent.putExtra(Constants.resultDateKey,list[adapterPosition].winDate)
+                        detailsIntent.putExtra(Constants.resultTimeKey,list[adapterPosition].winTime)
+                        context.startActivity(detailsIntent)
+                    }
+                }
+            }
         }
     }
 

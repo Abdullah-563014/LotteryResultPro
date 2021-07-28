@@ -43,6 +43,7 @@
     <string name="ok">Ok</string>
     <string name="search_number_description">The ticket that you will buy, when the ticket was last played, search it here.</string>
     <string name="need_to_accept_permission">You need to accept the permission to use this option.</string>
+    <string name="view_details">View Details</string>
 
 
 

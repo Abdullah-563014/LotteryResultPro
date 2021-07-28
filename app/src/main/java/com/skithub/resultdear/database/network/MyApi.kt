@@ -61,6 +61,9 @@ interface MyApi {
     @GET("get_ads_info.php?")
     suspend fun getAdsInfo(): Response<AdsImageResponse>
 
+    @GET("get_home_tutorial.php?")
+    suspend fun getHomeTutorialInfo(): Response<AdsImageResponse>
+
 
     companion object {
 

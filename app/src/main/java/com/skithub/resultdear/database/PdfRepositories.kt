@@ -41,6 +41,10 @@ class PdfRepositories {
         return myApi.getAdsInfo()
     }
 
+    suspend fun getHomeTutorialInfo(myApi: MyApi): Response<AdsImageResponse> {
+        return myApi.getHomeTutorialInfo()
+    }
+
 
 
 

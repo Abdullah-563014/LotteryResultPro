@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/duplicateLotteryNumberRootLayout"
@@ -12,11 +12,24 @@
     android:layout_height="wrap_content">
     <TextView
         android:id="@+id/lotteryNumberTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/viewDetailsTextView"
         android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="@dimen/_18ssp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content" />
-</LinearLayout>
+    <com.hanks.htextview.rainbow.RainbowTextView
+        android:id="@+id/viewDetailsTextView"
+        style="@style/MyMediumBoldTextViewStyle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/view_details"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

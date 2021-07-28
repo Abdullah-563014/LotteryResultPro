@@ -20,7 +20,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.telephony.TelephonyManagerCompat
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.database.*
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
@@ -30,7 +32,10 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
+import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.ui.common_number.CommonNumberActivity
+import com.skithub.resultdear.ui.common_number.CommonNumberViewModel
+import com.skithub.resultdear.ui.common_number.CommonNumberViewModelFactory
 import com.skithub.resultdear.ui.get_help.To_Get_HelpActivity
 import com.skithub.resultdear.ui.old_result.OldResultActivity
 import com.skithub.resultdear.ui.special_or_bumper.SplOrBumperActivity
@@ -48,6 +53,7 @@ import com.skithub.resultdear.utils.SharedPreUtils
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
     private var tog: ActionBarDrawerToggle? = null
     private var mBackPressed: Long = 0
     private lateinit var connectivityManager: ConnectivityManager
@@ -59,6 +65,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        val factory= MainViewModelFactory((application as MyApplication).myApi)
+        viewModel= ViewModelProvider(this,factory).get(MainViewModel::class.java)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -75,8 +83,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         setupNavigationBar()
 
-
-
+        loadTutorialInfo()
 
 
 
@@ -101,9 +108,37 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.englishLanguageTextView.setOnClickListener(this)
         binding.banglaLanguageTextView.setOnClickListener(this)
         binding.hindiLanguageTextView.setOnClickListener(this)
-        Glide.with(this).load(R.drawable.tutorial_thumb).fitCenter().into(binding.tutorialImageView)
         Glide.with(this).load(R.drawable.new_text_animation).fitCenter().into(binding.newTextAnimationImageView)
         binding.pickTicketDescriptionTextView.setColors(*rainbowColors)
+    }
+
+    private fun loadTutorialInfo() {
+        Coroutines.main {
+            try {
+                val response=viewModel.getHomeTutorialInfo()
+                if (response.isSuccessful && response.code()==200) {
+                    if (response.body()!=null) {
+                        if (response.body()?.status.equals("success")) {
+                            try {
+                                val tutorialInfo=response.body()?.data!![0]
+                                Glide.with(this)
+                                    .load(tutorialInfo.imageUrl)
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                    .skipMemoryCache(true)
+                                    .placeholder(R.drawable.loading_placeholder)
+                                    .error(R.drawable.tutorial_thumb)
+                                    .into(binding.tutorialImageView)
+                                binding.tutorialImageView.visibility=View.VISIBLE
+                            } catch (e: Exception) {
+                                binding.tutorialImageView.visibility=View.GONE
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                binding.tutorialImageView.visibility=View.GONE
+            }
+        }
     }
 
     private fun showChangeLanguageDialog() {

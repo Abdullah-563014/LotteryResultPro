@@ -101,9 +101,11 @@
 
                 <ImageView
                     android:id="@+id/tutorialImageView"
-                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/tutorial_thumb"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_height="@dimen/_150sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp"
                     app:layout_constraintTop_toTopOf="parent" />
                 <com.hanks.htextview.rainbow.RainbowTextView
                     android:id="@+id/pickTicketDescriptionTextView"
