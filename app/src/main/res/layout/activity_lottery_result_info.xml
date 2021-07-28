@@ -155,7 +155,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/resultRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/official_gov"
+                android:textSize="@dimen/_8ssp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <!--    Image view layout is ended here-->

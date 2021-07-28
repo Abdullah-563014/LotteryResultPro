@@ -32,6 +32,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
+import com.skithub.resultdear.model.AdsImageModel
 import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.ui.common_number.CommonNumberActivity
 import com.skithub.resultdear.ui.common_number.CommonNumberViewModel
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var connectivityManager: ConnectivityManager
     private var rainbowColors: IntArray= intArrayOf(Color.parseColor("#FF2B22"),Color.parseColor("#FF7F22"),Color.parseColor("#EDFF22"),Color.parseColor("#22FF22"),Color.parseColor("#05EEFA"),Color.parseColor("#08B4BD"),Color.parseColor("#056B70"))
     private lateinit var telephonyManager: TelephonyManager
+    private var tutorialInfo: AdsImageModel?=null
 
 
 
@@ -120,9 +122,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     if (response.body()!=null) {
                         if (response.body()?.status.equals("success")) {
                             try {
-                                val tutorialInfo=response.body()?.data!![0]
+                                tutorialInfo=response.body()?.data!![0]
                                 Glide.with(this)
-                                    .load(tutorialInfo.imageUrl)
+                                    .load(tutorialInfo?.imageUrl)
                                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                                     .skipMemoryCache(true)
                                     .placeholder(R.drawable.loading_placeholder)
@@ -365,7 +367,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 R.id.hindiLanguageTextView -> changeLocale("hi")
 
-                R.id.tutorialImageView -> shortToast(resources.getString(R.string.not_implemented_message))
+                R.id.tutorialImageView -> {
+                    tutorialInfo?.let {
+                        if (!it.targetUrl.isNullOrEmpty()) {
+                            CommonMethod.openLink(this,it.targetUrl)
+                        }
+                    }
+                    return
+                }
             }
         }
     }

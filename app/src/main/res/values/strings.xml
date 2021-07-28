@@ -15,6 +15,8 @@
     <string name="result_not_publish_night_time" translatable="false">08:15pm</string>
     <string name="result_not_publish_night" translatable="false">&#160; (Night)</string>
     <string name="result_not_publish_bottom_text" translatable="false">অনুগ্রহ করে অপেক্ষা করুন \n कृपया प्रतीक्षा कीजिये \n Please Wait</string>
+    <string name="official_gov" translatable="false">Please check the results with relevent Official Government Gazatte</string>
+
 
 
     <string name="search_number">Pick a ticket</string>
@@ -44,6 +46,7 @@
     <string name="search_number_description">The ticket that you will buy, when the ticket was last played, search it here.</string>
     <string name="need_to_accept_permission">You need to accept the permission to use this option.</string>
     <string name="view_details">View Details</string>
+    <string name="choose_one">Choose one</string>
 
 
 

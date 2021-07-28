@@ -16,6 +16,7 @@ import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.WindowInsets
 import android.webkit.MimeTypeMap
+import com.skithub.resultdear.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -113,6 +114,10 @@ object CommonMethod {
         }
         val shareIntent = Intent.createChooser(sendIntent, null)
         context.startActivity(shareIntent)
+    }
+
+    fun openLink(context: Context,link: String) {
+        context.startActivity(Intent.createChooser(Intent(Intent.ACTION_VIEW, Uri.parse(link)),context.resources.getString(R.string.choose_one)))
     }
 
     fun openVideo(context: Context, videoId: String) {
