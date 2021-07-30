@@ -6,12 +6,14 @@ import com.skithub.resultdear.BuildConfig
 import com.skithub.resultdear.model.AdsImageResponse
 import com.skithub.resultdear.model.LotteryNumberResponse
 import com.skithub.resultdear.model.LotteryPdfResponse
+import com.skithub.resultdear.model.UserInfoResponse
 import okhttp3.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface MyApi {
@@ -63,6 +65,19 @@ interface MyApi {
 
     @GET("get_home_tutorial.php?")
     suspend fun getHomeTutorialInfo(): Response<AdsImageResponse>
+
+    @POST("upload_user_info.php?")
+    suspend fun uploadUserInfo(
+        @Query("Token") token: String,
+        @Query("Phone") phone: String,
+        @Query("RegistrationDate") registrationDate: String,
+        @Query("ActiveStatus") activeStatus: String
+    ): Response<UserInfoResponse>
+
+    @GET("get_user_info_by_token.php?")
+    suspend fun getUserInfoByToken(
+        @Query("Token") token: String
+    ): Response<UserInfoResponse>
 
 
     companion object {

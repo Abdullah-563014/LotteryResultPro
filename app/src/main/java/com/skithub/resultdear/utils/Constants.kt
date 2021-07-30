@@ -5,8 +5,6 @@ object Constants {
 
     val TAG: String="Abdullah"
 
-
-    val onesignalApplicationId: String="556e5254-0798-4487-9cc6-e0946047c1d3"
     val consoleId: String="Sikder+International+iT+Hub"
     val tutorialVideoId: String="9W2s7fNXR24"
 
@@ -23,6 +21,15 @@ object Constants {
     val winTypeFourth="4th"
     val winTypeFifth="5th"
     val appDefaultLanCode="en_US"
+    val userTypeFree: String="FreeUser"
+    val userTypePremium: String="PremiumUser"
+    val notificationRequestCode: Int=0
+    var premiumActivationStatus: String="false"
+    var registrationDate: String=""
+    var phone: String=""
+
+
+
 //    default values end here
 
     val resultDateKey: String="ResultDateKey"
@@ -33,6 +40,12 @@ object Constants {
     val appLanguageStatusKey: String="AppLanguageStatusKey"
     val lotteryNumberKey: String="LotteryNumberKey"
     val targetUrlKey: String="TargetUrlKey"
+    val fcmTokenKey: String="FcmTokenKey"
+    val notificationTitleKey: String="NotificationTitleKey"
+    val notificationBodyKey: String="NotificationBodyKey"
+    val notificationTargetUrlKey: String="NotificationTargetUrlKey"
+    val notificationBigImageUrlKey: String="NotificationBigImageUrlKey"
+    val notificationCancelableKey: String="NotificationCancelableKey"
 
 //    all keys are declared above
 

@@ -30,7 +30,8 @@
     <string name="need_to_accept_permission">এই বিকল্পটি ব্যবহার করার জন্য আপনাকে অনুমতি গ্রহণ করতে হবে।</string>
     <string name="view_details">বিস্তারিত দেখুন</string>
     <string name="choose_one">একটি নির্বাচন করুন</string>
-
+    <string name="input_your_phone_number_title">নিচের বাক্সে আপনার ফোন নম্বর লিখুন এবং Submit বোতাম টিপুন</string>
+    <string name="input_phone_number">ইনপুট ফোন নম্বর</string>
 
 
 

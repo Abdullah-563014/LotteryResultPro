@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/purple_700"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/_5sdp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.hanks.htextview.rainbow.RainbowTextView
+        android:text="@string/input_your_phone_number_title"
+        style="@style/MyMediumBoldTextViewStyle"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/phoneNumberEditText"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:hint="@string/input_phone_number"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:drawableStart="@drawable/ic_phone"
+        android:paddingStart="@dimen/_5sdp"
+        android:background="@drawable/rounded_transparent_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp" />
+    <Button
+        android:id="@+id/submitButton"
+        style="@style/MyButtonStyle"
+        android:text="@string/submit"
+        android:paddingStart="@dimen/_30sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_40sdp" />
+</LinearLayout>

@@ -1,13 +1,9 @@
 package com.skithub.resultdear.ui.main
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
 import android.telephony.TelephonyManager
 import android.util.Log
@@ -17,39 +13,33 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.telephony.TelephonyManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.*
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionDeniedResponse
-import com.karumi.dexter.listener.PermissionGrantedResponse
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.single.PermissionListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.ActivityMainBinding
+import com.skithub.resultdear.databinding.PhoneNumberInputDialogCustomLayoutBinding
 import com.skithub.resultdear.model.AdsImageModel
 import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.ui.common_number.CommonNumberActivity
-import com.skithub.resultdear.ui.common_number.CommonNumberViewModel
-import com.skithub.resultdear.ui.common_number.CommonNumberViewModelFactory
 import com.skithub.resultdear.ui.get_help.To_Get_HelpActivity
+import com.skithub.resultdear.ui.lottery_number_check.LotteryNumberCheckActivity
 import com.skithub.resultdear.ui.old_result.OldResultActivity
+import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
 import com.skithub.resultdear.ui.special_or_bumper.SplOrBumperActivity
 import com.skithub.resultdear.ui.today_result.TodayResultActivity
 import com.skithub.resultdear.ui.winning_number.WinningNumberActivity
 import com.skithub.resultdear.ui.yesterday_result.YesterdayResultActivity
-import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
-import com.skithub.resultdear.ui.lottery_number_check.LotteryNumberCheckActivity
 import com.skithub.resultdear.utils.CommonMethod
 import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.Coroutines
 import com.skithub.resultdear.utils.MyExtensions.shortToast
 import com.skithub.resultdear.utils.SharedPreUtils
+import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -61,7 +51,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var rainbowColors: IntArray= intArrayOf(Color.parseColor("#FF2B22"),Color.parseColor("#FF7F22"),Color.parseColor("#EDFF22"),Color.parseColor("#22FF22"),Color.parseColor("#05EEFA"),Color.parseColor("#08B4BD"),Color.parseColor("#056B70"))
     private lateinit var telephonyManager: TelephonyManager
     private var tutorialInfo: AdsImageModel?=null
-
+    private lateinit var phoneNumberDialogBinding: PhoneNumberInputDialogCustomLayoutBinding
+    private var phoneNumberAlertDialog: AlertDialog?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,11 +74,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             checkBeginning()
         }
 
+        updateUi()
+
         setupNavigationBar()
 
         loadTutorialInfo()
 
-
+        getPremiumStatus()
 
 
 
@@ -112,6 +105,91 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.hindiLanguageTextView.setOnClickListener(this)
         Glide.with(this).load(R.drawable.new_text_animation).fitCenter().into(binding.newTextAnimationImageView)
         binding.pickTicketDescriptionTextView.setColors(*rainbowColors)
+
+    }
+
+    private fun updateUi() {
+        binding.spinKit.visibility=View.GONE
+        binding.commonNumberButton.isActivated= Constants.premiumActivationStatus.equals("true")
+    }
+
+    private fun getPremiumStatus() {
+        Coroutines.main {
+            val oldToken=SharedPreUtils.getStringFromStorage(applicationContext,Constants.fcmTokenKey,null)
+            if (oldToken.isNullOrEmpty()) {
+                phoneNumberDialogBinding= PhoneNumberInputDialogCustomLayoutBinding.inflate(layoutInflater)
+                phoneNumberDialogBinding.submitButton.setOnClickListener(this)
+                val builder=AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setView(phoneNumberDialogBinding.root)
+                phoneNumberAlertDialog=builder.create()
+                if (phoneNumberAlertDialog?.window!=null) {
+                    phoneNumberAlertDialog?.window!!.attributes.windowAnimations=R.style.DialogTheme
+                }
+                if (!isFinishing) {
+                    phoneNumberAlertDialog?.show()
+                }
+            } else {
+                binding.spinKit.visibility=View.VISIBLE
+                val response=viewModel.getUserInfoByToken(oldToken)
+                binding.spinKit.visibility=View.GONE
+                if (response.isSuccessful && response.code()==200) {
+                    if (response.body()!=null) {
+                        if (response.body()?.status.equals("success",true)) {
+                            val userInfoModel=response.body()?.data!![0]
+                            userInfoModel?.let {
+                                Constants.premiumActivationStatus="${it.activeStatus}"
+                                Constants.registrationDate="${it.registrationDate}"
+                                Constants.phone="${it.phone}"
+                                updateUi()
+                            }
+                        } else {
+                            shortToast("${response.body()?.message}")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun updateUserProfile() {
+        try {
+            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    return@OnCompleteListener
+                }
+                val token = task.result
+                val phone: String=phoneNumberDialogBinding.phoneNumberEditText.text.toString().trim()
+                val registrationDate: String=CommonMethod.increaseDecreaseDaysUsingValue(0, Locale.ENGLISH)
+                val activeStatus: String="false"
+                if (phone.length!=10) {
+                    shortToast(resources.getString(R.string.input_phone_number))
+                    return@OnCompleteListener
+                }
+                phoneNumberAlertDialog?.dismiss()
+
+                if (token!=null) {
+                    Coroutines.main {
+                        val response=viewModel.uploadUserInfo(token,phone,registrationDate,activeStatus)
+                        Log.d(Constants.TAG,"response:- ${response.body()}")
+                        if (response.isSuccessful && response.code()==200) {
+                            if (response.body()!=null) {
+                                if (response.body()?.status.equals("success")) {
+                                    SharedPreUtils.setStringToStorage(applicationContext,Constants.fcmTokenKey,token)
+                                    Constants.premiumActivationStatus="false"
+                                    Constants.phone=phone
+                                    Constants.registrationDate=registrationDate
+                                    updateUi()
+                                }
+                            }
+                        }
+                        FirebaseMessaging.getInstance().subscribeToTopic(Constants.userTypeFree)
+                    }
+                }
+            })
+        } catch (e: Exception) {
+            Log.d(Constants.TAG,"error is:- ${e.message}")
+        }
     }
 
     private fun loadTutorialInfo() {
@@ -266,42 +344,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
-//    @SuppressLint("MissingPermission")
-//    private fun checkPremiumStatus() {
-//        Log.d(Constants.TAG,"device id:- ${telephonyManager.deviceId}")
-//        Log.d(Constants.TAG,"sim serial number:- ${telephonyManager.simSerialNumber}")
-//        Log.d(Constants.TAG,"line one number:- ${telephonyManager.line1Number}")
-//    }
-//
-//    private fun checkPermission() {
-//        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
-//            Dexter
-//                .withContext(this)
-//                .withPermission(Manifest.permission.READ_PHONE_STATE)
-//                .withListener(object : PermissionListener {
-//                    override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
-//                        checkPremiumStatus()
-//                    }
-//
-//                    override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-//                        shortToast(resources.getString(R.string.need_to_accept_permission))
-//                        finishAffinity()
-//                    }
-//
-//                    override fun onPermissionRationaleShouldBeShown(
-//                        p0: PermissionRequest?,
-//                        p1: PermissionToken?
-//                    ) {
-//                        p1?.continuePermissionRequest()
-//                    }
-//
-//                })
-//                .check()
-//        } else {
-//            checkPremiumStatus()
-//        }
-//    }
-
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -374,6 +416,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         }
                     }
                     return
+                }
+
+                R.id.submitButton -> {
+                    updateUserProfile()
                 }
             }
         }
