@@ -11,6 +11,7 @@ import android.telephony.TelephonyManager
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var tutorialInfo: AdsImageModel?=null
     private lateinit var phoneNumberDialogBinding: PhoneNumberInputDialogCustomLayoutBinding
     private var phoneNumberAlertDialog: AlertDialog?=null
+    private lateinit var inputMethodManager: InputMethodManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,12 +87,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+
+
     }
 
 
     private fun initAll() {
         connectivityManager=getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
         telephonyManager=getSystemService(TELEPHONY_SERVICE) as TelephonyManager
+        inputMethodManager=getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         binding.todayResultCardView.setOnClickListener(this)
         binding.yesterDayResultCardView.setOnClickListener(this)
         binding.yesterDayVsPreResultCardView.setOnClickListener(this)
@@ -106,6 +111,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Glide.with(this).load(R.drawable.new_text_animation).fitCenter().into(binding.newTextAnimationImageView)
         binding.pickTicketDescriptionTextView.setColors(*rainbowColors)
         binding.spinKit.visibility=View.GONE
+    }
+
+    private fun hideKeyBoard() {
+        inputMethodManager.hideSoftInputFromWindow(phoneNumberDialogBinding.phoneNumberEditText.windowToken,0)
     }
 
     private fun showSupportCallDialog() {
@@ -175,6 +184,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun updateUserProfile() {
         try {
+            hideKeyBoard()
             FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     return@OnCompleteListener
@@ -192,7 +202,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (token!=null) {
                     Coroutines.main {
                         val response=viewModel.uploadUserInfo(token,phone,registrationDate,activeStatus)
-                        Log.d(Constants.TAG,"response:- ${response.body()}")
                         if (response.isSuccessful && response.code()==200) {
                             if (response.body()!=null) {
                                 if (response.body()?.status.equals("success")) {
@@ -200,6 +209,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     Constants.premiumActivationStatus="false"
                                     Constants.phone=phone
                                     Constants.registrationDate=registrationDate
+
+                                    getPremiumStatus()
                                 }
                             }
                         }
@@ -208,7 +219,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             })
         } catch (e: Exception) {
-            Log.d(Constants.TAG,"error is:- ${e.message}")
+
         }
     }
 
@@ -275,9 +286,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val lanCode: String=SharedPreUtils.getStringFromStorage(applicationContext,Constants.appLanguageKey,Constants.appDefaultLanCode)!!
             val lanStatus: Boolean=SharedPreUtils.getBooleanFromStorage(applicationContext,Constants.appLanguageStatusKey,false)
             Coroutines.main {
-                if (lanStatus) {
-                    changeLocale(lanCode)
-                } else {
+                if (!lanStatus) {
+//                    changeLocale(lanCode)
                     showChangeLanguageDialog()
                 }
             }
