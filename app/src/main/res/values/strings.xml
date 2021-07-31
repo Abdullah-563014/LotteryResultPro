@@ -19,6 +19,7 @@
     <string name="submit" translatable="false">Submit</string>
 
 
+
     <string name="search_number">Pick a ticket</string>
     <string name="today_result">Today Result</string>
     <string name="yesterday_result">Yesterday Result</string>
@@ -43,12 +44,15 @@
     <string name="found_new_version">Found New Version</string>
     <string name="app_update_message">Your app is not updated, Please update to latest version.</string>
     <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
     <string name="search_number_description">The ticket that you will buy, when the ticket was last played, search it here.</string>
     <string name="need_to_accept_permission">You need to accept the permission to use this option.</string>
     <string name="view_details">View Details</string>
     <string name="choose_one">Choose one</string>
     <string name="input_your_phone_number_title">Input your phone number to below box and press submit button</string>
     <string name="input_phone_number">Input phone number</string>
+    <string name="active_premium_service">Active premium service</string>
+    <string name="premium_active_message">To use this service, please contact with support center.</string>
 
 
 

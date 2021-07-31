@@ -7,6 +7,7 @@ object Constants {
 
     val consoleId: String="Sikder+International+iT+Hub"
     val tutorialVideoId: String="9W2s7fNXR24"
+    val supportTeamMobileNumber: String="+919062686255"
 
 
     val dayFormat: String="dd-MM-yyyy"

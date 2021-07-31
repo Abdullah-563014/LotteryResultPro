@@ -33,8 +33,8 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
     private val lotteryViewType: Int=0
     private val imageViewType: Int=1
     private val adsImagePosition: Int=3
-    private val lotteryNumberColumnCount: Int=6
-    private val lotteryNumberVerticalSpanCount: Int=17
+    private val lotteryNumberColumnCount: Int=5
+    private val lotteryNumberVerticalSpanCount: Int=20
 
 
 
@@ -81,10 +81,8 @@ class LotteryResultRecyclerAdapter(val context: Context, val list: MutableList<L
                 var layoutManager: GridLayoutManager
                 if (item.winType.equals(Constants.winTypeFifth)) {
                     layoutManager= GridLayoutManager(context,lotteryNumberVerticalSpanCount,GridLayoutManager.HORIZONTAL,false)
-                } else if (item.winType.equals(Constants.winTypeFifth)) {
-                    layoutManager= GridLayoutManager(context,lotteryNumberColumnCount)
                 } else {
-                    layoutManager= GridLayoutManager(context,lotteryNumberColumnCount-1)
+                    layoutManager= GridLayoutManager(context,lotteryNumberColumnCount)
                 }
                 val childList: MutableList<LotteryNumberModel> =item.data!!
                 childList.sortBy {

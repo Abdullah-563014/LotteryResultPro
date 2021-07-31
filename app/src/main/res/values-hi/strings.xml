@@ -25,12 +25,15 @@
     <string name="found_new_version">नया संस्करण मिला</string>
     <string name="app_update_message">आपका ऐप अपडेट नहीं है, कृपया नवीनतम संस्करण में अपडेट करें।</string>
     <string name="ok">ठीक है</string>
+    <string name="cancel">रद्द करना</string>
     <string name="search_number_description">आप जो टिकट खरीदेंगे, जब टिकट आखिरी बार खेला गया था, उसे यहां खोजें और देखें।</string>
     <string name="need_to_accept_permission">इस विकल्प का उपयोग करने के लिए आपको अनुमति स्वीकार करनी होगी।</string>
     <string name="view_details">विवरण देखें</string>
     <string name="choose_one">एक का चयन</string>
     <string name="input_your_phone_number_title">नीचे दिए गए बॉक्स में अपना फोन नंबर डालें और सबमिट बटन दबाएं press</string>
     <string name="input_phone_number">इनपुट फोन नंबर</string>
+    <string name="active_premium_service">Active premium service</string>
+    <string name="premium_active_message">इस सेवा का उपयोग करने के लिए, कृपया सहायता केंद्र से संपर्क करें।</string>
 
 
 

@@ -1,9 +1,11 @@
 package com.skithub.resultdear.ui.main
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.net.ConnectivityManager
+import android.net.Uri
 import android.os.Bundle
 import android.telephony.TelephonyManager
 import android.util.Log
@@ -74,8 +76,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             checkBeginning()
         }
 
-        updateUi()
-
         setupNavigationBar()
 
         loadTutorialInfo()
@@ -105,12 +105,34 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.hindiLanguageTextView.setOnClickListener(this)
         Glide.with(this).load(R.drawable.new_text_animation).fitCenter().into(binding.newTextAnimationImageView)
         binding.pickTicketDescriptionTextView.setColors(*rainbowColors)
-
+        binding.spinKit.visibility=View.GONE
     }
 
-    private fun updateUi() {
-        binding.spinKit.visibility=View.GONE
-        binding.commonNumberButton.isActivated= Constants.premiumActivationStatus.equals("true")
+    private fun showSupportCallDialog() {
+        val builder=AlertDialog.Builder(this)
+            .setCancelable(true)
+            .setTitle(resources.getString(R.string.active_premium_service))
+            .setMessage(resources.getString(R.string.premium_active_message))
+            .setPositiveButton(resources.getString(R.string.ok)) { dialog, which ->
+                dialog?.dismiss()
+                try {
+                    val dialerIntent: Intent = Intent(Intent.ACTION_DIAL)
+                    dialerIntent.data = Uri.parse("tel:${Constants.supportTeamMobileNumber}")
+                    startActivity(dialerIntent)
+                } catch (e: Exception) {
+                    shortToast("failed to call for:- ${e.message}")
+                }
+            }
+            .setNegativeButton(resources.getString(R.string.cancel)
+            ) { dialog, which -> dialog?.dismiss() }
+
+        val alertDialog=builder.create()
+        if (alertDialog.window!=null) {
+            alertDialog.window!!.attributes.windowAnimations=R.style.DialogTheme
+        }
+        if (!isFinishing) {
+            alertDialog.show()
+        }
     }
 
     private fun getPremiumStatus() {
@@ -141,7 +163,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                 Constants.premiumActivationStatus="${it.activeStatus}"
                                 Constants.registrationDate="${it.registrationDate}"
                                 Constants.phone="${it.phone}"
-                                updateUi()
                             }
                         } else {
                             shortToast("${response.body()?.message}")
@@ -179,7 +200,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     Constants.premiumActivationStatus="false"
                                     Constants.phone=phone
                                     Constants.registrationDate=registrationDate
-                                    updateUi()
                                 }
                             }
                         }
@@ -398,9 +418,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.commonNumberButton -> {
-                    gridIntent= Intent(applicationContext, CommonNumberActivity::class.java)
-                    startActivity(gridIntent)
-//                    checkPermission()
+                    if (Constants.premiumActivationStatus.equals("true",true)) {
+                        gridIntent= Intent(applicationContext, CommonNumberActivity::class.java)
+                        startActivity(gridIntent)
+                    } else {
+                        showSupportCallDialog()
+                    }
                 }
 
                 R.id.englishLanguageTextView -> changeLocale("en_US")
