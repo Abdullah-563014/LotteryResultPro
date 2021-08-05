@@ -145,6 +145,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:nb_text="@string/common_number"/>
+                <com.smb.glowbutton.NeonButton
+                    android:id="@+id/middleNumberButton"
+                    style="@style/MyNeonButtonStyle"
+                    app:nb_drawableStart="@drawable/ic_search"
+                    app:nb_gradientStart="@color/neon_color_one"
+                    app:nb_gradientEnd="@color/gradient_center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:nb_text="@string/middle_number"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     style="@style/HomeButtonParentLayoutStyle"
                     android:layout_marginTop="@dimen/_20sdp"

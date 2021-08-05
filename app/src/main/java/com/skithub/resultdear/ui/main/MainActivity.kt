@@ -31,6 +31,7 @@ import com.skithub.resultdear.ui.MyApplication
 import com.skithub.resultdear.ui.common_number.CommonNumberActivity
 import com.skithub.resultdear.ui.get_help.To_Get_HelpActivity
 import com.skithub.resultdear.ui.lottery_number_check.LotteryNumberCheckActivity
+import com.skithub.resultdear.ui.middle_number.MiddleNumberActivity
 import com.skithub.resultdear.ui.old_result.OldResultActivity
 import com.skithub.resultdear.ui.privacy_policy.PrivacyPolicyActivity
 import com.skithub.resultdear.ui.special_or_bumper.SplOrBumperActivity
@@ -105,6 +106,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.lotteryNumberCheck.setOnClickListener(this)
         binding.tutorialImageView.setOnClickListener(this)
         binding.commonNumberButton.setOnClickListener(this)
+        binding.middleNumberButton.setOnClickListener(this)
         binding.englishLanguageTextView.setOnClickListener(this)
         binding.banglaLanguageTextView.setOnClickListener(this)
         binding.hindiLanguageTextView.setOnClickListener(this)
@@ -428,12 +430,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.commonNumberButton -> {
-                    if (Constants.premiumActivationStatus.equals("true",true)) {
-                        gridIntent= Intent(applicationContext, CommonNumberActivity::class.java)
-                        startActivity(gridIntent)
-                    } else {
-                        showSupportCallDialog()
-                    }
+//                    if (Constants.premiumActivationStatus.equals("true",true)) {
+//                        gridIntent= Intent(applicationContext, CommonNumberActivity::class.java)
+//                        startActivity(gridIntent)
+//                    } else {
+//                        showSupportCallDialog()
+//                    }
+
+                    gridIntent= Intent(applicationContext, CommonNumberActivity::class.java)
+                    startActivity(gridIntent)
+
+                }
+
+                R.id.middleNumberButton -> {
+                    gridIntent= Intent(applicationContext, MiddleNumberActivity::class.java)
+                    startActivity(gridIntent)
                 }
 
                 R.id.englishLanguageTextView -> changeLocale("en_US")

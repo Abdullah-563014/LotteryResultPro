@@ -23,6 +23,7 @@
     <string name="more_apps">আরো অ্যাপ্লিকেশান</string>
     <string name="last_four_degit_of_lottery_number">লটারির সংখ্যাটির শেষ 4 সংখ্যা</string>
     <string name="common_number">এই নাম্বার গুলো বেশি খেলে</string>
+    <string name="middle_number">মধ্য সংখ্যা</string>
     <string name="found_new_version">নতুন সংস্করণ পাওয়া গেছে</string>
     <string name="app_update_message">আপনার অ্যাপ্লিকেশন আপডেট করা হয়নি, দয়া করে সর্বশেষ সংস্করণে আপডেট করুন।</string>
     <string name="ok">ঠিক আছে</string>

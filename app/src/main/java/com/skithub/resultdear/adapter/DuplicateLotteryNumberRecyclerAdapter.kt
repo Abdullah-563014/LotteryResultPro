@@ -10,6 +10,7 @@ import com.skithub.resultdear.R
 import com.skithub.resultdear.databinding.DuplicateLotteryNumberRecyclerViewModelLayoutBinding
 import com.skithub.resultdear.model.LotteryNumberModel
 import com.skithub.resultdear.ui.common_number_details.CommonNumberDetailsActivity
+import com.skithub.resultdear.ui.middle_number.MiddleNumberActivity
 import com.skithub.resultdear.utils.Constants
 import com.skithub.resultdear.utils.MyExtensions.shortToast
 
@@ -37,8 +38,14 @@ class DuplicateLotteryNumberRecyclerAdapter(val context: Context, val list: Muta
         View.OnClickListener {
 
         fun bind(item: LotteryNumberModel) {
-            binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
-            binding.duplicateLotteryNumberRootLayout.setOnClickListener(this)
+            try {
+                if (context is MiddleNumberActivity && item.lotteryNumber!!.length>3) {
+                    binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber.substring(0,item.lotteryNumber.length-2)}"
+                } else {
+                    binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
+                }
+                binding.duplicateLotteryNumberRootLayout.setOnClickListener(this)
+            } catch (e: Exception) {}
         }
 
         override fun onClick(v: View?) {

@@ -19,7 +19,6 @@
     <string name="submit" translatable="false">Submit</string>
 
 
-
     <string name="search_number">Pick a ticket</string>
     <string name="today_result">Today Result</string>
     <string name="yesterday_result">Yesterday Result</string>
@@ -41,6 +40,7 @@
     <string name="more_apps">More Apps</string>
     <string name="last_four_degit_of_lottery_number">last 4 digit of lottery number</string>
     <string name="common_number">The numbers that play more</string>
+    <string name="middle_number">Middle Number</string>
     <string name="found_new_version">Found New Version</string>
     <string name="app_update_message">Your app is not updated, Please update to latest version.</string>
     <string name="ok">Ok</string>
@@ -53,9 +53,6 @@
     <string name="input_phone_number">Input phone number</string>
     <string name="active_premium_service">Active premium service</string>
     <string name="premium_active_message">To use this service, please contact with support center.</string>
-
-
-
 
 
     <string name="not_implemented_message">Please wait. This option is not implemented yet.</string>
