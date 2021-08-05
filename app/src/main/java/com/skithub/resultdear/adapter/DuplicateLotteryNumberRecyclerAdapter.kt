@@ -40,7 +40,7 @@ class DuplicateLotteryNumberRecyclerAdapter(val context: Context, val list: Muta
         fun bind(item: LotteryNumberModel) {
             try {
                 if (context is MiddleNumberActivity && item.lotteryNumber!!.length>3) {
-                    binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber.substring(0,item.lotteryNumber.length-2)}"
+                    binding.lotteryNumberTextView.text="${item.lotteryNumber.substring(0,item.lotteryNumber.length-2)}"
                 } else {
                     binding.lotteryNumberTextView.text="${item.lotterySerialNumber} ${item.lotteryNumber}"
                 }
